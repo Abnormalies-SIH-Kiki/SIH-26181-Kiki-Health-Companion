@@ -12,6 +12,38 @@ There is a desktop companion that stays in the person's room, and a wearable tha
 
 The easiest way to think about it is that they are two bodies for the same companion.
 
+![buying the sensors at the market, 27 August](../assets/hardware/components-purchase.jpg)
+
+That is us on 27 August, buying the MAX30102 and the rest of the sensors. Total bill was ₹1,110, split six ways.
+
+![working on it in the library](../assets/hardware/team-working.jpg)
+
+And this is a fairly typical afternoon since then.
+
+Everything below was built by the six of us in about three weeks. Every photograph in this document was taken on a phone, and nothing has been mocked up or rendered to look better than it is.
+
+![the wearable, taking a heart rate off the wrist](../assets/screenshots/01-wearable-on-hand.jpg)
+
+![inside the desktop unit](../assets/screenshots/02-desktop-internals.png)
+
+The wearable reading 70 bpm and 99% SpO₂ off the MAX30102, and the desktop unit with its lid off. The hot glue is real and we are not going to pretend otherwise.
+
+Where the project stands as of 8 September:
+
+| | |
+|---|---|
+| tests passing, desktop module | 1,101 |
+| tests passing, wearable gateway | 538 |
+| commits across the two codebases | 125 + 134 |
+| conversation transcripts on the device | 372 |
+| spoken replies recorded | 745 |
+| wearable telemetry batches ingested | 209 |
+| journal entries written between conversations | 133 |
+| heart-rate readings kept as trusted | 6 |
+| falls detected and alerted on | 18 |
+
+The last two lines are small on purpose. Only GOOD or FAIR readings are stored as heart rate, and the fall count is what the wearable has actually raised, not what it could theoretically catch.
+
 ---
 
 **Contents**
@@ -50,6 +82,8 @@ Both ultimately connect through the same gateway running on the laptop.
 
 ## System architecture
 
+![the Pi is the body, the laptop is the brain](../assets/diagrams/body-and-brain.png)
+
 There are basically three computers involved.
 
 The Raspberry Pi 5 is the body of the desktop robot. The ESP32-S3 is the body of the wearable. Then there is a laptop with an RTX 4060, which does almost everything that would qualify as "thinking".
@@ -70,6 +104,10 @@ One slightly unusual design decision is that `llama-server` runs with `-np 1`.
 So there is exactly one inference slot.
 
 That sounds restrictive, and it is, but it is intentional. A large part of the client architecture exists specifically to keep that one slot available for foreground speech. When someone speaks to the companion, we don't want some background process to already be halfway through a long local generation.
+
+![the local slot belongs to whoever is speaking; background thought goes to the cloud](../assets/diagrams/one-local-slot.png)
+
+The slot belongs to the person in the room. Background thinking gets pushed out to the cloud rather than queued behind them, which is also where the privacy line sits: speech-to-text runs on our own hardware, the ambient buffer is a local file, and only the reasoning over it is a cloud call.
 
 The Gemma model has about 26 billion total parameters, but it is mixture-of-experts and only around 4B parameters are active for a token.
 
@@ -92,6 +130,10 @@ The care agent handles actual care sessions.
 And then there is a cloud-only background process that we usually call the **idle mind**. It runs between conversations and writes thoughts/context for later use.
 
 That process is deliberately cloud-only. It can never occupy the local Gemma slot, and it also has hard restrictions: it cannot move the robot and it cannot independently send somebody a message.
+
+![the speaking lane is protected, the background lane is killable](../assets/diagrams/speaking-vs-background.png)
+
+The speaking lane is protected and the background lane is killable. If someone starts talking mid-thought, the thought loses.
 
 ---
 
@@ -139,6 +181,8 @@ As soon as a sentence finishes, it gets sent to TTS. The model is still generati
 
 ## Desktop hardware
 
+![desktop wiring](../assets/circuit_diagram/desktop-breadboard.png)
+
 The stationary unit is based around a **Raspberry Pi 5**.
 
 For vision acceleration it uses a **Hailo-8**, through the Raspberry Pi AI HAT+ 2 rated at 26 TOPS. The Hailo is used for face recognition and the CLIP pipeline.
@@ -155,6 +199,10 @@ The GPIO mapping is:
 * GPIO 26
 
 There is a printed gear pair between the stepper and the neck. Small gear into large, so it gives up speed and buys torque, which is what it needs to turn the whole head toward whoever is talking.
+
+![the printed gear pair and the stepper](../assets/screenshots/03-desktop-gear-train.png)
+
+The line embossed into the base is Kierkegaard. It went in before any of it worked.
 
 The user controls on the front are two LM393-based IR proximity sensors.
 
@@ -197,6 +245,8 @@ The reason is that 2400 MHz is a boost bin. Reaching it also raises core voltage
 
 ## Wearable hardware
 
+![wearable wiring](../assets/circuit_diagram/wearable-breadboard.png)
+
 The wearable is built around the **Waveshare ESP32-S3-Touch-AMOLED-1.75**.
 
 It has a 466×466 capacitive-touch AMOLED and an ESP32-S3 with 8 MB of PSRAM.
@@ -218,6 +268,12 @@ The bus runs at 25 kHz and has additional weak pull-ups.
 Motion comes from the onboard **QMI8658 IMU**, configured for 8 g / 1024 dps and sampled at 50 Hz.
 
 Power management is handled by the AXP2101 with a 1S 3.7 V, 1000 mAh Li-ion/LiPo cell.
+
+![the board with the speaker and battery soldered on](../assets/hardware/wearable-board-soldered.jpg)
+
+The enclosure around it is printed PLA on a 60 × 72 mm base, and it keeps the display module inside its original 51 mm factory case rather than pressing on the bare panel. That decision has a story behind it, further down.
+
+![the enclosure design sheet](../assets/screenshots/05-cad-design-sheet.png)
 
 The surprising bottleneck on this board hasn't been CPU performance. It has been internal RAM.
 
@@ -345,7 +401,22 @@ A poor measurement attempt can still be recorded in the care log so the system k
 
 The MAX30102 code can also produce an SpO₂ estimate, but it is not calibrated. We therefore do not present that value as a health reading.
 
-> A live snapshot taken on 8 September is in [`data/environment.snapshot.json`](data/environment.snapshot.json), including the empty `compact_line` behaviour and the same `cpcb_aqi(120.6, 338.1)` call reproducing 301.
+Pulled live from the Pi on 8 September, for comparison:
+
+```json
+"temperature_c": 27.0,  "apparent_temperature_c": 31.8,  "humidity_pct": 80.0,
+"pm2_5": 78.0,          "pm10": 162.5,
+"us_aqi": 159.0,        "aqi": 160,  "aqi_category": "moderate",  "aqi_driver": "PM2.5",
+"heat_band": "none"
+```
+
+The row that actually reaches the model that day was one line:
+
+```
+OUTSIDE New Delhi: AQI ~160 moderate
+```
+
+On a clean day it is an empty string and nothing gets injected at all. On the first attempt at this capture the air-quality endpoint timed out, and the snapshot came back with the temperature values present and `pm2_5: null` rather than a guess. Full capture in [`data/environment.snapshot.json`](data/environment.snapshot.json).
 
 ---
 
@@ -375,7 +446,42 @@ Drops while the watch is not being worn are intentionally ignored.
 
 And the warning here matters: **these thresholds are heuristic and have not been clinically validated. Controlled physical acceptance testing has not been completed.** This is not a medical-grade fall detector and we don't want it read as one.
 
-> A real fall event from 7 September, with its alert and the recorded delivery outcome, is in [`data/care_plan.excerpt.json`](data/care_plan.excerpt.json) under `fall_alert_chain`.
+This is a real one, from the afternoon of 7 September. The wearable raised it, the wearer didn't cancel the check-in, and the alert went out:
+
+```json
+{
+  "kind": "possible_fall",
+  "status": "requested",
+  "message": "Kiki wearable detected a possible fall at 2026-09-07T13:20:59+0000. The wearer
+              did not cancel the on-device check-in. Please contact them directly. This
+              automated notice is not an emergency-service dispatch.",
+  "batch_id": "wk-1788787259-9",
+  "id": "e0cd5cdcba41"
+}
+{
+  "kind": "delivery_outcome",
+  "channel": "whatsapp",
+  "recipient": "«family contact»",
+  "accepted": true,
+  "delivery_confirmed": false,
+  "alert_id": "e0cd5cdcba41"
+}
+```
+
+`accepted: true` with `delivery_confirmed: false` is deliberate. The messaging tool reported that it sent the message. That is not the same as knowing somebody read it, and the record shouldn't pretend otherwise.
+
+The same batch carried the rest of the wearer's state:
+
+```json
+"steps_today": 1696,  "activity": "walking",  "worn": true,  "battery_percent": 39.0,
+"heart_rate": { "value": 92.3, "quality": "FAIR",
+                "signal": { "pi": 0.382, "rr_cv": 0.091, "n_peaks": 13,
+                            "acf": 0.894, "acf_hr": 92.4, "channel_corr": 0.977,
+                            "i2c_glitches": 0, "estimator_version": 2 } },
+"spo2_experimental": { "value": 100.0, "quality": "EXPERIMENTAL", "calibrated": false }
+```
+
+Every heart rate carries the evidence it was derived from, and the SpO₂ sits in its own field marked uncalibrated so nothing downstream can mistake it for a reading. Full excerpt in [`data/care_plan.excerpt.json`](data/care_plan.excerpt.json).
 
 ---
 
@@ -431,7 +537,18 @@ For basically the same reason, we deliberately do **not** use camera CLIP events
 
 A fall alert is the kind of alert somebody has to trust. If it goes off repeatedly while nothing is wrong, they'll eventually ignore it when something actually happens.
 
-> Accepted observations, in the wording the vision model actually returned, are in [`data/care_plan.excerpt.json`](data/care_plan.excerpt.json) under `clip_observations`.
+Observations that made it through all five gates are logged in the wording the vision model actually returned, not a category label:
+
+```
+2026-08-28T23:14:30  drinking: The person is raising a cup or bottle to their mouth
+                               with their right hand.
+2026-08-28T23:34:35  drinking: The person is holding a glass to their mouth and
+                               drinking from it.
+2026-08-28T23:38:29  heat_distress: The person is holding a hand fan with their right
+                                    hand and has their mouth slightly open.
+```
+
+Eighteen of these are in the care log so far.
 
 ---
 
@@ -503,7 +620,15 @@ They exist because we had four separate failures before getting there.
 
 One of them was particularly memorable: the model happily described a WhatsApp conversation about taco night that had never actually been sent.
 
-> The same principle shows up in the recorded outcomes. A sent alert carries `accepted: true` alongside `delivery_confirmed: false`, because the tool reporting success is not the same as knowing the message arrived. Session outcomes are recorded the same way — `data/care_plan.excerpt.json` contains sessions ending as `cancelled — no reply during the listening window` and `abandoned — the process that owned it restarted`.
+Session outcomes are written the same way. These are real endings out of the 22 sessions in the log:
+
+```
+Surya Namaskar    cancelled   no reply during the listening window        1 turn
+Neck Exercise     cancelled   double-tap returned Kiki to idle            0 turns
+Surya Namaskar    abandoned   the process that owned it restarted         4 turns
+```
+
+That third one is the system saying it does not know what happened, which is the honest answer. It would have been easy to write `completed` there and nobody would have checked.
 
 ---
 
@@ -543,7 +668,16 @@ On the live system we have accumulated:
 
 There is also a `thinking_journal.json` generated by the background "idle mind". At the moment it is around **165 KB**, holding 133 entries written between conversations without the user explicitly asking for each entry, and 22 open questions of which 10 are still unresolved.
 
-> Three of the journal entries are in [`data/thinking_journal.excerpt.json`](data/thinking_journal.excerpt.json).
+Both suites, run on 8 September:
+
+```
+src/desktop-module     1101 passed, 2 warnings in 26.96s
+src/wearable-gateway    538 passed in 15.57s
+```
+
+Neither needs llama-server, TTS, a camera or the board to be present.
+
+Three of the journal entries are in [`data/thinking_journal.excerpt.json`](data/thinking_journal.excerpt.json).
 
 ---
 
@@ -570,13 +704,15 @@ Nothing in the printed enclosure presses directly against the AMOLED bezel anymo
 
 ### Print-area error
 
-![the slicer refusing the desktop enclosure](../assets/hardware/desktop-enclosure-slicer-error.png)
+![the slicer refusing the desktop enclosure](../assets/diagrams/enclosure-v3-slicer-error.png)
 
 At one point the slicer simply refused the desktop enclosure.
 
 The message was:
 
 > An object outside the print area was detected. Resolve the current problem to continue slicing.
+
+The enclosure itself was done properly by then — the shell in CAD, the gear train in OpenSCAD, because gears are arithmetic and arithmetic belongs in a file rather than in a mouse drag. The slicer just didn't agree about where the parts sat on the bed.
 
 ### The "bad Wi-Fi" problem that wasn't Wi-Fi — resolved 19 August
 
@@ -662,8 +798,9 @@ That was a fairly good reminder that "Git says commit successful" and "the stora
 
 ### CAD review — 5 September
 
-![the printed enclosure on the bed](../assets/hardware/wearable-case-printing.jpg)
-![the assembled wearable reading heart rate](../assets/screenshots/01-wearable-on-hand.jpg)
+![exploded view of the enclosure](../assets/CAD_model/renders/exploded.png)
+
+![the twist-lock pin detail](../assets/CAD_model/renders/pin_detail.png)
 
 A manual CAD review caught four problems before the parts were printed.
 
@@ -678,6 +815,12 @@ And a structural boss sat only **0.65 mm** away from the battery-pocket wall.
 All four were corrected.
 
 We also added assertions for the dimensions we could check automatically, mostly because fixing something once isn't very useful if the next CAD regeneration can silently recreate the same mistake.
+
+Then it printed, and it fitted.
+
+![the parts on the print bed](../assets/hardware/wearable-case-printing.jpg)
+
+![the assembled unit](../assets/CAD_model/renders/assembly.png)
 
 ---
 
