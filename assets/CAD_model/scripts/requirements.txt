@@ -1,5 +1,0 @@
-trimesh==5.1.0
-numpy==2.5.2
-networkx==3.6.1
-manifold3d==3.5.2
-pillow==12.3.0
