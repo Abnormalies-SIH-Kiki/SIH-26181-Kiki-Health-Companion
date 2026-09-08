@@ -1,0 +1,37 @@
+{
+  "watertight": true,
+  "connected_solids": 1,
+  "unchanged_external_bounds_mm": [
+    [
+      -29.7,
+      -35.7,
+      0.0
+    ],
+    [
+      29.7,
+      35.7,
+      5.0
+    ]
+  ],
+  "removed_material_bounds_mm": [
+    [
+      -29.700000762939453,
+      9.5,
+      2.0
+    ],
+    [
+      -10.0,
+      27.700000762939453,
+      5.0
+    ]
+  ],
+  "exit": "negative X long side; no short-end exit",
+  "two_1_4mm_wire_envelope_intersections_mm3": {
+    "shoe": 0,
+    "existing_tray": 0,
+    "existing_keeper": 0
+  },
+  "channel_width_mm": 5,
+  "channel_depth_mm": 3,
+  "floor_thickness_mm": 2
+}
