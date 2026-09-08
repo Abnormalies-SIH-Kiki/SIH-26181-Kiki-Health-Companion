@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Premium Health Dashboard</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@500;600;700;800&amp;family=Inter:wght@400&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "secondary-fixed-dim": "#c8c6c8",
+                        "tertiary-container": "#0c0b09",
+                        "error-container": "#93000a",
+                        "surface-container-highest": "#353434",
+                        "tertiary": "#cac6c2",
+                        "primary-container": "#0b0b0c",
+                        "tertiary-fixed-dim": "#cac6c2",
+                        "on-primary-container": "#7b797a",
+                        "surface-container-high": "#2b2a2a",
+                        "surface-container-lowest": "#0e0e0e",
+                        "inverse-primary": "#5f5e5f",
+                        "inverse-on-surface": "#313030",
+                        "surface": "#141313",
+                        "on-surface-variant": "#c7c6ca",
+                        "glow-white": "rgba(255, 255, 255, 0.08)",
+                        "on-primary-fixed": "#1c1b1c",
+                        "primary-fixed-dim": "#c8c6c7",
+                        "surface-tint": "#c8c6c7",
+                        "calorie-green": "#22C55E",
+                        "surface-variant": "#353434",
+                        "on-secondary-fixed": "#1b1b1d",
+                        "error": "#ffb4ab",
+                        "secondary-container": "#474649",
+                        "on-error": "#690005",
+                        "on-tertiary-fixed-variant": "#494644",
+                        "surface-tertiary": "#1C1C1E",
+                        "heart-red": "#EF4444",
+                        "outline-variant": "#46464a",
+                        "on-background": "#e5e2e1",
+                        "secondary-fixed": "#e4e2e4",
+                        "on-surface": "#e5e2e1",
+                        "surface-dim": "#141313",
+                        "on-tertiary": "#32302e",
+                        "inverse-surface": "#e5e2e1",
+                        "on-secondary-fixed-variant": "#474649",
+                        "outline": "#919094",
+                        "border-subtle": "rgba(255, 255, 255, 0.05)",
+                        "on-tertiary-container": "#7c7976",
+                        "on-secondary-container": "#b7b4b7",
+                        "surface-bright": "#3a3939",
+                        "tertiary-fixed": "#e7e2dd",
+                        "surface-container-low": "#1c1b1b",
+                        "on-primary-fixed-variant": "#474647",
+                        "on-primary": "#313031",
+                        "on-error-container": "#ffdad6",
+                        "on-tertiary-fixed": "#1d1b19",
+                        "step-blue": "#3B82F6",
+                        "primary-fixed": "#e5e2e3",
+                        "background": "#141313",
+                        "secondary": "#c8c6c8",
+                        "on-secondary": "#303032",
+                        "primary": "#c8c6c7",
+                        "surface-container": "#201f1f"
+                    },
+                    borderRadius: {
+                        DEFAULT: "0.25rem",
+                        lg: "0.5rem",
+                        xl: "0.75rem",
+                        full: "9999px"
+                    },
+                    spacing: {
+                        "section-gap": "3rem",
+                        "inner-padding": "1.25rem",
+                        "gutter": "1rem",
+                        "group-gap": "1.5rem",
+                        "metric-inset": "2rem"
+                    },
+                    fontFamily: {
+                        "label-caps": ["Hanken Grotesk"],
+                        "headline-lg": ["Hanken Grotesk"],
+                        "display-metric": ["Hanken Grotesk"],
+                        "headline-sm": ["Hanken Grotesk"],
+                        "body-md": ["Inter"],
+                        "display-metric-mobile": ["Hanken Grotesk"],
+                        "data-point": ["Hanken Grotesk"],
+                        "body-lg": ["Inter"]
+                    },
+                    fontSize: {
+                        "label-caps": ["12px", { lineHeight: "16px", letterSpacing: "0.1em", fontWeight: "700" }],
+                        "headline-lg": ["32px", { lineHeight: "40px", letterSpacing: "-0.02em", fontWeight: "600" }],
+                        "display-metric": ["64px", { lineHeight: "72px", letterSpacing: "-0.04em", fontWeight: "800" }],
+                        "headline-sm": ["20px", { lineHeight: "28px", letterSpacing: "-0.01em", fontWeight: "600" }],
+                        "body-md": ["16px", { lineHeight: "24px", fontWeight: "400" }],
+                        "display-metric-mobile": ["48px", { lineHeight: "52px", letterSpacing: "-0.03em", fontWeight: "800" }],
+                        "data-point": ["24px", { lineHeight: "32px", fontWeight: "500" }],
+                        "body-lg": ["18px", { lineHeight: "28px", fontWeight: "400" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        .noise-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            pointer-events: none;
+            z-index: 9999;
+            opacity: 0.03;
+            background-image: url('data:image/svg+xml;utf8,%3Csvg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg"%3E%3Cfilter id="noiseFilter"%3E%3CfeTurbulence type="fractalNoise" baseFrequency="0.65" numOctaves="3" stitchTiles="stitch"/%3E%3C/filter%3E%3Crect width="100%25" height="100%25" filter="url(%23noiseFilter)"/%3E%3C/svg%3E');
+        }
+        .metric-group-glow {
+            box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.05), inset 0 4px 12px rgba(255, 255, 255, 0.03);
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-primary-container text-on-surface min-h-screen font-body-md overflow-x-hidden">
+<div class="noise-overlay"></div>
+<!-- Top App Bar -->
+<header class="w-full top-0 flex justify-between items-center px-inner-padding py-4 w-full bg-transparent">
+<div class="flex items-center gap-3">
+<img alt="Profile" class="w-10 h-10 rounded-full object-cover border border-border-subtle" data-alt="A highly detailed close-up portrait of a fit, focused individual, glowing with a subtle sweat, shot in a dark, premium studio setting with stark rim lighting, emphasizing a sleek, high-tech aesthetic and health-conscious vibe, optimized for a small circular avatar." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBr15IN3P4LYqobUBgC16DKeFHHuuqDdLF7tzQOSw0Lb-f6AyiB4XJ6g_57Lc6_HIDOUf6gRNC5TsCXVNDIAtqn-G-gW2yjpdL6RvH5cuF-Jp9O_idZvXN-gsXepLiLVQlr6rd6aGD9zRNci0G9ohIytXi-w4CkQpSrqdhqN158r4JseHizqOJIYh-x2S2g9LIEdpR6iIUAyRO30zdo7TGtSLmLp-M3RCBKx85Z28r3PmBtWZ_uukQ"/>
+<div>
+<p class="font-label-caps text-label-caps text-on-surface-variant">THU, OCT 26</p>
+<h1 class="font-headline-sm text-headline-sm font-bold text-on-surface">Hello, Alex</h1>
+</div>
+</div>
+<button class="hover:opacity-80 transition-opacity scale-95 transition-transform duration-200 text-on-surface">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">calendar_today</span>
+</button>
+</header>
+<main class="pb-24">
+<!-- Activity Centerpiece -->
+<section class="px-inner-padding pt-6 pb-12 flex flex-col items-center">
+<div class="relative w-64 h-64 flex items-center justify-center mb-8">
+<!-- SVG Rings -->
+<svg class="absolute inset-0 w-full h-full transform -rotate-90" viewbox="0 0 120 120">
+<!-- Outer Track (Calories) -->
+<circle cx="60" cy="60" fill="none" r="54" stroke="rgba(34, 197, 94, 0.1)" stroke-width="8"></circle>
+<!-- Outer Progress -->
+<circle cx="60" cy="60" fill="none" r="54" stroke="#22C55E" stroke-dasharray="339.292" stroke-dashoffset="101.787" stroke-linecap="round" stroke-width="8"></circle>
+<!-- Inner Track (Steps) -->
+<circle cx="60" cy="60" fill="none" r="42" stroke="rgba(59, 130, 246, 0.1)" stroke-width="8"></circle>
+<!-- Inner Progress -->
+<circle cx="60" cy="60" fill="none" r="42" stroke="#3B82F6" stroke-dasharray="263.893" stroke-dashoffset="42.22" stroke-linecap="round" stroke-width="8"></circle>
+</svg>
+<div class="flex flex-col items-center text-center">
+<span class="font-display-metric text-display-metric text-on-surface">82</span>
+<span class="font-label-caps text-label-caps text-on-surface-variant mt-1">DAILY SCORE</span>
+</div>
+</div>
+<div class="flex w-full max-w-sm justify-between px-4">
+<div class="flex flex-col items-center">
+<div class="flex items-center gap-1.5 mb-1">
+<div class="w-2 h-2 rounded-full bg-calorie-green"></div>
+<span class="font-label-caps text-label-caps text-on-surface-variant">CALORIES</span>
+</div>
+<span class="font-data-point text-data-point text-on-surface">1,680</span>
+<span class="text-xs text-on-surface-variant mt-0.5">/ 2,400 kcal</span>
+</div>
+<div class="w-px h-10 bg-border-subtle self-center"></div>
+<div class="flex flex-col items-center">
+<div class="flex items-center gap-1.5 mb-1">
+<div class="w-2 h-2 rounded-full bg-step-blue"></div>
+<span class="font-label-caps text-label-caps text-on-surface-variant">STEPS</span>
+</div>
+<span class="font-data-point text-data-point text-on-surface">8,426</span>
+<span class="text-xs text-on-surface-variant mt-0.5">/ 10,000</span>
+</div>
+</div>
+</section>
+<!-- Divider -->
+<div class="w-full h-px bg-border-subtle mb-10"></div>
+<!-- Heart Rate Section -->
+<section class="px-inner-padding mb-section-gap">
+<div class="bg-surface-tertiary metric-group-glow rounded-xl p-6 relative overflow-hidden">
+<!-- Background Waveform Graphic -->
+<svg class="absolute bottom-0 left-0 w-full h-24 opacity-20" preserveaspectratio="none" viewbox="0 0 400 100">
+<path d="M0 50 Q 20 50, 40 50 T 80 50 T 120 50 T 140 20 T 150 80 T 160 50 T 200 50 T 240 50 T 280 50 T 320 50 T 340 10 T 350 90 T 360 50 T 400 50" fill="none" stroke="#EF4444" stroke-linecap="round" stroke-linejoin="round" stroke-width="3"></path>
+</svg>
+<div class="relative z-10">
+<div class="flex justify-between items-start mb-4">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-heart-red" style="font-variation-settings: 'FILL' 1;">favorite</span>
+<h2 class="font-headline-sm text-headline-sm text-on-surface">Heart Rate</h2>
+</div>
+<span class="bg-heart-red/10 text-heart-red font-label-caps text-label-caps px-2.5 py-1 rounded-full">NORMAL</span>
+</div>
+<div class="flex items-baseline gap-2 mb-2">
+<span class="font-display-metric text-display-metric text-heart-red">72</span>
+<span class="font-body-lg text-body-lg text-on-surface-variant">BPM</span>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant mt-2 max-w-[80%]">Your heart rate is within your normal resting range.</p>
+</div>
+</div>
+</section>
+<!-- Trends Section -->
+<section class="px-inner-padding mb-section-gap">
+<h3 class="font-headline-sm text-headline-sm text-on-surface mb-6">Trends</h3>
+<div class="bg-surface-tertiary metric-group-glow rounded-xl p-6 mb-4">
+<div class="flex justify-between items-center mb-6">
+<span class="font-label-caps text-label-caps text-on-surface-variant">HEART RATE HISTORY</span>
+<div class="flex gap-2">
+<button class="font-label-caps text-label-caps px-3 py-1 rounded-full bg-surface-bright text-on-surface border border-border-subtle">TODAY</button>
+<button class="font-label-caps text-label-caps px-3 py-1 rounded-full text-on-surface-variant hover:text-on-surface transition-colors">7D</button>
+<button class="font-label-caps text-label-caps px-3 py-1 rounded-full text-on-surface-variant hover:text-on-surface transition-colors">14D</button>
+<button class="font-label-caps text-label-caps px-3 py-1 rounded-full text-on-surface-variant hover:text-on-surface transition-colors">30D</button>
+</div>
+</div>
+<!-- Chart Area -->
+<div class="h-48 w-full relative mb-4">
+<!-- Y Axis Labels -->
+<div class="absolute left-0 h-full flex flex-col justify-between py-2 text-xs text-on-surface-variant opacity-60">
+<span>120</span>
+<span>90</span>
+<span>60</span>
+</div>
+<!-- Graph -->
+<div class="ml-8 h-full relative border-b border-border-subtle">
+<svg class="w-full h-full" preserveaspectratio="none" viewbox="0 0 300 150">
+<defs>
+<lineargradient id="chartGlow" x1="0" x2="0" y1="0" y2="1">
+<stop offset="0%" stop-color="#EF4444" stop-opacity="0.2"></stop>
+<stop offset="100%" stop-color="#EF4444" stop-opacity="0"></stop>
+</lineargradient>
+</defs>
+<path d="M0 100 C 50 100, 70 60, 100 80 C 130 100, 150 40, 180 50 C 210 60, 230 110, 260 90 C 280 80, 290 60, 300 70 L 300 150 L 0 150 Z" fill="url(#chartGlow)"></path>
+<path d="M0 100 C 50 100, 70 60, 100 80 C 130 100, 150 40, 180 50 C 210 60, 230 110, 260 90 C 280 80, 290 60, 300 70" fill="none" stroke="#EF4444" stroke-linecap="round" stroke-width="2"></path>
+</svg>
+</div>
+<!-- X Axis Labels -->
+<div class="ml-8 mt-2 flex justify-between text-xs text-on-surface-variant opacity-60">
+<span>12 AM</span>
+<span>6 AM</span>
+<span>12 PM</span>
+<span>6 PM</span>
+<span>NOW</span>
+</div>
+</div>
+</div>
+<!-- Summary Grid -->
+<div class="grid grid-cols-2 gap-4">
+<div class="bg-surface-tertiary metric-group-glow rounded-xl p-4 flex flex-col">
+<span class="font-label-caps text-label-caps text-on-surface-variant mb-2">RESTING</span>
+<div class="flex items-baseline gap-1">
+<span class="font-data-point text-data-point text-on-surface">58</span>
+<span class="text-xs text-on-surface-variant">bpm</span>
+</div>
+</div>
+<div class="bg-surface-tertiary metric-group-glow rounded-xl p-4 flex flex-col">
+<span class="font-label-caps text-label-caps text-on-surface-variant mb-2">AVERAGE</span>
+<div class="flex items-baseline gap-1">
+<span class="font-data-point text-data-point text-on-surface">71</span>
+<span class="text-xs text-on-surface-variant">bpm</span>
+</div>
+</div>
+<div class="bg-surface-tertiary metric-group-glow rounded-xl p-4 flex flex-col">
+<span class="font-label-caps text-label-caps text-on-surface-variant mb-2">MINIMUM</span>
+<div class="flex items-baseline gap-1">
+<span class="font-data-point text-data-point text-on-surface">52</span>
+<span class="text-xs text-on-surface-variant">bpm</span>
+</div>
+</div>
+<div class="bg-surface-tertiary metric-group-glow rounded-xl p-4 flex flex-col">
+<span class="font-label-caps text-label-caps text-on-surface-variant mb-2">MAXIMUM</span>
+<div class="flex items-baseline gap-1">
+<span class="font-data-point text-data-point text-on-surface">114</span>
+<span class="text-xs text-on-surface-variant">bpm</span>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- Bottom Nav Bar -->
+<nav class="fixed bottom-0 w-full z-50 flex justify-around items-center px-4 py-3 bg-secondary-container/70 border-t border-border-subtle shadow-sm backdrop-blur-xl">
+<a class="flex flex-col items-center justify-center text-primary bg-glow-white rounded-xl px-3 py-1 active:scale-90 transition-all duration-300" href="#">
+<span class="material-symbols-outlined mb-1" style="font-variation-settings: 'FILL' 1;">home</span>
+<span class="font-label-caps text-label-caps text-primary">Home</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant opacity-60 hover:opacity-100 transition-all active:scale-90 transition-all duration-300 px-3 py-1" href="#">
+<span class="material-symbols-outlined mb-1" style="font-variation-settings: 'FILL' 0;">vital_signs</span>
+<span class="font-label-caps text-label-caps">Health</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant opacity-60 hover:opacity-100 transition-all active:scale-90 transition-all duration-300 px-3 py-1" href="#">
+<span class="material-symbols-outlined mb-1" style="font-variation-settings: 'FILL' 0;">cloudy_snowing</span>
+<span class="font-label-caps text-label-caps">Weather</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant opacity-60 hover:opacity-100 transition-all active:scale-90 transition-all duration-300 px-3 py-1" href="#">
+<span class="material-symbols-outlined mb-1" style="font-variation-settings: 'FILL' 0;">more_horiz</span>
+<span class="font-label-caps text-label-caps">More</span>
+</a>
+</nav>
+</body></html>

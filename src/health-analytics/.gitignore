@@ -1,0 +1,24 @@
+# Dependencies
+node_modules/
+vitality-app/node_modules/
+
+# Next.js build output
+.next/
+vitality-app/.next/
+
+# SQLite databases & temp files
+*.sqlite
+*.db
+vitality-app/data/*.db
+
+# OS / Misc
+.DS_Store
+*.log
+.env*.local
+
+# Remote repo rules
+data/
+models/
+**/model_data.h
+__pycache__/
+*.pyc

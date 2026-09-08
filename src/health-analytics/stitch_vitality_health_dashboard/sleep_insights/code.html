@@ -1,0 +1,345 @@
+<!DOCTYPE html><html class="dark" lang="en"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" name="viewport">
+<title>Sleep Insights</title>
+<!-- Material Symbols font -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet">
+<!-- Inter font -->
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Inter', -apple-system, 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'sans-serif'],
+          }
+        }
+      }
+    }
+  </script>
+<style>
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      background-color: #0A0A0C;
+      color: #FFFFFF;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+    .material-symbols-outlined {
+      font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+      display: inline-block;
+      vertical-align: middle;
+      line-height: 1;
+    }
+    .material-symbols-outlined.fill {
+      font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+    }
+    .pb-safe {
+      padding-bottom: env(safe-area-inset-bottom, 16px);
+    }
+    .pt-safe {
+      padding-top: env(safe-area-inset-top, 0px);
+    }
+    ::-webkit-scrollbar {
+      display: none;
+    }
+  </style>
+</head>
+<body class="min-h-screen bg-[#0A0A0C] text-white flex flex-col" style="background-color: rgb(7, 7, 8);">
+<!-- Fixed Top Header -->
+<header class="sticky top-0 z-40 w-full bg-[#0a0a0c]/90 backdrop-blur-md border-b border-white/[0.06] px-5 py-3.5 flex items-center justify-between" style="background-color: rgba(7, 7, 8, 0.9);">
+  <div class="flex items-center gap-3.5">
+    <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=100&amp;h=100&amp;fit=crop&amp;crop=face" alt="Alex's profile" class="w-10 h-10 rounded-full object-cover border border-white/10">
+    <div class="flex flex-col">
+      <span class="text-[11px] font-medium uppercase tracking-wider text-neutral-400 leading-tight">THU, OCT 26</span>
+      <h1 class="text-lg font-semibold text-white leading-tight mt-0.5">Good Morning, Alex</h1>
+    </div>
+  </div>
+  <button aria-label="Select date" class="w-10 h-10 rounded-full bg-neutral-900/80 border border-white/10 flex items-center justify-center text-neutral-300 hover:text-white transition active:scale-95" type="button">
+    <span class="material-symbols-outlined text-[20px]">calendar_today</span>
+  </button>
+</header>
+<!-- Main Scrollable Content -->
+<main class="flex-1 w-full max-w-md mx-auto px-4 pt-4 pb-28">
+<!-- 2. Sleep Quality Summary Card -->
+<div class="flex flex-col mb-4">
+  <h2 class="text-2xl font-bold text-white tracking-tight leading-tight">Sleep Insights</h2>
+  <p class="text-xs text-zinc-400 font-medium mt-0.5">Last night · Mon, Oct 23</p>
+</div><section class="bg-zinc-900/80 border border-zinc-800/80 rounded-2xl p-5 mb-5 shadow-lg relative overflow-hidden backdrop-blur-sm">
+<!-- Glow ambient background -->
+<div class="absolute -top-14 -right-14 w-44 h-44 rounded-full bg-purple-600/10 blur-3xl pointer-events-none"></div>
+<!-- Top Split Layout -->
+<div class="flex items-center gap-5">
+<!-- Left: SVG Circular Gauge -->
+<div class="relative w-24 h-24 flex-shrink-0 flex items-center justify-center">
+<svg class="w-24 h-24 -rotate-90 transform" viewBox="0 0 96 96">
+<defs>
+<linearGradient id="purpleRing" x1="0%" x2="100%" y1="0%" y2="100%">
+<stop offset="0%" stop-color="#7C3AED"></stop>
+<stop offset="100%" stop-color="#9333EA"></stop>
+</linearGradient>
+</defs>
+<!-- Background track -->
+<circle cx="48" cy="48" fill="none" r="38" stroke="#27272A" stroke-width="7"></circle>
+<!-- Progress indicator (84% of circumference ~ 238.76: 238.76 * 0.16 = 38.2 offset) -->
+<circle cx="48" cy="48" fill="none" r="38" stroke="url(#purpleRing)" stroke-dasharray="238.76" stroke-dashoffset="38.2" stroke-linecap="round" stroke-width="7"></circle>
+</svg>
+<div class="absolute inset-0 flex flex-col items-center justify-center">
+<span class="text-2xl font-bold text-white tracking-tight leading-none">84</span>
+<span class="text-[10px] font-medium text-zinc-400 mt-0.5">/ 100</span>
+</div>
+</div>
+<!-- Right: Metrics List -->
+<div class="flex flex-col justify-center flex-1 min-w-0 space-y-2">
+<!-- Metric 1: Duration -->
+<div class="flex items-center gap-2">
+<div class="w-6 h-6 rounded-md bg-purple-950/70 border border-purple-800/50 flex items-center justify-center text-purple-300 flex-shrink-0">
+<span class="material-symbols-outlined text-[15px]">dark_mode</span>
+</div>
+<div class="flex items-baseline gap-1.5 flex-wrap">
+<span class="text-sm font-semibold text-white">7h 42m</span>
+<span class="text-[11px] text-zinc-400">Goal: 8h · 96%</span>
+</div>
+</div>
+<!-- Metric 2: Schedule -->
+<div class="flex items-center gap-2">
+<div class="w-6 h-6 rounded-md bg-purple-950/70 border border-purple-800/50 flex items-center justify-center text-purple-300 flex-shrink-0">
+<span class="material-symbols-outlined text-[15px]">schedule</span>
+</div>
+<span class="text-xs text-zinc-300 font-medium">11:15 PM – 6:57 AM</span>
+</div>
+<!-- Metric 3: Efficiency Badge -->
+<div class="flex items-center gap-2">
+<div class="w-6 h-6 rounded-md bg-purple-950/70 border border-purple-800/50 flex items-center justify-center text-purple-300 flex-shrink-0">
+<span class="material-symbols-outlined text-[15px]">vital_signs</span>
+</div>
+<div class="inline-flex items-center gap-1.5 px-2 py-0.5 rounded-md bg-purple-900/30 border border-purple-700/40 text-purple-300 text-[11px] font-medium">
+<span class="w-1.5 h-1.5 rounded-full bg-purple-400 animate-pulse"></span>
+<span class="">91% Restorative</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Bottom Divider & Insight -->
+<div class="mt-4 pt-3.5 border-t border-zinc-800/90">
+<p class="text-xs sm:text-sm text-zinc-300 leading-relaxed font-normal">
+          Your sleep duration was strong, but brief awakenings slightly reduced your restorative score.
+        </p>
+</div>
+</section>
+<!-- 3. Sleep Trends Section -->
+<section class="mb-5">
+<!-- Section Header with Segmented Control -->
+<div class="flex items-center justify-between mb-3">
+<h2 class="text-lg font-bold text-white tracking-tight">Sleep Trends</h2>
+<div class="inline-flex p-0.5 rounded-lg bg-zinc-900 border border-zinc-800/80 text-xs">
+<button class="px-3 py-1 rounded-md bg-purple-700 text-white font-semibold transition shadow-sm" id="tab-7d" type="button">
+            7 Days
+          </button>
+<button class="px-3 py-1 rounded-md text-zinc-400 font-medium hover:text-white transition" id="tab-14d" type="button">
+            14 Days
+          </button>
+</div>
+</div>
+<!-- Chart Card -->
+<div class="bg-zinc-900/80 border border-zinc-800/80 rounded-2xl p-4 shadow-lg flex flex-col gap-3.5">
+<!-- Legend & Average Row -->
+<div class="flex items-center justify-between text-xs">
+<div class="flex items-center gap-3">
+<div class="flex items-center gap-1.5">
+<span class="w-2.5 h-2.5 rounded-full bg-[#9333EA]"></span>
+<span class="text-zinc-400 font-medium">Score</span>
+</div>
+<div class="flex items-center gap-1.5">
+<span class="w-2.5 h-2.5 rounded-sm bg-zinc-700"></span>
+<span class="text-zinc-400 font-medium">Duration</span>
+</div>
+</div>
+<span class="px-2.5 py-0.5 rounded-full bg-purple-900/30 border border-purple-700/40 text-purple-300 font-medium text-[11px]">
+            Avg 7h 38m
+          </span>
+</div>
+<!-- Clean SVG Bar/Line Hybrid Chart -->
+<div class="w-full h-36 relative">
+<svg class="w-full h-full" fill="none" preserveAspectRatio="none" viewBox="0 0 320 120">
+<defs>
+<linearGradient id="areaGradient" x1="0" x2="0" y1="0" y2="1">
+<stop offset="0%" stop-color="#9333EA" stop-opacity="0.35"></stop>
+<stop offset="100%" stop-color="#9333EA" stop-opacity="0.0"></stop>
+</linearGradient>
+</defs>
+<!-- Grid Lines -->
+<line stroke="#27272A" stroke-dasharray="3 3" stroke-width="1" x1="0" x2="320" y1="20" y2="20"></line>
+<line stroke="#27272A" stroke-dasharray="3 3" stroke-width="1" x1="0" x2="320" y1="55" y2="55"></line>
+<line stroke="#27272A" stroke-dasharray="3 3" stroke-width="1" x1="0" x2="320" y1="90" y2="90"></line>
+<!-- Duration Bars (X coords: Mon=23, Tue=68, Wed=113, Thu=158, Fri=203, Sat=248, Sun=293) -->
+<rect fill="#27272A" height="52" rx="3" width="10" x="18" y="42"></rect>
+<rect fill="#27272A" height="62" rx="3" width="10" x="63" y="32"></rect>
+<rect fill="#27272A" height="44" rx="3" width="10" x="108" y="50"></rect>
+<!-- Thursday Peak Highlighted Bar -->
+<rect fill="#4A1985" height="70" rx="3" width="10" x="153" y="24"></rect>
+<rect fill="#27272A" height="56" rx="3" width="10" x="198" y="38"></rect>
+<rect fill="#27272A" height="66" rx="3" width="10" x="243" y="28"></rect>
+<rect fill="#27272A" height="58" rx="3" width="10" x="288" y="36"></rect>
+<!-- Score Area Fill -->
+<path d="M 23 48 C 45 42, 50 32, 68 34 C 88 36, 95 62, 113 58 C 135 54, 140 18, 158 16 C 178 14, 185 40, 203 36 C 225 32, 230 22, 248 24 C 270 26, 275 40, 293 38 L 293 94 L 23 94 Z" fill="url(#areaGradient)"></path>
+<!-- Score Smooth Curve Line -->
+<path d="M 23 48 C 45 42, 50 32, 68 34 C 88 36, 95 62, 113 58 C 135 54, 140 18, 158 16 C 178 14, 185 40, 203 36 C 225 32, 230 22, 248 24 C 270 26, 275 40, 293 38" stroke="#9333EA" stroke-linecap="round" stroke-width="2.5"></path>
+<!-- Thursday Peak Marker -->
+<line stroke="#9333EA" stroke-dasharray="2 2" stroke-width="1.5" x1="158" x2="158" y1="21" y2="94"></line>
+<circle cx="158" cy="16" fill="#0A0A0C" r="4.5" stroke="#D8B4FE" stroke-width="2.5"></circle>
+</svg>
+<!-- Day Labels Bottom Row -->
+<div class="flex justify-between text-[11px] font-medium text-zinc-400 px-2 mt-1">
+<span class="">Mon</span>
+<span class="">Tue</span>
+<span class="">Wed</span>
+<span class="text-purple-300 font-bold">Thu</span>
+<span class="">Fri</span>
+<span class="">Sat</span>
+<span class="">Sun</span>
+</div>
+</div>
+<!-- Highlighted Best Night Callout -->
+<div class="flex items-center gap-2.5 px-3 py-2 rounded-xl bg-purple-950/40 border border-purple-800/40 mt-1">
+<span class="material-symbols-outlined text-purple-400 text-[18px]">verified</span>
+<div class="flex-1 text-xs">
+<span class="text-zinc-300">Best night: </span>
+<span class="text-white font-semibold">Thu · 8h 06m · Sleep score 94</span>
+</div>
+</div>
+</div>
+</section>
+<!-- 4. "Improve Your Sleep" Section -->
+<section class="mb-5">
+<!-- Section Header -->
+<div class="flex items-center justify-between mb-3">
+<h2 class="text-lg font-bold text-white tracking-tight">Improve Your Sleep</h2>
+<span class="bg-purple-900/40 text-purple-300 border border-purple-700/40 px-2.5 py-0.5 rounded-full text-xs font-medium">
+          Personalised for you
+        </span>
+</div>
+<!-- Tips List Stack -->
+<div class="space-y-3">
+<!-- Card 1 -->
+<div class="bg-zinc-900/80 border border-zinc-800/80 rounded-2xl p-4 flex flex-col gap-2.5 transition active:scale-[0.99]">
+<div class="flex items-start gap-3">
+<div class="w-10 h-10 rounded-full bg-purple-950/70 border border-purple-800/50 flex items-center justify-center text-purple-300 flex-shrink-0 mt-0.5">
+<span class="material-symbols-outlined text-[20px]">alarm</span>
+</div>
+<div class="flex-1 min-w-0">
+<h3 class="text-base font-semibold text-white leading-snug">Maintain Consistent Schedule</h3>
+<p class="text-xs text-zinc-400 leading-relaxed mt-1">
+                Your bedtime varied by 48 mins this weekend. Sleeping in a 20-min window anchors your circadian rhythm.
+              </p>
+</div>
+</div>
+<button class="self-end px-4 py-2 rounded-xl bg-purple-700 hover:bg-purple-600 active:bg-purple-800 text-white text-xs font-semibold shadow-sm transition" type="button">
+            Set Bedtime Reminder
+          </button>
+</div>
+<!-- Card 2 -->
+<div class="bg-zinc-900/80 border border-zinc-800/80 rounded-2xl p-4 flex flex-col gap-2.5 transition active:scale-[0.99]">
+<div class="flex items-start gap-3">
+<div class="w-10 h-10 rounded-full bg-purple-950/70 border border-purple-800/50 flex items-center justify-center text-purple-300 flex-shrink-0 mt-0.5">
+<span class="material-symbols-outlined text-[20px]">thermostat</span>
+</div>
+<div class="flex-1 min-w-0">
+<h3 class="text-base font-semibold text-white leading-snug">Cool Your Sleep Environment</h3>
+<p class="text-xs text-zinc-400 leading-relaxed mt-1">
+                Ideal room temperature is 18°C–20°C to initiate natural body cooling for sustained REM cycles.
+              </p>
+</div>
+</div>
+<button class="self-end px-4 py-2 rounded-xl bg-zinc-800 hover:bg-zinc-700 active:bg-zinc-850 text-zinc-200 border border-zinc-700 text-xs font-semibold shadow-sm transition" type="button">
+            Learn More
+          </button>
+</div>
+<!-- Card 3 -->
+<div class="bg-zinc-900/80 border border-zinc-800/80 rounded-2xl p-4 flex flex-col gap-2.5 transition active:scale-[0.99]">
+<div class="flex items-start gap-3">
+<div class="w-10 h-10 rounded-full bg-purple-950/70 border border-purple-800/50 flex items-center justify-center text-purple-300 flex-shrink-0 mt-0.5">
+<span class="material-symbols-outlined text-[20px]">screen_lock_portrait</span>
+</div>
+<div class="flex-1 min-w-0">
+<h3 class="text-base font-semibold text-white leading-snug">Evening Wind-Down &amp; Screen Break</h3>
+<p class="text-xs text-zinc-400 leading-relaxed mt-1">
+                Blue light suppresses melatonin release by up to 90 mins. Try activating Night Shift by 9:30 PM.
+              </p>
+</div>
+</div>
+<button class="self-end px-4 py-2 rounded-xl bg-purple-700 hover:bg-purple-600 active:bg-purple-800 text-white text-xs font-semibold shadow-sm transition" type="button">
+            Try Tonight
+          </button>
+</div>
+<!-- Card 4 -->
+<div class="bg-zinc-900/80 border border-zinc-800/80 rounded-2xl p-4 flex flex-col gap-1 transition active:scale-[0.99]">
+<div class="flex items-start gap-3">
+<div class="w-10 h-10 rounded-full bg-purple-950/70 border border-purple-800/50 flex items-center justify-center text-purple-300 flex-shrink-0 mt-0.5">
+<span class="material-symbols-outlined text-[20px]">wb_sunny</span>
+</div>
+<div class="flex-1 min-w-0">
+<h3 class="text-base font-semibold text-white leading-snug">Morning Sunlight Exposure</h3>
+<p class="text-xs text-zinc-400 leading-relaxed mt-1">
+                15 minutes of outdoor daylight before 9:00 AM primes your internal clock for faster sleep onset.
+              </p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- 5. Encouraging Footer Card -->
+<div class="bg-zinc-900/50 border border-zinc-800/60 rounded-xl p-3.5 text-center text-xs text-zinc-400 leading-relaxed mb-6">
+      Small, consistent changes can improve your sleep quality and daytime energy over time.
+    </div>
+</main>
+<!-- 6. Persistent Bottom Navigation Bar -->
+<nav class="fixed bottom-0 left-0 right-0 z-50 bg-[#0a0a0c]/95 backdrop-blur-xl border-t border-white/[0.08] px-6 py-2.5 pb-[max(0.75rem,env(safe-area-inset-bottom))]" style="background-color: rgba(7, 7, 8, 0.95);">
+  <div class="max-w-md mx-auto flex items-center justify-around">
+    <!-- Home -->
+    <button class="flex flex-col items-center justify-center text-neutral-400 hover:text-white transition px-2 py-1" type="button">
+      <span class="material-symbols-outlined text-[22px]">home</span>
+      <span class="text-[11px] font-medium mt-1">Home</span>
+    </button>
+    <!-- Health (Active) -->
+    <button class="flex flex-col items-center justify-center text-emerald-400 font-semibold bg-emerald-500/10 rounded-xl px-3 py-1 transition" type="button">
+      <span class="material-symbols-outlined fill text-[22px] text-emerald-400">favorite</span>
+      <span class="text-[11px] font-semibold mt-0.5 text-emerald-400">Health</span>
+    </button>
+    <!-- Weather -->
+    <button class="flex flex-col items-center justify-center text-neutral-400 hover:text-white transition px-2 py-1" type="button">
+      <span class="material-symbols-outlined text-[22px]">cloud</span>
+      <span class="text-[11px] font-medium mt-1">Weather</span>
+    </button>
+    <!-- More -->
+    <button class="flex flex-col items-center justify-center text-neutral-400 hover:text-white transition px-2 py-1" type="button">
+      <span class="material-symbols-outlined text-[22px]">more_horiz</span>
+      <span class="text-[11px] font-medium mt-1">More</span>
+    </button>
+  </div>
+</nav>
+<!-- Interactive Segmented Toggle Handler -->
+<script>
+    (function() {
+      const tab7d = document.getElementById('tab-7d');
+      const tab14d = document.getElementById('tab-14d');
+      if (tab7d && tab14d) {
+        tab7d.addEventListener('click', function() {
+          tab7d.className = 'px-3 py-1 rounded-md bg-purple-700 text-white font-semibold transition shadow-sm';
+          tab14d.className = 'px-3 py-1 rounded-md text-zinc-400 font-medium hover:text-white transition';
+        });
+        tab14d.addEventListener('click', function() {
+          tab14d.className = 'px-3 py-1 rounded-md bg-purple-700 text-white font-semibold transition shadow-sm';
+          tab7d.className = 'px-3 py-1 rounded-md text-zinc-400 font-medium hover:text-white transition';
+        });
+      }
+    })();
+  </script>
+
+
+
+
+</body></html>

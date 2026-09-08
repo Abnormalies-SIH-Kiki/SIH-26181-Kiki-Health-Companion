@@ -1,0 +1,120 @@
+[
+  {
+    "user_id": "user_001",
+    "date": "2026-01-21",
+    "summary": {
+      "total_steps": 28332,
+      "active_minutes": 506,
+      "avg_hr": 75.4,
+      "resting_hr_est": 65.8,
+      "max_hr": 137.0,
+      "min_hr": 54.2
+    },
+    "baseline_comparison": {
+      "resting_hr_vs_7d_avg": 0.3,
+      "steps_vs_7d_avg": -1557.0
+    },
+    "anomalies": {
+      "count_today": 17,
+      "recent_examples": [
+        {
+          "timestamp": "2026-01-21 17:20:00",
+          "heart_rate": 136.2,
+          "deviation_type": "elevated"
+        },
+        {
+          "timestamp": "2026-01-21 23:07:00",
+          "heart_rate": 106.7,
+          "deviation_type": "elevated"
+        },
+        {
+          "timestamp": "2026-01-21 23:08:00",
+          "heart_rate": 108.1,
+          "deviation_type": "elevated"
+        },
+        {
+          "timestamp": "2026-01-21 23:09:00",
+          "heart_rate": 105.8,
+          "deviation_type": "elevated"
+        },
+        {
+          "timestamp": "2026-01-21 23:10:00",
+          "heart_rate": 107.8,
+          "deviation_type": "elevated"
+        }
+      ]
+    },
+    "trends": {
+      "resting_hr_trend": "stable",
+      "steps_trend": "stable",
+      "active_minutes_trend": "stable"
+    },
+    "risk": {
+      "score": 34.0,
+      "level": "moderate",
+      "reasons": [
+        "17 confirmed anomaly minute(s) today (+34)"
+      ]
+    },
+    "narrative": "Risk level today: moderate (score 34/100). Contributing factors: 17 confirmed anomaly minute(s) today (+34)."
+  },
+  {
+    "user_id": "user_002",
+    "date": "2026-01-21",
+    "summary": {
+      "total_steps": 30563,
+      "active_minutes": 532,
+      "avg_hr": 87.9,
+      "resting_hr_est": 77.6,
+      "max_hr": 151.1,
+      "min_hr": 65.6
+    },
+    "baseline_comparison": {
+      "resting_hr_vs_7d_avg": 0.1,
+      "steps_vs_7d_avg": -113.9
+    },
+    "anomalies": {
+      "count_today": 20,
+      "recent_examples": [
+        {
+          "timestamp": "2026-01-21 21:50:00",
+          "heart_rate": 137.9,
+          "deviation_type": "elevated"
+        },
+        {
+          "timestamp": "2026-01-21 21:51:00",
+          "heart_rate": 136.2,
+          "deviation_type": "elevated"
+        },
+        {
+          "timestamp": "2026-01-21 21:52:00",
+          "heart_rate": 136.7,
+          "deviation_type": "elevated"
+        },
+        {
+          "timestamp": "2026-01-21 21:53:00",
+          "heart_rate": 151.1,
+          "deviation_type": "elevated"
+        },
+        {
+          "timestamp": "2026-01-21 21:54:00",
+          "heart_rate": 104.7,
+          "deviation_type": "depressed"
+        }
+      ]
+    },
+    "trends": {
+      "resting_hr_trend": "stable",
+      "steps_trend": "stable",
+      "active_minutes_trend": "stable"
+    },
+    "risk": {
+      "score": 40.0,
+      "level": "moderate",
+      "reasons": [
+        "20 confirmed anomaly minute(s) today (+40)"
+      ]
+    },
+    "narrative": "Risk level today: moderate (score 40/100). Contributing factors: 20 confirmed anomaly minute(s) today (+40)."
+  }
+]

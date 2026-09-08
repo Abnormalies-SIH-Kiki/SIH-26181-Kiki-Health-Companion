@@ -1,0 +1,405 @@
+<!DOCTYPE html><html class="dark" lang="en" style=""><head></head><body class="bg-background text-on-surface min-h-screen flex flex-col pb-28 selection:bg-[#2B73F6] selection:text-white" style="background-color: rgb(7, 7, 8);"><svg class="inline-defs-container" aria-hidden="true" style="position:absolute;width:0;height:0;overflow:hidden"></svg>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>Weather &amp; Heatwave Monitor</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com" rel="preconnect">
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "accent": "#2B73F6",
+                      "accent-light": "#5490f8",
+                      "accent-dark": "#1a5bcf",
+                      "surface": "#131313",
+                      "surface-container": "#1f1f1f",
+                      "surface-container-high": "#2a2a2a",
+                      "surface-container-highest": "#353535",
+                      "surface-container-low": "#1b1b1b",
+                      "on-surface": "#e2e2e2",
+                      "on-surface-variant": "#9ca3af",
+                      "outline": "#4c4546",
+                      "outline-variant": "#374151",
+                      "background": "#131313",
+                      "error": "#ef4444",
+                      "tertiary": "#53e16f"
+              },
+              "borderRadius": {
+                      "DEFAULT": "1rem",
+                      "lg": "2rem",
+                      "xl": "3rem",
+                      "full": "9999px"
+              },
+              "spacing": {
+                      "container-padding": "20px",
+                      "section-margin": "28px",
+                      "inline-gutter": "12px",
+                      "stack-gap": "16px"
+              },
+              "fontFamily": {
+                      "sans": ["Inter", "sans-serif"],
+              }
+            },
+          },
+        }
+    </script>
+<style>
+    body {
+      font-family: 'Inter', sans-serif;
+      min-height: max(884px, 100dvh);
+    }
+</style>
+
+
+<!-- Top Navigation -->
+<header class="fixed top-0 left-0 right-0 z-40 w-full bg-[#0a0a0c]/90 backdrop-blur-md border-b border-white/[0.06] px-5 py-3.5 flex items-center justify-between transition-all duration-300"><div class="flex items-center gap-3"><img class="w-10 h-10 rounded-full object-cover border border-white/10" data-alt="Alex portrait avatar" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCJmZQ-vcjJnqWJJwRPAQSC6neoCc4LhwjkdQj7C0aFdTYxImfUNG_uZ5_2gpJ1UCTi2grCMSTTzUKkgCgXB0kXwKvD7j0NdBwDKnozAe1nyNiio6_BTCH5BjPPn37FtZyVQjE33XDA-pocnFdO9LMoD4_7zlko757KIjZPB_4hFn7WkAUAXrRA85dZha5sI9gofN_L5AVvTHVo7iv3qoIMqb_7jbw_a2P-fPryGAeQS1LDQ2OkRcU"><div class="flex flex-col"><span class="text-[11px] font-medium tracking-wider text-neutral-400 uppercase leading-none mb-1">THU, OCT 26</span><h1 class="text-lg font-semibold text-white tracking-tight leading-tight">Good Morning, Alex</h1></div></div><button class="w-10 h-10 rounded-full bg-neutral-900/80 border border-white/10 flex items-center justify-center text-neutral-300 hover:text-white hover:bg-neutral-800/80 transition-all active:scale-95"><span class="material-symbols-outlined text-[20px]" data-icon="calendar_today" style="font-variation-settings: 'FILL' 0;">calendar_today</span></button></header>
+<!-- Main Content -->
+<main class="flex-1 px-container-padding pt-20 pb-28 space-y-section-margin max-w-5xl mx-auto w-full"><!-- Top Environmental Conditions Card -->
+<div class="bg-neutral-900/80 border border-white/10 rounded-2xl p-5 shadow-xl backdrop-blur-md">
+  <div class="flex items-center justify-between mb-4">
+    <div class="flex items-center gap-2">
+      <span class="material-symbols-outlined text-[20px] text-emerald-400">location_on</span>
+      <span class="text-base font-semibold text-white tracking-tight">New Delhi</span>
+      <span class="bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 text-[10px] font-bold px-2 py-0.5 rounded-full tracking-wider uppercase flex items-center gap-1">
+        <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span>LIVE
+      </span>
+    </div>
+    <span class="text-[11px] text-neutral-400">Updated 10m ago • 2:45 PM</span>
+  </div>
+
+  <div class="flex items-center justify-between py-2 border-b border-white/[0.08] pb-5">
+    <div class="flex items-baseline gap-2">
+      <span class="text-5xl font-bold tracking-tight text-white">38°C</span>
+      <span class="text-sm text-neutral-400 font-medium">Feels like 42°C</span>
+    </div>
+    <div class="flex items-center gap-2 text-amber-400 bg-amber-400/10 border border-amber-400/20 px-3 py-1.5 rounded-xl">
+      <span class="material-symbols-outlined text-[22px]">wb_sunny</span>
+      <span class="text-sm font-semibold">Sunny</span>
+    </div>
+  </div>
+
+  <div class="grid grid-cols-2 gap-3 pt-4">
+    <div class="bg-neutral-800/40 rounded-xl p-3 border border-white/[0.04] flex items-center justify-between">
+      <div class="flex items-center gap-2.5">
+        <div class="w-8 h-8 rounded-lg bg-blue-500/10 border border-blue-500/20 flex items-center justify-center text-blue-400">
+          <span class="material-symbols-outlined text-[18px]">humidity_percentage</span>
+        </div>
+        <div>
+          <div class="text-[11px] text-neutral-400 uppercase tracking-wider">Humidity</div>
+          <div class="text-sm font-semibold text-white">62%</div>
+        </div>
+      </div>
+      <span class="text-[10px] text-amber-400 font-medium bg-amber-400/10 px-1.5 py-0.5 rounded">High</span>
+    </div>
+
+    <div class="bg-neutral-800/40 rounded-xl p-3 border border-white/[0.04] flex items-center justify-between">
+      <div class="flex items-center gap-2.5">
+        <div class="w-8 h-8 rounded-lg bg-red-500/10 border border-red-500/20 flex items-center justify-center text-red-400">
+          <span class="material-symbols-outlined text-[18px]">wb_incandescent</span>
+        </div>
+        <div>
+          <div class="text-[11px] text-neutral-400 uppercase tracking-wider">UV Index</div>
+          <div class="text-sm font-semibold text-white">8 <span class="text-neutral-400 text-xs font-normal">(V. High)</span></div>
+        </div>
+      </div>
+      <span class="text-[10px] text-red-400 font-medium bg-red-400/10 px-1.5 py-0.5 rounded">Alert</span>
+    </div>
+  </div>
+</div>
+
+<!-- IMD Severe Weather Advisory Banner -->
+<div class="bg-red-950/30 border border-red-500/30 rounded-2xl p-4 relative overflow-hidden shadow-lg">
+  <div class="flex items-start gap-3">
+    <div class="w-9 h-9 rounded-xl bg-red-500/20 border border-red-500/40 flex items-center justify-center text-red-400 flex-shrink-0 mt-0.5">
+      <span class="material-symbols-outlined text-[20px]">warning</span>
+    </div>
+    <div class="space-y-1.5 flex-1">
+      <div class="flex items-center justify-between flex-wrap gap-1">
+        <span class="text-[11px] font-bold tracking-wider text-red-400 uppercase">IMD SEVERE WEATHER ADVISORY • HEATWAVE &amp; CYCLONIC BUFFER</span>
+        <span class="text-[10px] text-neutral-400 font-medium bg-white/[0.06] px-2 py-0.5 rounded-full">Active Today: 12:00 PM – 6:00 PM</span>
+      </div>
+      <p class="text-xs text-neutral-300 leading-relaxed">
+        Severe Heat &amp; Dust Wind Warning: Avoid unnecessary travel during peak hours. Keep essential medicines, hydration electrolytes, and emergency contacts accessible.
+      </p>
+      <div class="mt-2 pt-2 border-t border-red-500/20 flex items-center gap-2 text-[11px] text-red-300/90 font-medium">
+        <span class="material-symbols-outlined text-[16px] text-amber-400">schedule</span>
+        <span class="">Safe outdoor: <span class="text-white font-semibold">Before 09:00</span> or <span class="text-white font-semibold">After 19:30</span> (Midday threshold is extreme)</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Air Quality Index (AQI) Card -->
+<div class="bg-neutral-900/80 border border-white/10 rounded-2xl p-5 backdrop-blur-md shadow-xl space-y-4">
+  <div class="flex items-center justify-between">
+    <div>
+      <h2 class="text-base font-semibold text-white tracking-tight">Air Quality Index (AQI)</h2>
+      <p class="text-[11px] text-neutral-400">Ambient Station Monitoring</p>
+    </div>
+    <span class="bg-red-500/10 border border-red-500/30 text-red-400 text-xs font-bold px-3 py-1 rounded-xl uppercase tracking-wider">
+      AQI 182 • UNHEALTHY / POOR
+    </span>
+  </div>
+
+  <!-- AQI Progress Bar -->
+  <div class="space-y-1.5">
+    <div class="w-full h-2 rounded-full bg-neutral-800 overflow-hidden flex">
+      <div class="h-full bg-emerald-500 w-[20%]"></div>
+      <div class="h-full bg-yellow-500 w-[20%]"></div>
+      <div class="h-full bg-orange-500 w-[20%]"></div>
+      <div class="h-full bg-red-500 w-[20%]"></div>
+      <div class="h-full bg-purple-500 w-[20%]"></div>
+    </div>
+    <div class="flex justify-between text-[10px] text-neutral-500 font-medium">
+      <span class="">0 (Good)</span>
+      <span class="">100 (Moderate)</span>
+      <span class="text-red-400 font-semibold">▲ 182 Current</span>
+      <span class="">300 (Hazardous)</span>
+    </div>
+  </div>
+
+  <!-- Pollutant Breakdown Chips -->
+  <div class="grid grid-cols-3 gap-2">
+    <div class="bg-neutral-800/50 border border-white/[0.05] p-2.5 rounded-xl text-center">
+      <div class="text-[10px] text-neutral-400 uppercase font-semibold">PM2.5</div>
+      <div class="text-sm font-bold text-red-400 mt-0.5">112 <span class="text-[10px] font-normal text-neutral-400">µg/m³</span></div>
+    </div>
+    <div class="bg-neutral-800/50 border border-white/[0.05] p-2.5 rounded-xl text-center">
+      <div class="text-[10px] text-neutral-400 uppercase font-semibold">PM10</div>
+      <div class="text-sm font-bold text-orange-400 mt-0.5">168 <span class="text-[10px] font-normal text-neutral-400">µg/m³</span></div>
+    </div>
+    <div class="bg-neutral-800/50 border border-white/[0.05] p-2.5 rounded-xl text-center">
+      <div class="text-[10px] text-neutral-400 uppercase font-semibold">Ozone (O₃)</div>
+      <div class="text-sm font-bold text-yellow-400 mt-0.5">42 <span class="text-[10px] font-normal text-neutral-400">ppb</span></div>
+    </div>
+  </div>
+
+  <!-- Personalized Asthma Warning Profile -->
+  <div class="bg-amber-500/10 border border-amber-500/20 rounded-xl p-3 flex items-start gap-2.5">
+    <span class="material-symbols-outlined text-[18px] text-amber-400 flex-shrink-0 mt-0.5">air</span>
+    <div class="text-xs text-neutral-300 leading-relaxed">
+      <span class="text-amber-300 font-semibold">Personalized Asthma Profile:</span> AQI 182 may trigger airway inflammation and breathing discomfort. Limit prolonged outdoor exertion; keep rescue inhaler handy.
+    </div>
+  </div>
+</div>
+
+<!-- Hourly & AQI Trend Chart -->
+<div class="bg-neutral-900/80 border border-white/10 rounded-2xl p-5 backdrop-blur-md shadow-xl space-y-4">
+  <div class="flex items-center justify-between flex-wrap gap-2">
+    <div>
+      <h2 class="text-base font-semibold text-white tracking-tight">Hourly &amp; AQI Trend</h2>
+      <p class="text-[11px] text-neutral-400">Next 6 Hours Forecast (1 PM – 6 PM)</p>
+    </div>
+    <div class="flex items-center gap-3 text-xs">
+      <span class="flex items-center gap-1.5 text-amber-400 font-medium">
+        <span class="w-2.5 h-0.5 bg-amber-400 rounded-full"></span> Temp (°C)
+      </span>
+      <span class="flex items-center gap-1.5 text-red-400 font-medium">
+        <span class="w-2.5 h-0.5 bg-red-400 rounded-full"></span> AQI
+      </span>
+    </div>
+  </div>
+
+  <!-- Visual Chart Graphic -->
+  <div class="w-full h-36 relative pt-2">
+    <svg class="w-full h-full overflow-visible" viewBox="0 0 500 120" preserveAspectRatio="none">
+      <defs>
+        <linearGradient id="aqiGrad" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%" stop-color="#ef4444" stop-opacity="0.3"></stop>
+          <stop offset="100%" stop-color="#ef4444" stop-opacity="0.0"></stop>
+        </linearGradient>
+        <linearGradient id="tempGrad" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%" stop-color="#f59e0b" stop-opacity="0.25"></stop>
+          <stop offset="100%" stop-color="#f59e0b" stop-opacity="0.0"></stop>
+        </linearGradient>
+      </defs>
+
+      <!-- Grid reference lines -->
+      <line x1="0" y1="20" x2="500" y2="20" stroke="rgba(255,255,255,0.06)" stroke-dasharray="3 3"></line>
+      <line x1="0" y1="60" x2="500" y2="60" stroke="rgba(255,255,255,0.06)" stroke-dasharray="3 3"></line>
+      <line x1="0" y1="100" x2="500" y2="100" stroke="rgba(255,255,255,0.06)" stroke-dasharray="3 3"></line>
+
+      <!-- AQI Area & Curve -->
+      <path d="M 20,40 Q 116,25 212,20 T 404,50 T 480,75 L 480,110 L 20,110 Z" fill="url(#aqiGrad)"></path>
+      <path d="M 20,40 Q 116,25 212,20 T 404,50 T 480,75" fill="none" stroke="#ef4444" stroke-width="2.5" stroke-linecap="round"></path>
+
+      <!-- Temp Curve -->
+      <path d="M 20,60 Q 116,40 212,35 T 404,65 T 480,85" fill="none" stroke="#f59e0b" stroke-width="2.5" stroke-linecap="round" stroke-dasharray="4 2"></path>
+
+      <!-- Key Data Dots -->
+      <circle cx="20" cy="40" r="3.5" fill="#ef4444" stroke="#131313" stroke-width="1.5"></circle>
+      <circle cx="116" cy="28" r="3.5" fill="#ef4444" stroke="#131313" stroke-width="1.5"></circle>
+      <circle cx="212" cy="20" r="4.5" fill="#ef4444" stroke="#fff" stroke-width="1.5"></circle>
+      <circle cx="308" cy="32" r="3.5" fill="#ef4444" stroke="#131313" stroke-width="1.5"></circle>
+      <circle cx="404" cy="50" r="3.5" fill="#ef4444" stroke="#131313" stroke-width="1.5"></circle>
+      <circle cx="480" cy="75" r="3.5" fill="#ef4444" stroke="#131313" stroke-width="1.5"></circle>
+    </svg>
+  </div>
+
+  <!-- Timeline Hourly Labels -->
+  <div class="grid grid-cols-6 gap-1 text-center pt-1 border-t border-white/[0.06]">
+    <div>
+      <div class="text-[11px] font-medium text-white">1 PM</div>
+      <div class="text-[10px] text-amber-400 font-semibold">37°C</div>
+      <div class="text-[9px] text-neutral-400">170 AQI</div>
+    </div>
+    <div>
+      <div class="text-[11px] font-medium text-white">2 PM</div>
+      <div class="text-[10px] text-amber-400 font-semibold">38°C</div>
+      <div class="text-[9px] text-red-400 font-medium">182 AQI</div>
+    </div>
+    <div>
+      <div class="text-[11px] font-bold text-white">3 PM</div>
+      <div class="text-[10px] text-red-400 font-bold">39°C</div>
+      <div class="text-[9px] text-red-400 font-bold">185 AQI</div>
+    </div>
+    <div>
+      <div class="text-[11px] font-medium text-white">4 PM</div>
+      <div class="text-[10px] text-amber-400 font-semibold">38°C</div>
+      <div class="text-[9px] text-red-400 font-medium">180 AQI</div>
+    </div>
+    <div>
+      <div class="text-[11px] font-medium text-white">5 PM</div>
+      <div class="text-[10px] text-amber-400 font-semibold">36°C</div>
+      <div class="text-[9px] text-orange-400">165 AQI</div>
+    </div>
+    <div>
+      <div class="text-[11px] font-medium text-white">6 PM</div>
+      <div class="text-[10px] text-amber-400 font-semibold">34°C</div>
+      <div class="text-[9px] text-orange-400">150 AQI</div>
+    </div>
+  </div>
+</div>
+
+<!-- Heat Risk Index Card -->
+<div class="bg-neutral-900/80 border border-white/10 rounded-2xl p-5 backdrop-blur-md shadow-xl space-y-4">
+  <div class="flex items-center justify-between">
+    <div>
+      <span class="text-[11px] font-bold tracking-wider text-red-400 uppercase">HEAT RISK INDEX</span>
+      <h2 class="text-base font-semibold text-white tracking-tight">High Physiological Burden</h2>
+    </div>
+    <span class="bg-red-500/10 border border-red-500/30 text-red-400 font-bold text-xs px-2.5 py-1 rounded-xl uppercase tracking-wider">
+      78 / 100 HIGH
+    </span>
+  </div>
+
+  <div class="flex flex-col sm:flex-row items-center gap-5 pt-1">
+    <!-- Radial Indicator Ring -->
+    <div class="relative w-28 h-28 flex-shrink-0 flex items-center justify-center">
+      <svg class="w-full h-full -rotate-90" viewBox="0 0 100 100">
+        <circle cx="50" cy="50" r="40" fill="none" stroke="#2a2a2a" stroke-width="9"></circle>
+        <circle cx="50" cy="50" r="40" fill="none" stroke="#ef4444" stroke-width="9" stroke-dasharray="251.2" stroke-dashoffset="55.26" stroke-linecap="round"></circle>
+      </svg>
+      <div class="absolute flex flex-col items-center justify-center">
+        <span class="text-2xl font-bold text-white tracking-tight">78</span>
+        <span class="text-[10px] font-bold uppercase tracking-wider text-red-400">RISK</span>
+      </div>
+    </div>
+
+    <!-- Contributing Factors -->
+    <div class="flex-1 w-full space-y-2.5 text-xs">
+      <div class="flex justify-between items-center pb-1.5 border-b border-white/[0.06]">
+        <span class="text-neutral-400">Heat Index</span>
+        <span class="text-white font-semibold">42°C</span>
+      </div>
+      <div class="flex justify-between items-center pb-1.5 border-b border-white/[0.06]">
+        <span class="text-neutral-400">Burden Humidity</span>
+        <span class="text-red-400 font-semibold">62% (Critical)</span>
+      </div>
+      <div class="flex justify-between items-center pb-1.5 border-b border-white/[0.06]">
+        <span class="text-neutral-400">Amplification Direct Solar</span>
+        <span class="text-amber-400 font-semibold">Severe</span>
+      </div>
+      <div class="flex justify-between items-center pb-1.5 border-b border-white/[0.06]">
+        <span class="text-neutral-400">Radiation</span>
+        <span class="text-red-400 font-semibold">UV 8 (Extreme)</span>
+      </div>
+      <div class="flex justify-between items-center">
+        <span class="text-neutral-400">Ambient Air Circulation</span>
+        <span class="text-neutral-300 font-semibold">Low Movement</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="bg-neutral-800/60 border border-white/[0.06] rounded-xl p-3 text-xs text-neutral-300 leading-relaxed">
+    <span class="text-red-400 font-semibold">Recommended:</span> Take shaded cooling breaks every 30 mins. Avoid strenuous outdoor activity between 12:00 – 16:00.
+  </div>
+</div>
+
+<!-- Heatwave Protocols Section -->
+<div class="space-y-3 pb-6">
+  <div class="flex flex-col">
+    <h2 class="text-lg font-semibold text-white tracking-tight">Heatwave Protocols</h2>
+    <p class="text-xs text-neutral-400">Clinical &amp; lifestyle precautions for severe heatwave conditions.</p>
+  </div>
+
+  <div class="space-y-2.5">
+    <div class="bg-neutral-900/80 border border-white/10 rounded-2xl p-3.5 flex items-start gap-3 backdrop-blur-md">
+      <div class="w-9 h-9 rounded-xl bg-[#2B73F6]/10 border border-[#2B73F6]/20 flex items-center justify-center text-[#2B73F6] flex-shrink-0 mt-0.5">
+        <span class="material-symbols-outlined text-[20px]">water_drop</span>
+      </div>
+      <div>
+        <h3 class="text-sm font-semibold text-white">Hydrate Regularly</h3>
+        <p class="text-xs text-neutral-400 mt-0.5 leading-relaxed">Target 3.5L today with mineral electrolytes to counter heavy transpiration.</p>
+      </div>
+    </div>
+
+    <div class="bg-neutral-900/80 border border-white/10 rounded-2xl p-3.5 flex items-start gap-3 backdrop-blur-md">
+      <div class="w-9 h-9 rounded-xl bg-[#2B73F6]/10 border border-[#2B73F6]/20 flex items-center justify-center text-[#2B73F6] flex-shrink-0 mt-0.5">
+        <span class="material-symbols-outlined text-[20px]">checkroom</span>
+      </div>
+      <div>
+        <h3 class="text-sm font-semibold text-white">Light Clothing</h3>
+        <p class="text-xs text-neutral-400 mt-0.5 leading-relaxed">Wear loose-fitting, light-colored cotton or UV-protective fabrics outdoors.</p>
+      </div>
+    </div>
+
+    <div class="bg-neutral-900/80 border border-white/10 rounded-2xl p-3.5 flex items-start gap-3 backdrop-blur-md">
+      <div class="w-9 h-9 rounded-xl bg-[#2B73F6]/10 border border-[#2B73F6]/20 flex items-center justify-center text-[#2B73F6] flex-shrink-0 mt-0.5">
+        <span class="material-symbols-outlined text-[20px]">ac_unit</span>
+      </div>
+      <div>
+        <h3 class="text-sm font-semibold text-white">Shade &amp; Cooling</h3>
+        <p class="text-xs text-neutral-400 mt-0.5 leading-relaxed">Stay in air-conditioned or well-ventilated spaces during peak sun hours.</p>
+      </div>
+    </div>
+
+    <div class="bg-neutral-900/80 border border-white/10 rounded-2xl p-3.5 flex items-start gap-3 backdrop-blur-md">
+      <div class="w-9 h-9 rounded-xl bg-[#2B73F6]/10 border border-[#2B73F6]/20 flex items-center justify-center text-[#2B73F6] flex-shrink-0 mt-0.5">
+        <span class="material-symbols-outlined text-[20px]">vital_signs</span>
+      </div>
+      <div>
+        <h3 class="text-sm font-semibold text-white">Symptom Watch</h3>
+        <p class="text-xs text-neutral-400 mt-0.5 leading-relaxed">Monitor for early warning signs: dizziness, nausea, throbbing headache, or cramps.</p>
+      </div>
+    </div>
+
+    <div class="bg-neutral-900/80 border border-white/10 rounded-2xl p-3.5 flex items-start gap-3 backdrop-blur-md">
+      <div class="w-9 h-9 rounded-xl bg-[#2B73F6]/10 border border-[#2B73F6]/20 flex items-center justify-center text-[#2B73F6] flex-shrink-0 mt-0.5">
+        <span class="material-symbols-outlined text-[20px]">pets</span>
+      </div>
+      <div>
+        <h3 class="text-sm font-semibold text-white">Vulnerables &amp; Pets</h3>
+        <p class="text-xs text-neutral-400 mt-0.5 leading-relaxed">Ensure elderly family members, young children, and pets stay cool and hydrated.</p>
+      </div>
+    </div>
+  </div>
+</div></main>
+<!-- Bottom Navigation Bar -->
+<nav class="fixed bottom-0 left-0 right-0 z-50 bg-[#0a0a0c]/95 backdrop-blur-xl border-t border-white/[0.08] px-6 py-2.5 pb-[max(0.75rem,env(safe-area-inset-bottom))] flex items-center justify-around md:hidden"><a href="#" class="flex flex-col items-center justify-center text-neutral-400 hover:text-white transition-colors py-1"><span class="material-symbols-outlined text-[22px] mb-0.5" data-icon="home" style="font-variation-settings: 'FILL' 0;">home</span><span class="text-[11px] font-medium font-sans">Home</span></a><a href="#" class="flex flex-col items-center justify-center text-neutral-400 hover:text-white transition-colors py-1"><span class="material-symbols-outlined text-[22px] mb-0.5" data-icon="medical_services" style="font-variation-settings: 'FILL' 0;">medical_services</span><span class="text-[11px] font-medium font-sans">Health</span></a><a href="#" class="flex flex-col items-center justify-center text-emerald-400 font-semibold bg-emerald-500/10 rounded-xl px-3 py-1 border border-emerald-500/20 transition-all"><span class="material-symbols-outlined text-[22px] mb-0.5 text-emerald-400" data-icon="thermostat" style="font-variation-settings: 'FILL' 1;">thermostat</span><span class="text-[11px] font-semibold font-sans text-emerald-400">Weather</span></a><a href="#" class="flex flex-col items-center justify-center text-neutral-400 hover:text-white transition-colors py-1"><span class="material-symbols-outlined text-[22px] mb-0.5" data-icon="more_horiz" style="font-variation-settings: 'FILL' 0;">more_horiz</span><span class="text-[11px] font-medium font-sans">More</span></a></nav>
+<!-- Desktop Navigation Alternative (Hidden on Mobile) -->
+<nav class="hidden md:flex fixed top-0 right-0 h-full w-24 bg-[#0a0a0c]/95 backdrop-blur-xl border-l border-white/[0.08] flex-col items-center justify-center gap-10 z-40 pt-16"><a class="flex flex-col items-center justify-center text-neutral-400 hover:text-white transition-colors" href="#"><span class="material-symbols-outlined text-[22px]" data-icon="home" style="font-variation-settings: 'FILL' 0;">home</span><span class="text-[11px] font-medium mt-1 font-sans">Home</span></a><a class="flex flex-col items-center justify-center text-neutral-400 hover:text-white transition-colors" href="#"><span class="material-symbols-outlined text-[22px]" data-icon="medical_services" style="font-variation-settings: 'FILL' 0;">medical_services</span><span class="text-[11px] font-medium mt-1 font-sans">Health</span></a><a class="flex flex-col items-center justify-center text-emerald-400 font-semibold p-3 rounded-2xl bg-emerald-500/10 border border-emerald-500/20 transition-all" href="#"><span class="material-symbols-outlined text-[22px]" data-icon="thermostat" style="font-variation-settings: 'FILL' 1;">thermostat</span><span class="text-[11px] font-semibold mt-1 font-sans text-emerald-400">Weather</span></a><a class="flex flex-col items-center justify-center text-neutral-400 hover:text-white transition-colors" href="#"><span class="material-symbols-outlined text-[22px]" data-icon="more_horiz" style="font-variation-settings: 'FILL' 0;">more_horiz</span><span class="text-[11px] font-medium mt-1 font-sans">More</span></a></nav>
+
+
+
+
+
+
+
+
+</body></html>

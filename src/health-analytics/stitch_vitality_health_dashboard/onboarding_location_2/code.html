@@ -1,0 +1,119 @@
+<!DOCTYPE html><html class="dark" lang="en" style=""><head><meta charset="utf-8"><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" name="viewport"><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"><link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:ital,wght@0,300..900;1,300..900&amp;display=swap" rel="stylesheet"><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"><style>@layer base{html,body{width:100vw;margin:0;padding:0;background-color:#131313;}body{overscroll-behavior:none;font-family:'Hanken Grotesk',sans-serif;}.pb-safe{padding-bottom:env(safe-area-inset-bottom,0px);}.pt-safe{padding-top:env(safe-area-inset-top,0px);}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config={darkMode:"class",theme:{extend:{"colors":{"error":"#ffb4ab","on-error":"#690005","tertiary-fixed-dim":"#53e16f","inverse-primary":"#5e5e5e","outline-variant":"#4c4546","on-primary-container":"#757575","surface-tint":"#c6c6c6","primary-fixed":"#e2e2e2","on-primary-fixed":"#1b1b1b","secondary-fixed":"#ffdad5","on-secondary-fixed-variant":"#930005","surface-bright":"#393939","surface-container-highest":"#353535","on-primary":"#303030","on-surface":"#e2e2e2","on-background":"#e2e2e2","secondary":"#ffb4aa","tertiary":"#53e16f","on-error-container":"#ffdad6","on-secondary-container":"#ffd2cc","tertiary-fixed":"#72fe88","on-tertiary-fixed-variant":"#00531c","surface-container":"#1f1f1f","on-surface-variant":"#cfc4c5","surface-container-high":"#2a2a2a","surface":"#131313","secondary-container":"#c5020b","on-tertiary-fixed":"#002107","on-primary-fixed-variant":"#474747","on-tertiary-container":"#008833","inverse-on-surface":"#303030","primary":"#c6c6c6","primary-fixed-dim":"#c6c6c6","secondary-fixed-dim":"#ffb4aa","surface-container-lowest":"#0e0e0e","inverse-surface":"#e2e2e2","tertiary-container":"#000000","error-container":"#93000a","surface-variant":"#353535","on-secondary":"#690003","surface-dim":"#131313","on-tertiary":"#003911","on-secondary-fixed":"#410001","outline":"#988e90","surface-container-low":"#1b1b1b","primary-container":"#000000","background":"#131313"},"borderRadius":{"DEFAULT":"1rem","lg":"2rem","xl":"3rem","full":"9999px"},"spacing":{"container-padding":"20px","stack-gap":"16px","inline-gutter":"12px","section-margin":"32px"},"fontFamily":{"body-lg":["hankenGrotesk"],"label-caps":["hankenGrotesk"],"body-md":["hankenGrotesk"],"headline-lg-mobile":["hankenGrotesk"],"numeric-data":["hankenGrotesk"],"headline-lg":["hankenGrotesk"],"display-stat":["hankenGrotesk"],"headline-md":["hankenGrotesk"]},"fontSize":{"body-lg":["18px",{"lineHeight":"28px","letterSpacing":"0em","fontWeight":"400"}],"label-caps":["12px",{"lineHeight":"16px","letterSpacing":"0.08em","fontWeight":"700"}],"body-md":["16px",{"lineHeight":"24px","letterSpacing":"0em","fontWeight":"400"}],"headline-lg-mobile":["28px",{"lineHeight":"34px","letterSpacing":"-0.02em","fontWeight":"600"}],"numeric-data":["20px",{"lineHeight":"24px","letterSpacing":"-0.01em","fontWeight":"500"}],"headline-lg":["32px",{"lineHeight":"40px","letterSpacing":"-0.02em","fontWeight":"600"}],"display-stat":["48px",{"lineHeight":"56px","letterSpacing":"-0.04em","fontWeight":"700"}],"headline-md":["24px",{"lineHeight":"30px","letterSpacing":"-0.01em","fontWeight":"600"}]}}}};</script></head><body class="bg-background text-on-surface flex flex-col min-h-screen"><header class="fixed top-0 w-full z-50 pt-safe bg-surface/80 backdrop-blur-xl shadow-[0_1px_8px_rgba(0,0,0,0.04)]"><div class="h-20 px-container-padding flex flex-col justify-center"><div class="flex items-center justify-between"><button aria-label="Go back" class="w-11 h-11 flex items-center justify-center -ml-2 rounded-full text-on-surface-variant hover:text-on-surface transition-colors" onclick="history.back()" type="button"><span class="material-symbols-outlined text-[24px]">arrow_back</span></button><span class="text-[20px] font-semibold text-on-surface text-center tracking-tight">Activity Baseline</span><div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center"><span class="material-symbols-outlined text-on-primary text-[18px]">person</span></div></div><div class="w-full flex items-center gap-inline-gutter pt-2"><div class="flex-1 h-1 bg-surface-container-highest rounded-full overflow-hidden"><div class="h-full w-2/5 bg-tertiary-fixed rounded-full"></div></div><span class="font-label-caps text-label-caps text-on-surface-variant uppercase tracking-wider">STEP 2/5</span></div></div></header><main class="flex flex-col relative w-full pt-20 pb-safe bg-surface"><div class="flex flex-col w-full px-container-padding pb-8">
+<!-- Interactive Radar & Atmospheric Beacon Visual -->
+<div class="relative w-full flex flex-col items-center justify-center overflow-hidden pt-2">
+<!-- Ambient Pulsing Glow Underneath -->
+<div class="absolute w-48 h-48 rounded-full bg-tertiary/10 blur-2xl pointer-events-none"></div>
+<!-- Animated Radar Pulse Rings & Floating Beacon SVG -->
+<div class="relative w-44 h-44 flex items-center justify-center">
+<svg class="w-full h-full" fill="none" viewBox="0 0 160 160" xmlns="http://www.w3.org/2000/svg">
+<!-- Outermost Subtle Wave -->
+<circle class="stroke-tertiary" cx="80" cy="80" r="70" stroke-dasharray="4 4" stroke-opacity="0.15" stroke-width="1"></circle>
+<!-- Middle Wave -->
+<circle class="stroke-tertiary" cx="80" cy="80" r="52" stroke-opacity="0.35" stroke-width="1.5">
+<animate attributeName="r" dur="4s" repeatCount="indefinite" values="46;56;46"></animate>
+<animate attributeName="stroke-opacity" dur="4s" repeatCount="indefinite" values="0.4;0.15;0.4"></animate>
+</circle>
+<!-- Inner Glow Wave -->
+<circle class="fill-surface-container stroke-tertiary" cx="80" cy="80" r="34" stroke-opacity="0.6" stroke-width="1.5"></circle>
+<!-- Soft Core Glow Shadow -->
+<circle class="fill-surface-container-high" cx="80" cy="80" r="22"></circle>
+</svg>
+<!-- Center Floating Location Marker Badge -->
+<div class="absolute w-14 h-14 rounded-full bg-surface-container-highest shadow-xl flex items-center justify-center transform transition-transform active:scale-95 duration-200">
+<div class="w-10 h-10 rounded-full bg-tertiary/20 flex items-center justify-center">
+<span class="material-symbols-outlined text-tertiary text-[24px]" style="font-variation-settings: 'FILL' 1;">near_me</span>
+</div>
+</div>
+<!-- Orbiting Satellite Dot -->
+<div class="absolute w-2 h-2 rounded-full bg-tertiary-fixed shadow-[0_0_8px_rgba(114,254,136,0.8)] top-6 right-8 animate-pulse"></div>
+</div>
+<!-- Screen Title & Value Proposition -->
+<div class="text-center mt-3 space-y-2">
+<h1 class="text-[26px] font-bold text-on-surface tracking-tight leading-tight">Where are you based?</h1>
+<p class="text-[15px] font-normal text-on-surface-variant max-w-xs mx-auto leading-relaxed">This helps us calculate heat stress indexes, UV warnings, and hyper-local pollen updates.</p>
+</div>
+</div>
+<!-- Selection Form & Actions -->
+<div class="flex flex-col gap-4 mt-2">
+<!-- One-Tap GPS Card Option -->
+<!-- Subdued Or Divider -->
+<!-- Manual Inputs Group -->
+<div class="flex flex-col gap-3">
+<!-- City Field -->
+<div class="flex flex-col gap-1">
+<label class="font-label-caps text-label-caps text-on-surface-variant uppercase pl-1" for="city-input">City or Metro Area</label>
+<div class="relative flex items-center">
+<span class="material-symbols-outlined absolute left-4 text-on-surface-variant text-[20px] pointer-events-none">location_city</span>
+<input class="w-full h-14 pl-12 pr-11 bg-surface-container rounded-DEFAULT font-body-lg text-body-lg text-on-surface placeholder-on-surface-variant/50 focus:outline-none focus:bg-surface-container-high transition-colors" id="city-input" placeholder="Search city" type="text" value="San Francisco">
+<button aria-label="Clear city input" class="absolute right-3 w-8 h-8 rounded-full flex items-center justify-center text-on-surface-variant hover:text-on-surface transition-colors" onclick="document.getElementById('city-input').value='';document.getElementById('city-input').focus();" type="button">
+<span class="material-symbols-outlined text-[18px]">cancel</span>
+</button>
+</div>
+</div>
+<!-- Country Selection Field -->
+<div class="flex flex-col gap-1">
+<label class="font-label-caps text-label-caps text-on-surface-variant uppercase pl-1" for="country-select">Country / Region</label>
+<div class="relative flex items-center">
+<span class="material-symbols-outlined absolute left-4 text-on-surface-variant text-[20px] pointer-events-none">public</span>
+<select class="w-full h-14 pl-12 pr-10 bg-surface-container rounded-DEFAULT font-body-lg text-body-lg text-on-surface appearance-none focus:outline-none focus:bg-surface-container-high transition-colors cursor-pointer" id="country-select">
+<option selected="" value="US">United States (US)</option>
+<option value="CA">Canada (CA)</option>
+<option value="GB">United Kingdom (UK)</option>
+<option value="DE">Germany (DE)</option>
+<option value="JP">Japan (JP)</option>
+<option value="AU">Australia (AU)</option>
+<option value="CH">Switzerland (CH)</option>
+</select>
+<span class="material-symbols-outlined absolute right-4 text-on-surface-variant text-[22px] pointer-events-none">expand_more</span>
+</div>
+</div>
+</div>
+<!-- Environmental Health Metric Preview Card -->
+<!-- Privacy Assurance Shield Notice -->
+<div class="p-3.5 bg-surface-container flex items-start gap-3 mt-1 rounded-xl">
+<span class="material-symbols-outlined text-on-surface-variant text-[18px] mt-0.5" style="font-variation-settings: 'FILL' 1;">verified_user</span>
+<p class="text-[13px] font-normal text-on-surface-variant leading-relaxed tracking-normal" style="font-family: Inter, sans-serif;">
+        Your coordinates stay on-device. Location data is solely queried to pull ambient telemetry and is never recorded into user analytics profiles.
+      </p>
+</div>
+<!-- Primary Completion CTA -->
+<div class="mt-4 flex flex-col gap-2">
+<button class="w-full h-14 rounded-lg bg-tertiary-fixed text-on-tertiary-fixed font-headline-md text-headline-md flex items-center justify-center gap-2 shadow-lg hover:bg-tertiary active:scale-[0.98] transition-all duration-150 rounded-xl" id="finish-setup-btn" type="button" disabled=""><span class="material-symbols-outlined animate-spin text-[20px]">progress_activity</span><span class="">Preparing Dashboard...</span></button>
+<div class="text-center h-5 font-label-caps text-label-caps text-tertiary transition-opacity duration-300" id="status-message">Onboarding complete!</div>
+</div>
+</div>
+</div>
+<script>
+  (function() {
+    const gpsBtn = document.getElementById('gps-action-btn');
+    const finishBtn = document.getElementById('finish-setup-btn');
+    const cityInput = document.getElementById('city-input');
+    const statusMsg = document.getElementById('status-message');
+
+    if (gpsBtn) {
+      gpsBtn.addEventListener('click', function() {
+        cityInput.value = 'San Francisco, CA (Auto)';
+        statusMsg.textContent = 'Precise location locked';
+        statusMsg.classList.remove('opacity-0');
+        setTimeout(() => {
+          statusMsg.classList.add('opacity-0');
+        }, 2200);
+      });
+    }
+
+    if (finishBtn) {
+      finishBtn.addEventListener('click', function() {
+        finishBtn.disabled = true;
+        finishBtn.innerHTML = '<span class="material-symbols-outlined animate-spin text-[20px]">progress_activity</span><span>Preparing Dashboard...</span>';
+        statusMsg.textContent = 'Onboarding complete!';
+        statusMsg.classList.remove('opacity-0');
+      });
+    }
+  })();
+</script></main>
+
+
+
+
+</body></html>

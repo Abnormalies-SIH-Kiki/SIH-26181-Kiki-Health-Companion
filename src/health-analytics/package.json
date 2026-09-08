@@ -1,0 +1,12 @@
+{
+  "name": "sih-dashboard",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "npm --prefix vitality-app run dev",
+    "build": "npm --prefix vitality-app run build",
+    "start": "npm --prefix vitality-app run start",
+    "lint": "npm --prefix vitality-app run lint",
+    "install:app": "npm --prefix vitality-app install"
+  }
+}
