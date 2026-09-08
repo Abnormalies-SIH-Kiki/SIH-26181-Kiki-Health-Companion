@@ -1,0 +1,67 @@
+{
+  "_note": "Live snapshot pulled from core/health/environment.py on the Raspberry Pi, 2026-09-08. Nothing here is stored or hand-written; the provider polls two free Open-Meteo endpoints and computes the CPCB index itself.",
+  "snapshot": {
+    "source": "open-meteo",
+    "place": "New Delhi",
+    "temperature_c": 27.0,
+    "apparent_temperature_c": 31.8,
+    "humidity_pct": 80.0,
+    "pm2_5": 78.0,
+    "pm10": 162.5,
+    "us_aqi": 159.0,
+    "aqi": 160,
+    "aqi_scale": "CPCB (estimated from current hourly PM, not a 24h average)",
+    "aqi_category": "moderate",
+    "aqi_driver": "PM2.5",
+    "heat_band": "none",
+    "forecast": [
+      {
+        "date": "2026-09-08",
+        "temperature_2m_max": 32.4,
+        "temperature_2m_min": 25.2,
+        "precipitation_probability_max": 31
+      },
+      {
+        "date": "2026-09-09",
+        "temperature_2m_max": 33.2,
+        "temperature_2m_min": 25.0,
+        "precipitation_probability_max": 0
+      },
+      {
+        "date": "2026-09-10",
+        "temperature_2m_max": 33.4,
+        "temperature_2m_min": 25.3,
+        "precipitation_probability_max": 2
+      }
+    ],
+    "available": true,
+    "state": "fresh",
+    "age_seconds": 0,
+    "error": ""
+  },
+  "compact_line": "OUTSIDE New Delhi: AQI ~160 moderate",
+  "_compact_line_note": "This is the row that reaches the model's context. It is empty on an ordinary day and only appears when the heat band or the AQI is worth mentioning. It is also injected only when it changes.",
+  "cpcb_vs_us_aqi": {
+    "_note": "Open-Meteo returns US and European AQI. Neither matches what an Indian advisory means, so the CPCB index is computed from the raw PM values. The two scales can diverge sharply.",
+    "same_reading_us_aqi": 159.0,
+    "same_reading_cpcb_aqi": 160,
+    "worked_example_from_docs": {
+      "input": {
+        "pm2_5": 120.6,
+        "pm10": 338.1
+      },
+      "cpcb_aqi_returns": [
+        301,
+        "very poor",
+        "PM2.5"
+      ]
+    }
+  },
+  "heat_bands": {
+    "25": "none",
+    "34.8": "caution",
+    "40": "high",
+    "47": "very high",
+    "56": "extreme"
+  }
+}
