@@ -1,123 +1,108 @@
-# Kiki Health Companion – SIH 26181
+# Kiki Health Companion
 
-**AI-powered Personal Health Companion with Edge AI, Voice Interface, and Disaster-Resilient Monitoring**
+**SIH 26181 · A secure, AI-powered Personal Health Companion**
 
-## 1. Project Information
+Hardware · MedTech / BioTech / HealthTech
 
-- **Project Title:** Kiki Health Companion
-- **PS ID:** SIH 26181
-- **PS Title:** AI-powered Personal Health Companion
-- **Category:** Hardware
-- **Theme:** MedTech / BioTech / HealthTech
+Kiki is a desktop companion and a wearable built around the same care plan. The desktop stays in the room and handles conversation, reminders and camera-based activity checks. The wearable goes with the person and handles steps, on-demand heart rate and possible falls.
 
-## 2. Problem Statement
+We're A3SCV (Team Abnormalies) from NSUT: Vaibhav Arora, Suyash Srivastava (team lead), Aniket Sharma, Chirag Goel, Aditi Sharma and Aavya.
 
-India faces recurring health crises during heat waves, floods, pollution, and disasters. Vulnerable populations lack continuous, personalized health monitoring that works offline and respects privacy.
+![Wearable taking a heart-rate reading](assets/screenshots/01-wearable-on-hand.jpg)
+![Inside the desktop unit](assets/screenshots/02-desktop-internals.png)
 
-## 3. Proposed Solution
+## What we're building
 
-Kiki is a voice-first, privacy-preserving health companion that continuously integrates physiological data (heart rate, SpO₂, motion) with environmental data (temperature, humidity, AQI). On-device AI detects anomalies (e.g., elevated heart rate, fall, heat stress) and provides actionable alerts via voice, dashboard, and WhatsApp/email — even without internet.
+A health reminder is more useful when it fits the person's day. Kiki keeps routines and recent observations together, so someone can talk through a reminder or an exercise instead of working through an app. Voice interaction supports English and Hindi.
 
-## 4. Key Features
+The desktop has a camera for activity detection, face recognition and exercise checks. The wearable uses wrist motion, with fall detection running in firmware. If it detects a possible fall, it gives the wearer time to respond before requesting a family alert through the gateway.
 
-- Live vitals monitoring (HR, SpO₂, steps, ambient temp, pressure)
-- Anomaly detection & voice alerts
-- Fall detection & emergency SOS
-- Disaster-specific warnings (heat, air quality)
-- Personalized wellness recommendations
-- Offline operation & edge AI privacy
-- Voice interaction with Kiki (elderly/rural-friendly)
+Both devices use a laptop for speech recognition, speech generation and the local conversation model. Some reasoning runs through cloud services. Local speech processing and firmware fall detection don't need internet, but the devices still need access to the laptop for conversation. Weather updates, cloud agents and WhatsApp/email alerts need connectivity.
 
-## 5. Technology Stack
+The prototype currently includes:
 
-- **Hardware:** Raspberry Pi 5, MAX30102, BMP280, ESP32-S3 wearable, IMU
-- **Backend:** Python, FastAPI (or Flask), MQTT
-- **AI/ML:** Rule-based anomaly detection, optional scikit-learn, edge inference
-- **Frontend:** Web dashboard (React/Chart.js), Mobile App UI (Flutter/React Native)
-- **Database:** SQLite/JSON (local)
-- **Deployment:** Local / Docker optional
+- Scheduled care sessions, shared care history and spoken reminders.
+- Heart-rate readings with signal-quality checks, plus steps and wear detection.
+- Possible-fall check-ins and family alerts, with send and delivery status recorded separately.
+- Weather and estimated AQI on the CPCB scale, with stale readings marked or removed.
+- Camera activity checks and guided exercise sessions on the desktop.
 
-## 6. Architecture
+The analytics pipeline and caregiver dashboard also run, but they're separate prototypes for now. The pipeline uses generated data, and the dashboard has its own SQLite database. Neither receives live wearable telemetry yet.
 
-See `docs/architecture.md`.
+## Hardware and software
 
-## 7. Repository Structure
+| Part | Current setup |
+|---|---|
+| Desktop | Raspberry Pi 5, Hailo-8 vision accelerator, USB webcam, 28BYJ-48 stepper, LCD and OLED displays, IR controls, Bluetooth speaker |
+| Wearable | Waveshare ESP32-S3-Touch-AMOLED-1.75, MAX30102, QMI8658 IMU, microphones and speaker, 1000 mAh battery |
+| Inference laptop | RTX 4060, llama.cpp with gemma-4-26B-A4B, whisper.cpp and OmniVoice |
+| Device software | Python desktop module and WebSocket gateway; C++ firmware on ESP-IDF 5.5 |
+| Cloud services | Cerebras for multi-step agents, Gemini for background reasoning |
+| Analytics | Python, pandas and NumPy; Next.js/TypeScript dashboard with SQLite; optional TFLite experiment |
 
-```text
-SIH-26181-Kiki-Health-Companion/
-├── assets/
-│   └── screenshots/
-│       └── README.md
-├── docs/
-│   └── architecture.md
-├── src/
-│   ├── health_dashboard.py
-│   └── main.py
-├── submission/
-│   ├── DEMO.md
-│   └── PRESENTATION.md
-├── .gitignore
-├── LICENSE
-├── README.md
-├── requirements.txt
-└── SUBMISSION_GUIDE.md
-```
+![System architecture](assets/diagrams/body-and-brain.png)
 
-## 8. Run
+The Pi and wearable handle the physical inputs and outputs. The laptop runs inference and the wearable gateway. Our setup connects the machines through Tailscale. The local model has one inference slot, so background work must leave it available when someone speaks.
 
-**Start the main health companion:**
+The [engineering notes](docs/ENGINEERING.md) cover wiring, audio, latency and the failures that shaped the build.
+
+## Run it
+
+These commands start from the repository root, in separate terminals for each component. You'll need the hardware for the full demo, Python 3.12+ for the gateway, and ESP-IDF 5.5 for firmware builds. The model, speech and hardware services need to be set up separately; installing the Python packages doesn't start them.
+
+**Desktop, on the Pi**
 
 ```bash
-python src/main.py
-```
-
-**Start the web dashboard (separate terminal):**
-
-```bash
-python src/health_dashboard.py
-```
-
-**Make sure Kiki is running first** (if using the full voice companion).
-
-For a minimal demo, use:
-
-```bash
-python src/main.py --no-voice
-```
-
-## 9. Installation
-
-```bash
-# 1. Clone the repository
-git clone https://github.com/<YOUR_USERNAME>/SIH-26181-Kiki-Health-Companion.git
-cd SIH-26181-Kiki-Health-Companion
-
-# 2. Create a virtual environment (recommended)
-python -m venv venv
-
-# Activate it:
-#   On Linux/Raspberry Pi/macOS:
-source venv/bin/activate
-#   On Windows:
-.\venv\Scripts\activate
-
-# 3. Install dependencies
+cd src/desktop-module
+python3 -m venv .venv
+source .venv/bin/activate
 pip install -r requirements.txt
-
-# 4. Copy environment template and fill in values (if any)
 cp .env.example .env
-# edit .env as needed
-
-# 5. Connect hardware sensors (MAX30102, BMP280, etc.) before running
+cp tools_and_config/config.example.json tools_and_config/config.json
+# Set API keys and update service addresses for your machines.
+python main.py
 ```
 
-## 10. Future Scope
+**Gateway, on the laptop**
 
-- **Continuous wrist SpO₂ & body temperature** using improved sensor fusion and ML-based motion artifact removal.
-- **GPS / location tracking** for outdoor fall detection and emergency response.
-- **Automatic sleep quality analysis** using wearable accelerometer and heart rate variability.
-- **Multi‑language voice support** (Hindi, Marathi, Bengali, etc.) via Bhashini/Sarvam APIs.
-- **Integration with government health schemes** (Ayushman Bharat, Tele‑MANAS, e‑Sanjeevani) for referral and telehealth.
-- **Federated learning** across devices to improve anomaly models without sharing raw health data.
-- **BLE mesh / LoRa** for community‑level disaster alerts in low‑connectivity areas.
-- **Clinical validation** and certification as a Class B medical device (CDSCO).
+```bash
+cd src/wearable
+python3.12 -m venv .venv
+source .venv/bin/activate
+pip install -e gateway
+cp gateway.env.example gateway.env
+# Set the gateway token, inference URLs and shared care-plan paths.
+./scripts/run_gateway.sh
+```
+
+**Wearable firmware**, from a shell with ESP-IDF loaded:
+
+```bash
+cd src/wearable/firmware
+idf.py set-target esp32s3
+idf.py menuconfig
+# Set Wi-Fi, gateway address and the matching gateway token.
+idf.py build
+idf.py -p /dev/ttyACM0 flash monitor
+```
+
+Change the serial port if your board appears elsewhere. More deployment details are in [docs/wearable/DEPLOY.md](docs/wearable/DEPLOY.md). Keep credentials in your local configuration files.
+
+## Code and build files
+
+| Location | Contents |
+|---|---|
+| [src/](src/README.md) | Code map, test commands and analytics setup |
+| [docs/ENGINEERING.md](docs/ENGINEERING.md) | Technical notes and known limits |
+| [docs/data/](docs/data/) | Captured system output and analytics sample |
+| [assets/hardware/](assets/hardware/) | Build photos |
+| [assets/circuit_diagram/](assets/circuit_diagram/) | Wiring diagrams and Fritzing sources |
+| [assets/CAD_model/](assets/CAD_model/) | Enclosure source, renders and print files |
+| [submission/PRESENTATION.md](submission/PRESENTATION.md) | Presentation details |
+| [submission/DEMO.md](submission/DEMO.md) | Demo details |
+
+## What's left
+
+Fall detection uses heuristic thresholds. We've tried it during development, but controlled physical acceptance testing and clinical validation are still pending. The MAX30102's SpO₂ estimate is uncalibrated and isn't treated as a health reading, even though an early prototype photo shows it on the display.
+
+The next software task is connecting the analytics and dashboard to the gateway's `/api/care/v1` layer. Sleep is currently voice-logged. We also postponed a custom PCB to finish the wearable with the development board, so there's still room to reduce its size.

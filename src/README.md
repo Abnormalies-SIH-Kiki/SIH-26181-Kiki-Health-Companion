@@ -1,67 +1,54 @@
-# Source
+# Source code
 
-Three codebases, published as working-tree snapshots rather than as imported git
-history. History is not included because the source repositories carried
-credentials in earlier commits.
+The code is split between the desktop, wearable and analytics work. These are snapshots of the source repositories. Their earlier Git history isn't included because it contained credentials.
 
-| Path | Runs on | What it is |
+| Path | Runs on | Purpose |
 |---|---|---|
-| `desktop-module/` | Raspberry Pi 5 | The desktop unit. Conversation loop, tool calling, camera and Hailo vision, care agent, LCD/OLED, stepper. |
-| `wearable/firmware/` | ESP32-S3 | Watch firmware. Audio, AMOLED UI, MAX30102, IMU, step counting, fall detection. C++, ESP-IDF 5.5. |
-| `wearable/gateway/` | Laptop | What the watch connects to. Speech in, reply out, care sessions, telemetry ingest. |
-| `wearable/scripts/` | Laptop | Build, flash, and run helpers. |
-| `health-analytics/` | Laptop | Trend and anomaly pipeline, plus the caregiver dashboard. |
+| `desktop-module/` | Raspberry Pi 5 | Conversation, tools, camera and Hailo vision, care sessions, displays and stepper control |
+| `wearable/firmware/` | ESP32-S3 | Audio, watch UI, sensors, steps and fall detection; C++ on ESP-IDF 5.5 |
+| `wearable/gateway/` | Laptop | Voice processing, care sessions and wearable telemetry |
+| `wearable/scripts/` | Laptop | Build, flash and run helpers |
+| `health-analytics/` | Laptop | Trend pipeline and caregiver dashboard |
 
-`wearable/gateway/legacy_kiki/` is a vendored older copy of the desktop code that
-the gateway still reads a few modules from. It is not a second implementation.
+The gateway still imports a few modules from `wearable/gateway/legacy_kiki/`, a bundled older copy of the desktop code.
 
-`health-analytics/` comes from
-[AditiS721/SIH-Abnormalies-Software](https://github.com/AditiS721/SIH-Abnormalies-Software)
-(branch `DevAniket`), included here with the author's permission. Inside it:
+## Analytics
 
-| | |
-|---|---|
-| `src/` | The Python pipeline: baseline, anomaly detection, daily summary, trend detection, risk score, and a JSON handoff for Kiki. Rule-based. |
-| `src/train_tflite_model.py` | Optional and exploratory — "does ML help here?" — not something the pipeline depends on. |
-| `esp32_export/` | An Arduino sketch that runs the anomaly model on the board. |
-| `vitality-app/` | The caregiver dashboard. Next.js, local SQLite. |
-| `stitch_vitality_health_dashboard/` | Design screens the dashboard was built from. |
+`health-analytics/` is included with the author's permission from AditiS721/SIH-Abnormalies-Software, branch `DevAniket`.
 
-Two things worth being clear about. The pipeline currently runs on generated
-data (`generate_dummy_data.py`), not on live wearable telemetry — joining the two
-is not done. And the anomaly model here is separate from the fall-detection
-ladder in `wearable/firmware/main/kiki_fall_detector.hpp`; the firmware ladder is
-what actually raises a fall alert on the watch today.
+Its `src/` folder contains the rule-based pipeline: baselines, anomalies, daily summaries, trends and risk scores. It currently runs on generated data. `vitality-app/` is the Next.js dashboard with its own SQLite database; connecting these to live wearable telemetry is still pending.
 
-## What was removed before publishing
+`src/train_tflite_model.py` and `esp32_export/` are a separate model experiment. They don't drive the watch's fall alerts. That detector lives in `wearable/firmware/main/kiki_fall_detector.hpp`.
 
-- `.env`, `gateway.env`, `tools_and_config/config.json`, the Vertex
-  service-account key, `sdkconfig`, and every built `.bin` — the gateway token
-  is compiled into a firmware image, so a published image would disclose it.
-- Runtime state: conversation transcripts, recorded speech, the thinking
-  journal, the care plan, face data, logs, and the WhatsApp message store.
-- Build output, `managed_components/`, `whisper.cpp`, and the vendored Go
-  toolchain tarball.
-- Contact phone numbers in test fixtures, replaced with numbers in reserved
-  ranges. The tests still assert the same behaviour.
+## Local setup and checks
 
-`.env.example`, `tools_and_config/config.example.json` and
-`gateway.env.example` list every setting with the values blanked.
-
-## Tests
-
-Neither suite needs hardware, a running model, or an API key.
+Start with the [root README](../README.md) for device setup. Each test command below starts from `src/`, with that component's environment active and its test dependencies installed:
 
 ```bash
-cd desktop-module   && PYTHONPATH=. python -m pytest -q   # 1101 passed
-cd wearable/gateway && PYTHONPATH=. python -m pytest -q   # 538 passed
+# Desktop
+cd desktop-module
+PYTHONPATH=. python -m pytest -q
 ```
-
-`health-analytics` has no test suite. It has an end-to-end run instead, which
-writes its output to `data/`:
 
 ```bash
-cd health-analytics && pip install -r requirements.txt && python src/pipeline.py
+# Gateway
+cd wearable/gateway
+pip install -e '.[test]'
+PYTHONPATH=. python -m pytest -q
 ```
 
-A copy of what that produces is in [../docs/data/analytics_pipeline_output.json](../docs/data/analytics_pipeline_output.json).
+The recorded run on 8 September 2026 had 1,101 desktop tests and 538 gateway tests passing. These suites don't need hardware or running inference services.
+
+Analytics has an end-to-end script instead of a test suite. From `src/`:
+
+```bash
+cd health-analytics
+pip install -r requirements.txt
+python src/pipeline.py
+```
+
+It writes generated results to `data/`. A saved example is in [docs/data/analytics_pipeline_output.json](../docs/data/analytics_pipeline_output.json).
+
+## What's excluded
+
+Local credentials, runtime conversations, recordings, face data, contact details and build output aren't included. Use the example configuration files to create your own setup; update service addresses as well as keys. Firmware binaries are excluded because they contain the compiled gateway token.
