@@ -1,0 +1,134 @@
+menu "Kiki ESP32"
+
+config KIKI_WIFI_SSID
+    string "2.4 GHz Wi-Fi SSID"
+    default ""
+
+config KIKI_WIFI_PASSWORD
+    string "Wi-Fi password"
+    default ""
+
+config KIKI_WIFI_FORCE_BUILTIN
+    bool "Use only the built-in network, ignoring anything saved on the panel"
+    default n
+    help
+        Normally the board joins the network saved on its panel and only falls
+        back to the built-in one above when that fails -- a deliberate safety
+        net, because a saved network can be wrong rather than merely absent and
+        a board that can never reach a gateway is a board nobody can fix
+        remotely.
+
+        Turn this on to pin the board to the built-in network and nothing else.
+        It exists for testing on a deliberately bad link: the fallback is what
+        rescues the board onto the house Wi-Fi the moment the weak AP drops,
+        which silently turns a bad-link test into a good-link one.
+
+        With this set there is no rescue. If the built-in network is out of
+        range the board goes to the provisioning screen and stays there.
+
+config KIKI_GATEWAY_URI
+    string "Laptop gateway WebSocket URI"
+    default "ws://192.168.1.10:8765"
+
+config KIKI_GATEWAY_URI_FALLBACK
+    string "Public gateway URI, tried when the LAN one fails"
+    default ""
+    help
+        A publicly reachable wss:// URL for the same gateway -- a Tailscale
+        Funnel or Cloudflare Tunnel hostname -- so Kiki still works away from
+        home. Leave empty to only ever use the LAN address.
+
+        The LAN URI is always tried first and is always preferred, because
+        this one leaves the building: audio streams continuously at 100
+        frames a second, and routing that through a public ingress adds
+        latency to the whole voice loop for no benefit when the gateway is
+        one hop away.
+
+        Anything reachable from the public internet MUST have
+        KIKI_GATEWAY_TOKEN set. The gateway accepts any client when no token
+        is configured, and this endpoint carries audio, inference and tool
+        access.
+
+config KIKI_GATEWAY_TOKEN
+    string "Gateway device token"
+    default ""
+
+config KIKI_AUDIO_VOLUME
+    int "Speaker volume percent"
+    range 0 100
+    default 100
+
+config KIKI_AEC_ENABLED
+    bool "Full-duplex acoustic echo cancellation and voice barge-in"
+    default y
+    help
+        Continuously processes both microphones and the board's dedicated
+        analog speaker-reference channel through ESP-SR's high-performance
+        full-duplex AEC. Clean 16 kHz audio continues to the gateway while the
+        speaker is active, where a second conservative VAD confirms a real
+        nearby voice before interrupting playback.
+
+        If AEC cannot initialize, firmware fails closed: ordinary listening
+        remains available, but raw microphone audio is not sent during
+        playback and therefore cannot self-trigger on Kiki's voice.
+
+config KIKI_CHARGE_CURRENT_MA
+    int "Battery charge current (mA)"
+    range 0 1000
+    default 500
+    help
+        The constant-current phase limit written to the AXP2101 (register
+        0x62). This MUST track the cell: the PMIC cannot detect capacity, so
+        nothing else will catch a mismatch.
+
+        Set it to about 0.5C for the cell fitted -- 500 mA for a 1050 mAh
+        cell, 400 mA for 800 mAh, 150 mA for 300 mAh. 1C is the usual maximum
+        rating; above 0.5C the cell runs warmer and loses cycle life, and
+        above 1C you are outside what most cells are rated for.
+
+        The chip has discrete steps (25 mA to 200 mA, then 100 mA), and the
+        firmware rounds DOWN to the nearest one so it never charges harder
+        than asked. The board's default was 200 mA.
+
+        Note the VBUS input limit (1000 mA) covers the system load as well as
+        charging, so beyond ~500 mA the input limit throttles charging while
+        the board is running -- and a laptop USB port may supply far less
+        than that.
+
+config KIKI_CHARGE_LIMIT_PERCENT
+    int "Stop battery charging at this percentage"
+    range 50 100
+    default 95
+    help
+        Stops the AXP2101 cell charger when its fuel gauge reaches this level.
+        Charging is enabled again five percentage points below the limit so a
+        noisy gauge cannot rapidly switch the charger on and off near the
+        boundary. The default therefore stops at 95% and resumes at 90%.
+
+    config KIKI_LOW_POWER
+        bool "Dim the screen when running from a battery"
+        default n
+        help
+            Dims the AMOLED, and nothing else. It used to enable Wi-Fi modem
+            sleep as well; that is gone, on battery too. Dozing between DTIM
+            beacons makes every inbound packet wait for the next wake, and a
+            conversational device that answers late has failed at the only
+            thing anyone judges it on. The radio now stays awake on any power
+            source -- see wifi_station_start().
+
+            So this no longer trades latency for runtime. It trades brightness
+            for runtime, which costs nothing you can hear.
+
+            This does NOT reduce the boot surge. Display init and Wi-Fi init
+            both draw hard within the first second, and a cell that cannot
+            source roughly an amp will brown out regardless of any setting
+            here. That is a property of the cell's internal resistance, not of
+            the firmware.
+
+    config KIKI_LOW_POWER_BRIGHTNESS
+        int "Screen brightness when dimmed (%)"
+        depends on KIKI_LOW_POWER
+        range 5 100
+        default 30
+
+endmenu

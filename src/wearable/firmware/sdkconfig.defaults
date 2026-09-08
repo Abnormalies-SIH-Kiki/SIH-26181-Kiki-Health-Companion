@@ -1,0 +1,92 @@
+CONFIG_IDF_TARGET="esp32s3"
+CONFIG_ESPTOOLPY_FLASHMODE_QIO=y
+CONFIG_ESPTOOLPY_FLASHSIZE_16MB=y
+CONFIG_PARTITION_TABLE_CUSTOM=y
+CONFIG_PARTITION_TABLE_CUSTOM_FILENAME="partitions.csv"
+CONFIG_SPIRAM=y
+CONFIG_SPIRAM_MODE_OCT=y
+CONFIG_SPIRAM_SPEED_80M=y
+CONFIG_SPIRAM_MALLOC_ALWAYSINTERNAL=0
+CONFIG_SPIRAM_MALLOC_RESERVE_INTERNAL=131072
+CONFIG_ESP_DEFAULT_CPU_FREQ_MHZ_240=y
+CONFIG_KIKI_AUDIO_VOLUME=100
+CONFIG_KIKI_AEC_ENABLED=y
+CONFIG_ESP_MAIN_TASK_STACK_SIZE=12288
+CONFIG_FREERTOS_HZ=1000
+CONFIG_COMPILER_OPTIMIZATION_PERF=y
+CONFIG_LV_OS_FREERTOS=y
+CONFIG_LV_USE_CLIB_MALLOC=y
+CONFIG_LV_USE_CLIB_STRING=y
+CONFIG_LV_USE_CLIB_SPRINTF=y
+CONFIG_LV_FONT_MONTSERRAT_18=y
+CONFIG_LV_FONT_MONTSERRAT_24=y
+CONFIG_LV_FONT_MONTSERRAT_28=y
+CONFIG_LV_FONT_MONTSERRAT_32=y
+CONFIG_LV_FONT_MONTSERRAT_36=y
+CONFIG_LV_BUILD_EXAMPLES=n
+CONFIG_ESP_WIFI_STATIC_RX_BUFFER_NUM=8
+CONFIG_ESP_WIFI_DYNAMIC_RX_BUFFER_NUM=24
+CONFIG_ESP_WIFI_DYNAMIC_TX_BUFFER_NUM=24
+CONFIG_LWIP_TCP_SND_BUF_DEFAULT=32768
+CONFIG_LWIP_TCP_WND_DEFAULT=32768
+CONFIG_LWIP_TCP_RECVMBOX_SIZE=32
+CONFIG_MBEDTLS_CERTIFICATE_BUNDLE=y
+# Keep WebSocket reads, writes, and transport teardown behind the same lock.
+# The component's optional separate TX lock allows its receive task to close
+# mbedTLS while kiki_net_tx is inside mbedtls_ssl_write(), causing a null
+# dereference and reboot on a lossy remote connection.
+# CONFIG_ESP_WS_CLIENT_SEPARATE_TX_LOCK is not set
+CONFIG_ESP_COREDUMP_ENABLE_TO_FLASH=y
+CONFIG_BSP_I2C_CLK_SPEED_HZ=400000
+# Let DHCP hand us an NTP server. Without this, esp_netif_sntp_init() refuses
+# any config with server_from_dhcp set and returns an error -- which left the
+# clock at 1970 and made every wss:// certificate read as not-yet-valid. A
+# captive/hotspot network that blocks pool.ntp.org still gives us its own.
+CONFIG_LWIP_DHCP_GET_NTP_SRV=y
+# Slot 0 is reserved for the DHCP-supplied server, so three fixed servers need
+# four slots.
+CONFIG_LWIP_SNTP_MAX_SERVERS=4
+# A resolver of last resort, for a hotspot whose DHCP offer carries an address
+# and a gateway but no DNS server (option 6). Android phones tethering without
+# an upstream do exactly this, and with no server configured lwIP does not fail
+# slowly -- getaddrinfo() returns 202 in five milliseconds, so every wss:// slot
+# is exhausted almost instantly and the board looks like it has no network at
+# all. It also takes NTP down with it, because pool.ntp.org has to be resolved
+# too, which leaves the clock at 1970 and every certificate not-yet-valid.
+# The stock default here is 114.114.114.114, which is not a resolver to ship.
+CONFIG_LWIP_FALLBACK_DNS_SERVER_SUPPORT=y
+CONFIG_LWIP_FALLBACK_DNS_SERVER_ADDRESS="8.8.8.8"
+# Never sleep the radio, on USB or on battery. IDF's default is modem sleep,
+# which parks the receiver between DTIM beacons and makes every inbound packet
+# wait for the next wake -- unacceptable on a device that is supposed to answer
+# the instant it is spoken to. wifi_station.cpp sets WIFI_PS_NONE to match.
+#
+# This one is separate and easy to miss: it powers the Wi-Fi hardware down while
+# the station is *disconnected*, so the radio has to come back up before it can
+# even try to reconnect. That is latency added to precisely the moment Kiki is
+# already unreachable.
+# CONFIG_ESP_WIFI_STA_DISCONNECTED_PM_ENABLE is not set
+
+# OTA over plain HTTP, for a board and a gateway on the same LAN.
+#
+# The public path is unchanged and still HTTPS: an image fetched over the open
+# internet in plaintext is an image anyone on the path can replace. This exists
+# because the HTTPS path depends on a public hostname, and on this network
+# freshly-allocated *.trycloudflare.com names do not resolve at all -- the OTA
+# tunnel and the gateway's own tunnel are both unreachable by name. That left
+# USB as the only way to update a board sitting two feet from the laptop.
+#
+# The gateway is what keeps this narrow: it will only ever hand the board an
+# http:// URL whose host is a literal private address (see
+# session._acceptable_ota_url). Anything else is still refused.
+CONFIG_ESP_HTTPS_OTA_ALLOW_HTTP=y
+
+# Network-assisted roaming. Campus and office networks steer clients by
+# deauthenticating them (802.11 reason 36); 802.11k supplies neighbour reports
+# and 802.11v carries the transition request, so a steer becomes a directed
+# move instead of a full rediscovery. Paired with WIFI_ALL_CHANNEL_SCAN and
+# WIFI_CONNECT_AP_BY_SIGNAL in wifi_station.cpp.
+CONFIG_ESP_WIFI_11KV_SUPPORT=y
+CONFIG_ESP_WIFI_RRM_SUPPORT=y
+CONFIG_ESP_WIFI_WNM_SUPPORT=y
+CONFIG_ESP_WIFI_SCAN_CACHE=y

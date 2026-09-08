@@ -1,0 +1,43 @@
+idf_component_register(
+    SRCS
+        "app_main.cpp"
+        "audio_pipeline.cpp"
+        "kiki_dance.cpp"
+        "kiki_dance_routine.cpp"
+        "kiki_care_ui.cpp"
+        "kiki_exercise.cpp"
+        "kiki_instructor.cpp"
+        "kiki_instructor_model.cpp"
+        "gateway_client.cpp"
+        "kiki_face.cpp"
+        "kiki_log.cpp"
+        "kiki_motion.cpp"
+        "kiki_motion_classifier.cpp"
+        "kiki_ota.cpp"
+        "kiki_power.cpp"
+        "kiki_time.cpp"
+        "kiki_wearable.cpp"
+        "kiki_settings.cpp"
+        "kiki_setup.cpp"
+        "kiki_ui.cpp"
+        "kiki_wizard.cpp"
+        "kiki_wifi_analyzer.cpp"
+        "wifi_station.cpp"
+    INCLUDE_DIRS "."
+    REQUIRES
+        esp_event
+        esp_netif
+        esp_wifi
+        nvs_flash
+        json
+        esp_websocket_client
+        app_update
+        esp_https_ota
+        esp_http_client
+        esp-tls
+        esp-sr
+        lwip
+        waveshare__esp32_s3_touch_amoled_1_75
+        qmi8658
+        esp_driver_i2c
+)

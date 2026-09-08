@@ -1,0 +1,13 @@
+# ESP-IDF build output. Never commit a built image: the gateway token set in
+# menuconfig is compiled into it, so a published .bin discloses that token.
+build/
+managed_components/
+*.bin
+*.elf
+*.map
+
+# sdkconfig holds the Wi-Fi credentials and the gateway token you entered in
+# menuconfig. sdkconfig.defaults is the shared template and IS tracked.
+sdkconfig
+sdkconfig.old
+sdkconfig.bak*

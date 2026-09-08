@@ -1,0 +1,15 @@
+dependencies:
+  idf: ">=5.5,<5.6"
+  espressif/esp_websocket_client: "^1.6.1"
+  # Pinned for reproducible full-duplex AEC.  The board exposes its two mics
+  # plus the ES8311 analog playback reference as ES7210 TDM channels, which
+  # matches ESP-SR's M/R input contract.
+  espressif/esp-sr: "2.4.7"
+  # Opus decoding for Kiki's voice. The gateway encodes; the board only
+  # ever decodes, which is roughly a tenth of the cost -- so this never
+  # touches the AEC's CPU budget on core 1.
+  espressif/esp_audio_codec: "^2.6.0"
+  waveshare/qmi8658: "^2.0.0"
+  waveshare/esp32_s3_touch_amoled_1_75:
+    version: "3.0.1"
+    override_path: "../components/waveshare__esp32_s3_touch_amoled_1_75"

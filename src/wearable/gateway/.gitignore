@@ -1,0 +1,26 @@
+# Secrets and local configuration
+gateway.env
+.env
+!gateway.env.example
+
+# Python
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+*.egg-info/
+.venv/
+venv/
+build/
+dist/
+
+# Runtime state
+runtime/
+legacy_kiki/state/
+legacy_kiki/logs/
+legacy_kiki/conversations/
+*.log
+*.pid
+*.jsonl

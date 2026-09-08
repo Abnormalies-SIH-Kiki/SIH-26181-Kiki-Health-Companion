@@ -1,0 +1,16 @@
+[Unit]
+Description=Kiki wearable health service
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+User=kiki
+WorkingDirectory=/home/kiki/kiki2/KikiFast
+EnvironmentFile=-/home/kiki/kiki2/KikiFast/.env
+ExecStart=/home/kiki/kiki2/KikiFast/scripts/run_health_service.sh
+Restart=always
+RestartSec=3
+
+[Install]
+WantedBy=multi-user.target
