@@ -1,10 +1,22 @@
 **SIH 26181 · A secure, AI-powered Personal Health Companion**
 
+## Problem Statement
+
+India faces recurring health crises during heat waves, floods, pollution events, and disease outbreaks. Vulnerable groups — elderly, rural populations, outdoor workers, chronic patients — lack continuous, privacy-preserving health monitoring that works offline. The problem demands a **secure, AI-powered Personal Health 
+Companion** that:
+
+- Monitors heart rate, SpO₂, body temperature, activity, sleep, and environmental conditions
+- Detects anomalies on-device (heat stress, dehydration, falls, respiratory distress)
+- Provides actionable alerts and emergency assistance
+- Preserves privacy and operates without internet
+- Supports voice-first interaction for low-literacy users
+
+**Kiki Health Companion directly addresses all of these.**
 Hardware · MedTech / BioTech / HealthTech
 
 Kiki is a desktop companion and a wearable built around the same idea. **The desktop stays in the room and handles conversation, reminders and camera-based activity checks. The wearable goes with the person and handles steps, on-demand heart rate and possible falls.**
 
-We're A3SCV (Team Abnormalies) from NSUT: Vaibhav Arora, Suyash Srivastava (team lead), Aniket Sharma, Chirag Goel, Aditi Sharma and Aavya.
+We're Team Abnormalies from NSUT: Vaibhav Arora, Suyash Srivastava, Aniket Sharma, Chirag Goel, Aditi Sharma and Aavya.
 
 <img width="1121" height="629" alt="Desktop and wearable health companion and laptop" src="https://github.com/user-attachments/assets/f0c9d039-fb39-44d2-8e02-21e835055e62" />
 
@@ -17,13 +29,19 @@ The desktop has a camera for activity detection, face recognition and exercise c
 
 Both devices use a laptop for speech recognition, speech generation and the local conversation model. Some reasoning runs through cloud services. Local speech processing and firmware fall detection don't need internet, but the devices still need access to the laptop for conversation. Weather updates, cloud agents and WhatsApp/email alerts need connectivity.
 
-The prototype currently includes:
+## Key Features (Mapped to Problem Statement)
 
-- Scheduled care sessions, shared care history and spoken reminders.
-- Heart-rate readings with signal-quality checks, plus steps and wear detection.
-- Possible-fall check-ins and family alerts, with send and delivery status recorded separately.
-- Weather and estimated AQI on the CPCB scale, with stale readings marked or removed.
-- Camera activity checks and guided exercise sessions on the desktop.
+| PS Requirement | Kiki Implementation |
+|----------------|---------------------|
+| Continuous health monitoring | On-demand HR/SpO₂, steps, wear detection, activity checks |
+| AI-based anomaly detection | Rule-based + ML (edge) for falls, elevated HR, fatigue |
+| Disaster-specific alerts | Weather API + estimated AQI, heat index warnings |
+| Environmental awareness | BMP280 + Open-Meteo API, stale readings flagged |
+| Privacy-preserving edge AI | All raw health data stays on device; only alerts transmitted |
+| Emergency assistance | Fall detection → voice check → family alert via gateway |
+| Wellness dashboard | Web dashboard + mobile app UI |
+| Voice-first accessibility | English and Hindi voice interface, no screen literacy needed |
+| Offline capability | Firmware fall detection works without internet |
 
 
 ## Hardware and software
@@ -101,3 +119,12 @@ Change the serial port if your board appears elsewhere. More deployment details 
 ## What's left
 
 Fall detection uses heuristic thresholds. We've tried it during development, but controlled physical acceptance testing and clinical validation are still pending. The MAX30102's SpO₂ estimate is uncalibrated and isn't treated as a health reading, even though an early prototype photo shows it on the display.
+
+## Future Scope
+
+- Continuous wrist SpO₂ with improved motion artifact removal
+- Body temperature sensor integration (non-contact)
+- GPS location for outdoor emergency response
+- Automatic sleep quality analysis
+- Multi‑language support beyond Hindi/English
+- Clinical validation and CDSCO certification
