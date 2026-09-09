@@ -4,12 +4,12 @@
 
 Hardware · MedTech / BioTech / HealthTech
 
-Kiki is a desktop companion and a wearable built around the same care plan. The desktop stays in the room and handles conversation, reminders and camera-based activity checks. The wearable goes with the person and handles steps, on-demand heart rate and possible falls.
+Kiki is a desktop companion and a wearable built around the same idea. The desktop stays in the room and handles conversation, reminders and camera-based activity checks. The wearable goes with the person and handles steps, on-demand heart rate and possible falls.
 
 We're A3SCV (Team Abnormalies) from NSUT: Vaibhav Arora, Suyash Srivastava (team lead), Aniket Sharma, Chirag Goel, Aditi Sharma and Aavya.
 
-![Wearable taking a heart-rate reading](assets/screenshots/01-wearable-on-hand.jpg)
-![Inside the desktop unit](assets/screenshots/02-desktop-internals.png)
+<img width="1121" height="629" alt="Desktop and wearable health companion and laptop" src="https://github.com/user-attachments/assets/f0c9d039-fb39-44d2-8e02-21e835055e62" />
+
 
 ## What we're building
 
