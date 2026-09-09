@@ -1,4 +1,4 @@
-**SIH 26181 · A secure, AI-powered Personal Health Companion**
+**SIH 26181 · A secure, AI-powered Personal Health Companion** 
 
 ## Problem Statement
 
@@ -12,7 +12,6 @@ Companion** that:
 - Supports voice-first interaction for low-literacy users
 
 **Kiki Health Companion directly addresses all of these.**
-Hardware · MedTech / BioTech / HealthTech
 
 Kiki is a desktop companion and a wearable built around the same idea. **The desktop stays in the room and handles conversation, reminders and camera-based activity checks. The wearable goes with the person and handles steps, on-demand heart rate and possible falls.**
 
