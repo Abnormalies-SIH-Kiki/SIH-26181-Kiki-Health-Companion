@@ -1,5 +1,3 @@
-# Kiki Health Companion
-
 **SIH 26181 · A secure, AI-powered Personal Health Companion**
 
 Hardware · MedTech / BioTech / HealthTech
@@ -40,7 +38,7 @@ The analytics pipeline and caregiver dashboard also run, but they're separate pr
 | Cloud services | Cerebras for multi-step agents, Gemini for background reasoning |
 | Analytics | Python, pandas and NumPy; Next.js/TypeScript dashboard with SQLite; optional TFLite experiment |
 
-![System architecture](assets/diagrams/body-and-brain.png)
+![System architecture](assets/CAD_model/renders/design_sheet.png)
 
 The Pi and wearable handle the physical inputs and outputs. The laptop runs inference and the wearable gateway. Our setup connects the machines through Tailscale. The local model has one inference slot, so background work must leave it available when someone speaks.
 
@@ -104,5 +102,3 @@ Change the serial port if your board appears elsewhere. More deployment details 
 ## What's left
 
 Fall detection uses heuristic thresholds. We've tried it during development, but controlled physical acceptance testing and clinical validation are still pending. The MAX30102's SpO₂ estimate is uncalibrated and isn't treated as a health reading, even though an early prototype photo shows it on the display.
-
-The next software task is connecting the analytics and dashboard to the gateway's `/api/care/v1` layer. Sleep is currently voice-logged. We also postponed a custom PCB to finish the wearable with the development board, so there's still room to reduce its size.
