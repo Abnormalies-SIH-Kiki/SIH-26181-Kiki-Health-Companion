@@ -1,6 +1,6 @@
 # Engineering notes
 
-This covers the desktop and wearable build as of 8 September 2026. Project details and setup commands are in the [README](../README.md); this file keeps the hardware choices, software constraints and debugging notes that are useful when working on it.
+ Project details and setup commands are in the [README](../README.md); this file keeps the hardware choices, software constraints and debugging notes that are useful when working on it.
 
 ## How the system fits together
 
