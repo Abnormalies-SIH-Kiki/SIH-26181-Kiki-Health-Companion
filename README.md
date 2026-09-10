@@ -54,7 +54,6 @@ India faces recurring health crises during heat waves, floods, pollution events,
 * **Monitors heart rate, SpO₂, activity, sleep, and environmental conditions**
 * **Detects anomalies on-device** (heat stress, dehydration, falls, respiratory distress)
 * **Provides actionable alerts and emergency assistance**
-* **Preserves privacy and operates without internet**
 
 Kiki directly addresses all of these.
 
