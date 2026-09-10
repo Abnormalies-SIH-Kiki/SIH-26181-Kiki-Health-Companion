@@ -83,9 +83,25 @@ Every row below is implemented and running, not planned:
 | Voice-first accessibility | English and Hindi voice interface, no screen literacy needed |
 | Offline capability | Firmware fall detection works without internet |
 
-<img width="652" height="1449" alt="Live dashboard showing heat risk, blood oxygen and heart rate" src="assets/screenshots/heartrate-sp02-ui.jpeg" />
+<table>
+  <tr>
+    <td width="50%">
+      <img alt="Live dashboard showing heat risk, blood oxygen and heart rate" src="assets/screenshots/heartrate-sp02-ui.jpeg" />
+    </td>
+    <td width="50%">
+      <img alt="Live dashboard showing AQI and Weather" src="assets/screenshots/aqi-weather-ui.jpeg" />
+    </td>
+  </tr>
+  <tr>
+    <td width="50%">
+      <img alt="Live dashboard showing Sleep Tracking" src="assets/screenshots/sleep-tracking-ui.jpeg" />
+    </td>
+    <td width="50%">
+      <img alt="Live dashboard showing Profile" src="assets/screenshots/profile-ui.jpeg" />
+    </td>
+  </tr>
+</table>
 
-*Live dashboard capture — note the "High heat risk in New Delhi" card. This is the disaster-resilience requirement rendered as an actual running feature, not a mockup.*
 
 ## Impact
 
