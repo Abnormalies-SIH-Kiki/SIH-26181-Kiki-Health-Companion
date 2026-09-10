@@ -30,11 +30,11 @@ One Kiki across your desk, wrist, and phone — keeping your heart rate, sleep, 
 ---
 <p align="center">
   <h2>✨ 🌟 Project Demo Video 🌟 ✨</h2>
+  <img src="https://img.youtube.com/vi/SXq7fLjbRYM/maxresdefault.jpg" alt="Kiki Health Companion Demo Video" width="80%" style="border-radius: 10px;" />
+  <br /><br />
   <a href="https://www.youtube.com/watch?v=SXq7fLjbRYM" target="_blank">
-    <img src="https://img.youtube.com/vi/SXq7fLjbRYM/maxresdefault.jpg" alt="Kiki Health Companion Demo Video" width="85%" style="border-radius: 10px;" />
+    <img src="https://img.shields.io/badge/▶_Watch_Demo_on_YouTube-FF0000?style=for-the-badge&logo=youtube&logoColor=white" alt="Watch on YouTube" />
   </a>
-  <br />
-  <sub>✨ <strong>Click the image above to watch the full video on YouTube</strong> ✨</sub>
 </p>
 
 ## Project Information
