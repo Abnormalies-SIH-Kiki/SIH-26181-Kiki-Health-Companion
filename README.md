@@ -63,14 +63,14 @@ The desktop has a camera for activity detection, face recognition, and exercise 
 
 Both devices use a laptop for speech recognition, speech generation, and the local conversation model. Some reasoning runs through cloud services. Local speech processing and firmware fall detection don't need internet, but the devices still need access to the laptop for conversation. Weather updates, cloud agents, and WhatsApp/email alerts need connectivity.
 
-<p>
-  <img width="300" alt="Real prototype - wearable" src="assets/screenshots/wearable-standalone.jpeg" />
-  <img width="300" alt="Real prototype- desktop" src="assets/screenshots/desktop-standalone.jpeg" />
-</p>
-<p>
-  <img width="450" alt="Real prototype - werable on hand" src="assets/screenshots/wearable-on-hand.jpeg" />
-</p>
-## Key Features (Mapped to Problem Statement)
+<div align="center">
+  <img width="48%" alt="Real prototype - wearable" src="assets/screenshots/wearable-standalone.jpeg" />
+  <img width="48%" alt="Real prototype - desktop" src="assets/screenshots/desktop-standalone.jpeg" />
+  <br/><br/>
+  <img width="70%" alt="Real prototype - werable on hand" src="assets/screenshots/werable-on-hand.jpeg" />
+</div>
+
+## Key Features 
 
 Every row below is implemented and running, not planned:
 
