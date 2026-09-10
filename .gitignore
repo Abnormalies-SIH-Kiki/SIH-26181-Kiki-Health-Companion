@@ -216,3 +216,11 @@ __marimo__/
 
 # Streamlit
 .streamlit/secrets.toml
+# Dashboard ignores
+**/node_modules/
+**/.next/
+**/*.tsbuildinfo
+**/data/*.db*
+*.db
+*.sqlite
+.DS_Store

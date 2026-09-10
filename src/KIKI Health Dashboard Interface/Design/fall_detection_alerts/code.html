@@ -1,0 +1,189 @@
+<!DOCTYPE html><html lang="en" class="dark" style=""><head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Fall Detection Alerts</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200">
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Inter', 'sans-serif'],
+          },
+          colors: {
+            brand: {
+              purple: '#4A1985',
+              'purple-light': '#6e29c2',
+              'purple-glow': 'rgba(74, 25, 133, 0.35)',
+            },
+            surface: {
+              base: '#0D0D0E',
+              card: '#161618',
+              'card-hover': '#1F1E22',
+              border: '#242428',
+              'subtle-border': 'rgba(255, 255, 255, 0.07)'
+            }
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    body {
+      font-family: 'Inter', sans-serif;
+      -webkit-tap-highlight-color: transparent;
+    }
+    .material-symbols-outlined {
+      font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+    }
+    .icon-fill {
+      font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+    }
+  </style>
+</head>
+<body class="bg-[#0D0D0E] text-white min-h-screen flex justify-center selection:bg-[#4A1985] selection:text-white" style="background-color: rgb(7, 7, 8);">
+  <!-- Mobile Container (390px base width) -->
+  <div class="w-full max-w-[420px] min-h-screen bg-[#0D0D0E] flex flex-col relative border-x border-[#1e1e24] shadow-2xl" style="background-color: rgb(7, 7, 8);">
+    
+    <!-- Top Header -->
+    <header class="sticky top-0 z-30 bg-[#0D0D0E]/90 backdrop-blur-md px-5 pt-12 pb-4 border-b border-[#242428]/60" style="background-color: rgba(7, 7, 8, 0.92);">
+      <div class="flex items-center gap-3.5">
+        <button type="button" aria-label="Go back" class="w-10 h-10 -ml-1.5 flex items-center justify-center rounded-xl bg-[#161618] border border-white/5 text-neutral-300 hover:text-white active:scale-95 transition-all">
+          <span class="material-symbols-outlined text-[22px]">arrow_back</span>
+        </button>
+        <div>
+          <h1 class="text-[20px] font-bold tracking-tight text-white leading-tight">Fall Detection Alerts</h1>
+          <p class="text-[13px] font-medium text-neutral-400 mt-0.5">Your recorded fall alerts</p>
+        </div>
+      </div>
+    </header>
+
+    <!-- Main Content Area -->
+    <main class="flex-1 px-5 pt-5 pb-32 space-y-3"><!-- Chronological List of Fall Detection Alerts (Newest first) -->
+      <div class="flex flex-col gap-2.5">
+        
+        <!-- Alert Item 1 (Newest / Recent) -->
+        <div class="group flex items-center justify-between p-4 rounded-2xl bg-[#161618] border border-white/5 hover:border-white/10 active:scale-[0.99] transition-all cursor-pointer shadow-sm">
+          <div class="flex items-center gap-3.5">
+            <!-- Neutral Dark Grey Icon Container -->
+            <div class="w-11 h-11 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center text-neutral-300">
+              <span class="material-symbols-outlined text-[22px]">personal_injury</span>
+            </div>
+            <div class="space-y-0.5">
+              <div class="flex items-center gap-2">
+                <span class="text-[15px] font-semibold text-white tracking-tight">Fall detected</span>
+                <span class="px-1.5 py-0.5 text-[10px] font-medium tracking-wide uppercase bg-white/5 text-neutral-300 rounded border border-white/10">Recent</span>
+              </div>
+              <p class="text-[12.5px] font-normal text-neutral-400">Today, 03 Sep 2026 · 10:42 AM</p>
+            </div>
+          </div>
+          <span class="material-symbols-outlined text-neutral-500 group-hover:text-neutral-300 text-[20px] transition-colors">chevron_right</span>
+        </div>
+
+        <!-- Alert Item 2 -->
+        <div class="group flex items-center justify-between p-4 rounded-2xl bg-[#161618] border border-white/5 hover:border-white/10 active:scale-[0.99] transition-all cursor-pointer shadow-sm">
+          <div class="flex items-center gap-3.5">
+            <div class="w-11 h-11 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center text-neutral-300">
+              <span class="material-symbols-outlined text-[22px]">personal_injury</span>
+            </div>
+            <div class="space-y-0.5">
+              <span class="text-[15px] font-semibold text-white tracking-tight">Fall detected</span>
+              <p class="text-[12.5px] font-normal text-neutral-400">28 Aug 2026 · 04:15 PM</p>
+            </div>
+          </div>
+          <span class="material-symbols-outlined text-neutral-500 group-hover:text-neutral-300 text-[20px] transition-colors">chevron_right</span>
+        </div>
+
+        <!-- Alert Item 3 -->
+        <div class="group flex items-center justify-between p-4 rounded-2xl bg-[#161618] border border-white/5 hover:border-white/10 active:scale-[0.99] transition-all cursor-pointer shadow-sm">
+          <div class="flex items-center gap-3.5">
+            <div class="w-11 h-11 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center text-neutral-300">
+              <span class="material-symbols-outlined text-[22px]">personal_injury</span>
+            </div>
+            <div class="space-y-0.5">
+              <span class="text-[15px] font-semibold text-white tracking-tight">Fall detected</span>
+              <p class="text-[12.5px] font-normal text-neutral-400">14 Aug 2026 · 08:09 AM</p>
+            </div>
+          </div>
+          <span class="material-symbols-outlined text-neutral-500 group-hover:text-neutral-300 text-[20px] transition-colors">chevron_right</span>
+        </div>
+
+        <!-- Alert Item 4 -->
+        <div class="group flex items-center justify-between p-4 rounded-2xl bg-[#161618] border border-white/5 hover:border-white/10 active:scale-[0.99] transition-all cursor-pointer shadow-sm">
+          <div class="flex items-center gap-3.5">
+            <div class="w-11 h-11 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center text-neutral-300">
+              <span class="material-symbols-outlined text-[22px]">personal_injury</span>
+            </div>
+            <div class="space-y-0.5">
+              <span class="text-[15px] font-semibold text-white tracking-tight">Fall detected</span>
+              <p class="text-[12.5px] font-normal text-neutral-400">02 Jul 2026 · 06:33 PM</p>
+            </div>
+          </div>
+          <span class="material-symbols-outlined text-neutral-500 group-hover:text-neutral-300 text-[20px] transition-colors">chevron_right</span>
+        </div>
+
+        <!-- Alert Item 5 -->
+        <div class="group flex items-center justify-between p-4 rounded-2xl bg-[#161618] border border-white/5 hover:border-white/10 active:scale-[0.99] transition-all cursor-pointer shadow-sm">
+          <div class="flex items-center gap-3.5">
+            <div class="w-11 h-11 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center text-neutral-300">
+              <span class="material-symbols-outlined text-[22px]">personal_injury</span>
+            </div>
+            <div class="space-y-0.5">
+              <span class="text-[15px] font-semibold text-white tracking-tight">Fall detected</span>
+              <p class="text-[12.5px] font-normal text-neutral-400">19 Jun 2026 · 11:18 AM</p>
+            </div>
+          </div>
+          <span class="material-symbols-outlined text-neutral-500 group-hover:text-neutral-300 text-[20px] transition-colors">chevron_right</span>
+        </div>
+
+      </div>
+
+      <!-- Divider / Section Note for Empty State Demonstration -->
+      
+
+      <!-- Thoughtful Empty State Container -->
+      </main>
+
+    <!-- Persistent Bottom Navigation Bar (matches existing app) -->
+    <nav class="fixed bottom-0 left-1/2 -translate-x-1/2 w-full max-w-[420px] z-40 bg-[#0D0D0E]/90 backdrop-blur-xl border-t border-[#242428] px-6 py-3 flex justify-between items-center" style="background-color: rgba(7, 7, 8, 0.92);">
+      <!-- Home Tab -->
+      <button type="button" class="flex flex-col items-center gap-1 text-neutral-400 hover:text-white transition-colors">
+        <span class="material-symbols-outlined text-[22px]">home</span>
+        <span class="text-[10px] font-medium tracking-wide">Home</span>
+      </button>
+
+      <!-- Health Tab -->
+      <button type="button" class="flex flex-col items-center gap-1 text-neutral-400 hover:text-white transition-colors">
+        <span class="material-symbols-outlined text-[22px]">vital_signs</span>
+        <span class="text-[10px] font-medium tracking-wide">Health</span>
+      </button>
+
+      <!-- Weather Tab -->
+      <button type="button" class="flex flex-col items-center gap-1 text-neutral-400 hover:text-white transition-colors">
+        <span class="material-symbols-outlined text-[22px]">thermostat</span>
+        <span class="text-[10px] font-medium tracking-wide">Weather</span>
+      </button>
+
+      <!-- More Tab (Active indicator) -->
+      <button type="button" class="flex flex-col items-center gap-1 text-[#c084fc] font-semibold">
+        <div class="relative">
+          <span class="material-symbols-outlined text-[22px] icon-fill text-[#c084fc]">more_horiz</span>
+          <span class="absolute -bottom-1 left-1/2 -translate-x-1/2 w-1 h-1 rounded-full bg-[#c084fc]"></span>
+        </div>
+        <span class="text-[10px] font-semibold tracking-wide text-white">More</span>
+      </button>
+    </nav>
+
+  </div>
+
+
+
+
+
+
+</body></html>

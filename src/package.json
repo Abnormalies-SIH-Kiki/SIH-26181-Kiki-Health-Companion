@@ -1,0 +1,12 @@
+{
+  "name": "sih-dashboard",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "npm --prefix \"KIKI Health Dashboard Interface/KIKI-app\" run dev",
+    "build": "npm --prefix \"KIKI Health Dashboard Interface/KIKI-app\" run build",
+    "start": "npm --prefix \"KIKI Health Dashboard Interface/KIKI-app\" run start",
+    "lint": "npm --prefix \"KIKI Health Dashboard Interface/KIKI-app\" run lint",
+    "install:app": "npm --prefix \"KIKI Health Dashboard Interface/KIKI-app\" install"
+  }
+}
