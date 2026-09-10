@@ -110,7 +110,7 @@ Kiki targets exactly the groups the PS names as underserved: elderly citizens, o
 - **Social:** voice-first interaction removes the literacy and smartphone-comfort barrier that shuts many people out of existing health apps.
 - **Safety:** on-device fall detection and heat/AQI alerts work whether or not the internet does, which matters most exactly when infrastructure is stressed during a disaster.
 - **Economic:** built on open-source software and commodity hardware, meaningfully cheaper than commercial continuous-monitoring wearables.
-- **Trust:** the system is explicit about what it doesn't know yet — see [What's Left](#whats-left) — rather than presenting unvalidated readings as medical fact.
+- **Trust:** the system is explicit about what it doesn't know yet rather than presenting unvalidated readings as medical fact — see [What's Left](#whats-left)  
 
 ## Hardware and Software
 
