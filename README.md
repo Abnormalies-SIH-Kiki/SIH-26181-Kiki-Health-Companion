@@ -1,10 +1,19 @@
-# Kiki Health Companion
+# Kiki - Your AI Health Buddy
 
 **SIH 2026 · PS 26181 · Hardware · MedTech / BioTech / HealthTech**
 
 ![Status](https://img.shields.io/badge/status-working%20prototype-brightgreen) ![License](https://img.shields.io/badge/license-MIT-blue) ![SIH](https://img.shields.io/badge/SIH-2026-orange)
 
-A desktop companion and a wearable, built around the same idea: continuous, privacy-preserving, voice-first health monitoring that keeps working when the internet doesn't.
+Kiki lives on your desk, learns your routines, and talks to you like a friend who actually remembers things[^memory]. When you step outside, the same companion moves with you onto your wrist.
+
+* **Looks after you:** Reminds you about medicines, tracks your schedule, heart rate, activity, and whether you actually completed your exercise.
+* **Stays connected:** Reads your WhatsApp messages, catches you up, and can reply for you.
+* **Works even when you’re not talking:** Quietly follows your interests, finds news worth sharing, picks up relevant health insights, and watches for new messages.
+* **Builds a care plan with you:** Then keeps you accountable to it instead of letting it become another forgotten routine.
+* **Actually checks your exercise:** Kiki can guide yoga and, using its camera, verify that you performed the movement correctly rather than simply trusting that you did.
+* **Keeps you company:** All of this still feels like a conversation, with memory, personality, and a little humour.
+
+The desktop and wearable aren’t separate assistants — they’re the same Kiki, following you through your day.
 
 ## Table of Contents
 
@@ -234,3 +243,8 @@ Fall detection uses heuristic thresholds. We've tried it during development, but
 - Automatic sleep quality analysis
 - Multi-language support beyond Hindi/English
 - Clinical validation and CDSCO certification
+
+[^memory]: Kiki doesn't dump transcripts into context. Durable facts about you are saved
+    deliberately to a knowledge base, and recall searches across the journal, the knowledge
+    base and past conversations rather than one store.
+    See [memory_search](src/desktop-module/Codestructure.md#memory).
