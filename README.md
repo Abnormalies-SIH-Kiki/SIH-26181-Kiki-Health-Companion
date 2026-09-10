@@ -12,6 +12,7 @@ Kiki lives on your desk, learns your routines, and talks to you like a friend wh
 * **Builds a care plan with you:** Then keeps you accountable to it instead of letting it become another forgotten routine.
 * **Actually checks your exercise:** Kiki can guide yoga and, using its camera, verify that you performed the movement correctly rather than simply trusting that you did.
 * **Keeps you company:** All of this still feels like a conversation, with memory, personality, and a little humour.
+*  **Shows the whole picture**: A companion app puts heart rate, sleep, fall history and the local heat and air-quality index on one screen.
 
 The desktop and wearable aren’t separate assistants — they’re the same Kiki, following you through your day.
 
