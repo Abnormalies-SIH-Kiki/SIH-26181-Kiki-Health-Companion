@@ -100,8 +100,6 @@ firmware/                   PlatformIO project, any ESP32-WROOM class board
 
 models/                     Regenerated activity_tree.h / fall_model_* land here
 data/                       Generated CSVs land here (gitignored)
-docs/SPEC.md                 Full design rationale (cold-start, baseline drift,
-                            activity/HR confounding, PPG artifacts, resource budget)
 ```
 
 ## Quick start
@@ -148,4 +146,3 @@ Replace `dummy_sensor_read_imu()` / `dummy_sensor_read_vitals()` in `firmware/sr
 - `firmware/` targets generic `esp32dev` in `platformio.ini` — change `board =` for your hardware. Real test hardware reported 320KB RAM (not all ESP32-WROOM variants have 520KB); check your own `pio run` output.
 - `TENSOR_ARENA_SIZE` in `config.h` (60KB) is a starting estimate — measure real usage via `interpreter->arena_used_bytes()` and adjust.
 - The activity name lookup in `main.cpp` assumes the checked-in `activity_tree.h`'s enum order. Verify it after retraining with a different label set.
-- Full design rationale in [`docs/SPEC.md`](docs/SPEC.md).
