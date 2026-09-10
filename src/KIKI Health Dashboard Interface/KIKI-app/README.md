@@ -1,12 +1,12 @@
-# Vitality Health App — Developer & Contributor Guide
+# KIKI Health App — Developer & Contributor Guide
 
-Welcome to the **Vitality Health Dashboard** project (Smart India Hackathon). This document provides an end-to-end walkthrough of the architecture, features, database structure, and guidelines for team members contributing to this repository.
+Welcome to the **KIKI Health Dashboard** project (Smart India Hackathon). This document provides an end-to-end walkthrough of the architecture, features, database structure, and guidelines for team members contributing to this repository.
 
 ---
 
 ## 📌 Project Overview
 
-**Vitality** is a mobile-first personal health, environmental telemetry, and safety companion app built for Indian users. It combines real-time physiological indicators (heart rate, step cadence, metabolic burn, sleep stages) with hyper-local environmental intelligence (IMD heatwave alerts, UV indices, air quality) and safety triggers (fall detection, tachy/bradycardia symptom logs).
+**KIKI** is a mobile-first personal health, environmental telemetry, and safety companion app built for Indian users. It combines real-time physiological indicators (heart rate, step cadence, metabolic burn, sleep stages) with hyper-local environmental intelligence (IMD heatwave alerts, UV indices, air quality) and safety triggers (fall detection, tachy/bradycardia symptom logs).
 
 ### Tech Stack
 - **Framework**: Next.js 14+ (App Router)
@@ -21,7 +21,7 @@ Welcome to the **Vitality Health Dashboard** project (Smart India Hackathon). Th
 
 ```text
 Dashboard Frontend/
-├── vitality-app/                     # Main Next.js Web Application
+├── KIKI-app/                     # Main Next.js Web Application
 │   ├── app/
 │   │   ├── api/                      # Backend Route Handlers
 │   │   │   ├── onboarding/route.ts   # Account creation endpoint
