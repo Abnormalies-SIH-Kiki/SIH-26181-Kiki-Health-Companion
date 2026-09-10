@@ -70,7 +70,7 @@ Dashboard Frontend/
 
 ### 2. Installation
 ```bash
-cd vitality-app
+cd KIKI-app
 npm install
 ```
 
