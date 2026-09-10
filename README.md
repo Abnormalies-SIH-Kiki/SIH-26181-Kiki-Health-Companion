@@ -55,7 +55,7 @@ India faces recurring health crises during heat waves, floods, pollution events,
 
 Kiki is a desktop companion and a wearable built around the same idea. The desktop stays in the room and handles conversation, reminders, measures ambient temperature/pressure and camera-based activity checks. The wearable goes with the person and handles steps, on-demand heart rate, and possible falls.
 
-<img width="1121" height="629" alt="Desktop and wearable health companion and laptop" src="assets/screenshots/full-system.jpeg" />
+<img width="1121" height="815" alt="Desktop and wearable health companion and laptop" src="assets/screenshots/full-system.jpeg" />
 
 A health reminder is more useful when it fits the person's day. Kiki keeps routines and recent observations together, so someone can talk through a reminder or an exercise instead of working through an app. Voice interaction supports English and Hindi.
 
