@@ -11,3 +11,9 @@ Click the image below to watch the full demonstration on YouTube:
 
 ---
 
+### 📊 Presentation
+
+The SIH idea submission deck is in [PRESENTATION.md](PRESENTATION.md) — [PDF in this repo](./SIH26181_Team_Abnormalies_Presentation.pdf) or [on Google Drive](https://drive.google.com/file/d/19Gz7P0E8064CH7wUCHbpV1ZqjmQZaEzY/view).
+
+---
+

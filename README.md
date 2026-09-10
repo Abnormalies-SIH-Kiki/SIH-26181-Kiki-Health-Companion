@@ -33,6 +33,13 @@ One Kiki across your desk, wrist, and phone — keeping your heart rate, sleep, 
   <a href="https://www.youtube.com/watch?v=SXq7fLjbRYM" target="_blank">
     <img src="https://img.shields.io/badge/▶_Watch_Full_Demo_on_YouTube-FF0000?style=for-the-badge&logo=youtube&logoColor=white" alt="Watch on YouTube" />
   </a>
+  <br /><br />
+  <a href="submission/SIH26181_Team_Abnormalies_Presentation.pdf">
+    <img src="https://img.shields.io/badge/📄_Presentation_(PDF)-2C5AA0?style=for-the-badge" alt="Presentation PDF" />
+  </a>
+  <a href="https://drive.google.com/file/d/19Gz7P0E8064CH7wUCHbpV1ZqjmQZaEzY/view" target="_blank">
+    <img src="https://img.shields.io/badge/☁️_Presentation_on_Drive-4285F4?style=for-the-badge&logo=googledrive&logoColor=white" alt="Presentation on Google Drive" />
+  </a>
 </p>
 
 ## Project Information
@@ -231,7 +238,8 @@ Change the serial port if your board appears elsewhere. More deployment details 
 | [assets/hardware/](assets/hardware/) | Build photos |
 | [assets/circuit_diagram/](assets/circuit_diagram/) | Wiring diagrams and Fritzing sources |
 | [assets/CAD_model/](assets/CAD_model/) | Enclosure source, renders and print files |
-| [submission/PRESENTATION.md](submission/PRESENTATION.md) | Presentation details |
+| [submission/PRESENTATION.md](submission/PRESENTATION.md) | Presentation details and links |
+| [submission/SIH26181_Team_Abnormalies_Presentation.pdf](submission/SIH26181_Team_Abnormalies_Presentation.pdf) | Final SIH idea submission deck (also on [Google Drive](https://drive.google.com/file/d/19Gz7P0E8064CH7wUCHbpV1ZqjmQZaEzY/view)) |
 | [submission/DEMO.md](submission/DEMO.md) | Demo details |
 
 ## What's Left
