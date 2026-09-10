@@ -1,4 +1,4 @@
-# Kiki - Your AI Health Buddy
+# Kiki - Your AI Health Companion
 
 **SIH 2026 · PS 26181 · Hardware · MedTech / BioTech / HealthTech**
 
