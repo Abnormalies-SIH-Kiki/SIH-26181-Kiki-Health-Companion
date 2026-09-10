@@ -6,10 +6,10 @@
 
 Kiki lives on your desk, learns your routines, and talks to you like a friend who actually remembers things[^memory]. Step outside and the same Kiki comes with you, on your wrist.
 
-* ***Looks after you*** – *medicines, schedule, heart rate, sleep.*
-* ***Keeps you in the loop*** – *reads your WhatsApp, replies for you, brings you news worth hearing.*
-* ***Your yoga instructor*** – *it watches through the camera, so "I did it" doesn't count.*
-* ***Actually good company*** – *memory, personality, a bit of humour.*
+* **Looks after you** – medicines, schedule, heart rate, sleep.
+* **Keeps you in the loop** – reads your WhatsApp, replies for you, brings you news worth hearing.
+* **Your yoga instructor** – it watches through the camera, so "I did it" doesn't count.
+* **Actually good company** – memory, personality, a bit of humour.
 
 One Kiki across your desk, wrist, and phone — keeping your heart rate, sleep, falls, and surroundings in one place.
 
@@ -48,15 +48,15 @@ One Kiki across your desk, wrist, and phone — keeping your heart rate, sleep, 
 
 ## Problem Statement
 
-India faces recurring health crises during heat waves, floods, pollution events, and disease outbreaks. Vulnerable groups — elderly, outdoor workers, chronic patients — lack continuous, privacy-preserving health monitoring that works offline. The problem demands a secure, AI-powered Personal Health Companion that:
+India faces recurring health crises during heat waves, floods, pollution events, and disease outbreaks. Vulnerable groups — elderly, outdoor workers, chronic patients — lack continuous health monitoring that works offline. The problem demands a secure, AI-powered Personal Health Companion that:
 
-- Monitors heart rate, SpO₂, activity, sleep, and environmental conditions
-- Detects anomalies on-device (heat stress, dehydration, falls, respiratory distress)
-- Provides actionable alerts and emergency assistance
-- Preserves privacy and operates without internet
-- Supports voice-first interaction for low-literacy users
+* **Talks like it cares** — multilingual, voice-first, for people who won't open an app and can't always read one. A smartwatch hands you numbers and walks away; Kiki answers in about a second, remembers you, and asks how you're doing.
+* **Monitors heart rate, SpO₂, activity, sleep, and environmental conditions**
+* **Detects anomalies on-device** (heat stress, dehydration, falls, respiratory distress)
+* **Provides actionable alerts and emergency assistance**
+* **Preserves privacy and operates without internet**
 
-**Kiki Health Companion directly addresses all of these.**
+Kiki directly addresses all of these.
 
 ## Proposed Solution
 
