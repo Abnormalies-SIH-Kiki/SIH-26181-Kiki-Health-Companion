@@ -4,17 +4,16 @@
 
 ![Status](https://img.shields.io/badge/status-working%20prototype-brightgreen) ![License](https://img.shields.io/badge/license-MIT-blue) ![SIH](https://img.shields.io/badge/SIH-2026-orange)
 
-Kiki lives on your desk, learns your routines, and talks to you like a friend who actually remembers things[^memory]. When you step outside, the same companion moves with you onto your wrist.
+Kiki lives on your desk, learns your routines, and talks to you like a friend who actually remembers things[^memory]. Step outside and the same Kiki comes with you, on your wrist.
 
-* **Looks after you:** Reminds you about medicines, tracks your schedule, heart rate, activity, and whether you actually completed your exercise.
-* **Stays connected:** Reads your WhatsApp messages, catches you up, and can reply for you.
-* **Works even when you’re not talking:** Quietly follows your interests, finds news worth sharing, picks up relevant health insights, and watches for new messages.
-* **Builds a care plan with you:** Then keeps you accountable to it instead of letting it become another forgotten routine.
-* **Actually checks your exercise:** Kiki can guide yoga and, using its camera, verify that you performed the movement correctly rather than simply trusting that you did.
-* **Keeps you company:** All of this still feels like a conversation, with memory, personality, and a little humour.
-* **Shows the whole picture**: A companion app puts heart rate, sleep, fall history and the local heat and air-quality index on one screen.
+* ***Looks after you*** – *medicines, schedule, heart rate, sleep.*
+* ***Keeps you in the loop*** – *reads your WhatsApp, replies for you, brings you news worth hearing.*
+* ***Your yoga instructor*** – *it watches through the camera, so "I did it" doesn't count.*
+* ***Actually good company*** – *memory, personality, a bit of humour.*
 
-The desktop and wearable aren’t separate assistants — they’re the same Kiki, following you through your day.
+One Kiki across your desk, wrist, and phone — keeping your heart rate, sleep, falls, and surroundings in one place.
+
+**B – no bullets at all**
 
 ## Table of Contents
 
