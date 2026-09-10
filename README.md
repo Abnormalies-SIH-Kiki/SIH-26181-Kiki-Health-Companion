@@ -68,7 +68,7 @@ Both devices use a laptop for speech recognition, speech generation, and the loc
   <img width="300" alt="Real prototype- desktop" src="assets/screenshots/desktop-standalone.jpeg" />
 </p>
 <p>
-  <img width="450" alt="Real prototype - werable on hand" src="assets/screenshots/werable-on-hand.jpeg" />
+  <img width="450" alt="Real prototype - werable on hand" src="assets/screenshots/wearable-on-hand.jpeg" />
 </p>
 ## Key Features (Mapped to Problem Statement)
 
