@@ -28,6 +28,14 @@ One Kiki across your desk, wrist, and phone — keeping your heart rate, sleep, 
 - [Future Scope](#future-scope)
 
 ---
+<p align="center">
+  <h2>✨ 🌟 Project Demo Video 🌟 ✨</h2>
+  <a href="https://www.youtube.com/watch?v=SXq7fLjbRYM" target="_blank">
+    <img src="https://img.youtube.com/vi/SXq7fLjbRYM/maxresdefault.jpg" alt="Kiki Health Companion Demo Video" width="85%" style="border-radius: 10px;" />
+  </a>
+  <br />
+  <sub>✨ <strong>Click the image above to watch the full video on YouTube</strong> ✨</sub>
+</p>
 
 ## Project Information
 
