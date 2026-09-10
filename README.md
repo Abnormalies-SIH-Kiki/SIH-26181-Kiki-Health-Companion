@@ -13,8 +13,6 @@ Kiki lives on your desk, learns your routines, and talks to you like a friend wh
 
 One Kiki across your desk, wrist, and phone — keeping your heart rate, sleep, falls, and surroundings in one place.
 
-**B – no bullets at all**
-
 ## Table of Contents
 
 - [Project Information](#project-information)
