@@ -1,6 +1,6 @@
 # Personal Health Telemetry & ESP32 Edge-AI System
 
-A wearable health-telemetry and edge-AI pipeline for ESP32 (QMI8658 IMU + MAX30101 PPG).
+A wearable health-telemetry and edge-AI pipeline for ESP32 (QMI8658 IMU + MAX30102 PPG).
 
 Runs entirely on synthetic sensor data — no hardware needed to build, train, or test. The pipeline is sensor-agnostic by design, so this is a fully working concept today: swapping in real sensor reads is a two-function change in `main.cpp`, with nothing downstream to touch.
 
