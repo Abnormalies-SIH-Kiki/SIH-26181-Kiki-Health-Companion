@@ -125,11 +125,44 @@ Kiki targets exactly the groups the PS names as underserved: elderly citizens, o
 
 ## Architecture
 
-![System architecture](assets/CAD_model/renders/design_sheet.png)
+```mermaid
+graph LR
+    subgraph W["Wearable · ESP32-S3"]
+        HR["MAX30102<br/>HR + SpO2"]
+        IMU["QMI8658 IMU"]
+        FALL["Firmware<br/>Fall Detection"]
+        HR --> FALL
+        IMU --> FALL
+    end
 
-The Pi and wearable handle the physical inputs and outputs. The laptop runs inference and the wearable gateway. Our setup connects the machines through Tailscale. The local model has one inference slot, so background work must leave it available when someone speaks.
+    subgraph D["Desktop · Raspberry Pi 5"]
+        CAM["Camera + Hailo-8"]
+        ENV["BMP280 + Weather API"]
+        MOD["Desktop Module<br/>(Python)"]
+        CAM --> MOD
+        ENV --> MOD
+    end
 
-See [docs/architecture.md](docs/architecture.md) for the high-level data flow diagram, and the [engineering notes](docs/ENGINEERING.md) for the full technical detail — wiring, audio, latency, and the failures that shaped the build.
+    subgraph G["Gateway · Laptop"]
+        WS["WebSocket Server"]
+        LLM["LLM<br/>gemma-4-26B"]
+        SPEECH["Whisper STT<br/>OmniVoice TTS"]
+        RULES["Rule Engine<br/>Anomaly Detection"]
+        WS --> LLM
+        WS --> SPEECH
+        WS --> RULES
+    end
+
+    FALL -->|Wi-Fi| WS
+    MOD -->|Tailscale| WS
+    RULES --> VOICE["Kiki Voice Alert<br/>EN + HI"]
+    RULES --> ALERT["WhatsApp /<br/>Email Alert"]
+    WS --> DASH[("SQLite +<br/>Dashboard")]
+```
+
+Data flows left to right: the wearable streams vitals and fall events over Wi-Fi, the desktop sends camera and environmental context over Tailscale, and the gateway performs reasoning. Alerts and voice output flow back to the user and caregivers, while the dashboard reads from local storage.
+
+See [docs/architecture.md](docs/architecture.md) for the detailed data flow and [docs/ENGINEERING.md](docs/ENGINEERING.md) for the full technical notes.
 
 ## Run It
 
