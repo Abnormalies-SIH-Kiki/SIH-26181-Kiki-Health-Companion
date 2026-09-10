@@ -127,7 +127,7 @@ Kiki targets exactly the groups the PS names as underserved: elderly citizens, o
 | Wearable | Waveshare ESP32-S3-Touch-AMOLED-1.75, MAX30102, QMI8658 IMU, microphones and speaker, 1000 mAh battery |
 | Inference laptop | RTX 4060, llama.cpp with gemma-4-26B-A4B, whisper.cpp and OmniVoice |
 | Device software | Python desktop module and WebSocket gateway; C++ firmware on ESP-IDF 5.5 |
-| Cloud services | Cerebras for multi-step agents, Gemini for background reasoning |
+| Cloud services | Cerebras for multi-step agents (The Exercise Instructor), Gemini for background reasoning |
 | Analytics | Python, pandas and NumPy; Next.js/TypeScript dashboard with SQLite; optional TFLite experiment |
 
 ## Architecture
@@ -231,7 +231,7 @@ Change the serial port if your board appears elsewhere. More deployment details 
 
 ## What's Left
 
-Fall detection uses heuristic thresholds. We've tried it during development, but controlled physical acceptance testing and clinical validation are still pending. The MAX30102's SpO₂ estimate is uncalibrated and isn't treated as a health reading, even though an early prototype photo shows it on the display.
+The MAX30102's SpO₂ estimate is uncalibrated and isn't treated as a health reading, even though an early prototype photo shows it on the display.
 
 ## Future Scope
 
