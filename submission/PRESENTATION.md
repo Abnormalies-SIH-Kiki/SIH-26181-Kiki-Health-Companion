@@ -18,8 +18,6 @@
 | In this repository | [`submission/SIH26181_Team_Abnormalies_Presentation.pdf`](./SIH26181_Team_Abnormalies_Presentation.pdf) (8.6 MB, 6 slides) |
 | Google Drive (viewer link) | [SIH26181 Team Abnormalies](https://drive.google.com/file/d/19Gz7P0E8064CH7wUCHbpV1ZqjmQZaEzY/view) |
 
-Both point to the same deck. The in-repo PDF is the copy reviewers should use if the Drive link is unavailable.
-
 ## Related submission material
 
 - Demo video: [DEMO.md](DEMO.md) · [YouTube](https://www.youtube.com/watch?v=SXq7fLjbRYM)
