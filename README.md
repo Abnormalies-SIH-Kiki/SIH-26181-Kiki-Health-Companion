@@ -50,7 +50,7 @@ One Kiki across your desk, wrist, and phone — keeping your heart rate, sleep, 
 - **Category:** Hardware
 - **Theme:** MedTech / BioTech / HealthTech
 - **Team:**  Team Abnormalies, NSUT
-  - Suyash Srivastava — Team Lead, Hardware & CAD Design
+  - Suyash Srivastava — Hardware & CAD Design
   - Vaibhav Arora — Systems Architecture, AI & Voice Pipeline
   - Aditi Sharma — Backend Engineering & Database 
   - Chirag Goel — Technical Research, Pitch & Video Production
@@ -105,7 +105,7 @@ Every row below is implemented and running, not planned:
 <table>
   <tr>
     <td width="50%">
-      <img alt="Live dashboard showing heat risk, blood oxygen and heart rate" src="assets/screenshots/heartrate-sp02-ui.jpeg" />
+      <img alt="Live dashboard showing heat risk, blood oxygen and heart rate" src="assets/screenshots/daskboard-new.png" />
     </td>
     <td width="50%">
       <img alt="Live dashboard showing AQI and Weather" src="assets/screenshots/aqi-weather-ui.jpeg" />
@@ -113,10 +113,10 @@ Every row below is implemented and running, not planned:
   </tr>
   <tr>
     <td width="50%">
-      <img alt="Live dashboard showing Sleep Tracking" src="assets/screenshots/sleep-tracking-ui.jpeg" />
+      <img alt="Live dashboard showing Sleep Tracking" src="assets/screenshots/sleep-new.png" />
     </td>
     <td width="50%">
-      <img alt="Live dashboard showing Profile" src="assets/screenshots/profile-ui.jpeg" />
+      <img alt="Live dashboard showing Profile" src="assets/screenshots/profile-new.png" />
     </td>
   </tr>
 </table>
