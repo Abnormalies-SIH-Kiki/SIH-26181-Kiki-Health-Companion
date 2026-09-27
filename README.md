@@ -105,7 +105,7 @@ Every row below is implemented and running, not planned:
 <table>
   <tr>
     <td width="50%">
-      <img alt="Live dashboard showing heat risk, blood oxygen and heart rate" src="assets/screenshots/daskboard-new.png" />
+      <img alt="Live dashboard showing heat risk, blood oxygen and heart rate" src="assets/screenshots/ui-new.png" />
     </td>
     <td width="50%">
       <img alt="Live dashboard showing AQI and Weather" src="assets/screenshots/aqi-weather-ui.jpeg" />
