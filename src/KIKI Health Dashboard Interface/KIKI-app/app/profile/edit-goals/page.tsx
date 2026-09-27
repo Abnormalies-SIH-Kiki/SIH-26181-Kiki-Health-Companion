@@ -168,7 +168,7 @@ export default function EditGoals() {
                     className={`py-3 px-4 rounded-xl border text-sm font-semibold transition-all active:scale-95 flex items-center justify-between ${
                       steps === opt.val
                         ? 'bg-step-blue/15 border-step-blue text-step-blue shadow-sm'
-                        : 'bg-surface-container border-white/[0.04] text-on-surface-variant hover:text-white'
+                        : 'bg-surface-container border-white/[0.04] text-on-surface-variant hover:text-on-surface'
                     }`}
                   >
                     <span>{opt.val.toLocaleString()}</span>
@@ -224,7 +224,7 @@ export default function EditGoals() {
                     className={`py-3 px-4 rounded-xl border text-sm font-semibold transition-all active:scale-95 flex items-center justify-between ${
                       calories === opt.val
                         ? 'bg-calorie-green/15 border-calorie-green text-calorie-green shadow-sm'
-                        : 'bg-surface-container border-white/[0.04] text-on-surface-variant hover:text-white'
+                        : 'bg-surface-container border-white/[0.04] text-on-surface-variant hover:text-on-surface'
                     }`}
                   >
                     <span>{opt.val}</span>
@@ -257,7 +257,7 @@ export default function EditGoals() {
 
               <Link
                 href="/profile"
-                className="w-full py-3 px-6 rounded-xl bg-surface-container text-on-surface-variant font-medium text-sm flex items-center justify-center transition-colors hover:text-white text-center"
+                className="w-full py-3 px-6 rounded-xl bg-surface-container-high text-on-surface-variant font-medium text-sm flex items-center justify-center transition-colors hover:text-on-surface text-center"
               >
                 Cancel
               </Link>

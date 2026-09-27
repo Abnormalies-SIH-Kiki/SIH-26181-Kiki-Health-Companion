@@ -42,10 +42,10 @@ export default function HighHeartRateAlert() {
   };
 
   return (
-    <div className="min-h-screen bg-[#070708] text-white flex justify-center selection:bg-surface-container-high pb-safe">
+    <div className="min-h-screen bg-primary-container text-white flex justify-center selection:bg-surface-container-high pb-safe">
       <div className="w-full max-w-md min-h-screen flex flex-col relative px-4 pb-12">
         {/* Top Navigation Header */}
-        <header className="sticky top-0 w-full z-50 pt-safe bg-[#070708]/90 backdrop-blur-xl border-b border-white/5 h-16 flex items-center justify-between">
+        <header className="sticky top-0 w-full z-50 pt-safe bg-primary-container/90 backdrop-blur-xl border-b border-white/5 h-16 flex items-center justify-between">
           <div className="flex items-center gap-3">
             <Link
               href="/heart-rate-alerts"
@@ -76,7 +76,7 @@ export default function HighHeartRateAlert() {
         {/* Main Content Area */}
         <main className="flex-1 w-full pt-4 flex flex-col">
           {/* Biometric Metric Ambient Strip / Compact Summary Card */}
-          <div className="relative w-full rounded-2xl bg-[#1C1C1E] p-5 overflow-hidden mb-5 border border-white/5 shadow-sm">
+          <div className="relative w-full rounded-2xl bg-surface-container-high p-5 overflow-hidden mb-5 border border-white/5 shadow-sm">
             <div className="absolute -top-12 -right-12 w-36 h-36 rounded-full bg-[#EF4444]/10 blur-2xl pointer-events-none"></div>
             <div className="flex items-start justify-between relative z-10">
               <div className="flex items-center gap-3.5">
@@ -135,14 +135,14 @@ export default function HighHeartRateAlert() {
                   type="button"
                   className={`text-left p-3.5 rounded-xl transition-all flex flex-col justify-between h-[96px] relative overflow-hidden group focus:outline-none border ${
                     isSelected
-                      ? 'bg-[#2a2a2a] border-white/20 shadow-md scale-[1.01]'
-                      : 'bg-[#1C1C1E] border-white/5 hover:bg-zinc-800'
+                      ? 'bg-surface-container border-white/20 shadow-md scale-[1.01]'
+                      : 'bg-surface-container-high border-white/5 hover:bg-zinc-800'
                   }`}
                 >
                   <div className="flex items-center justify-between w-full">
                     <div
                       className={`w-8 h-8 rounded-full flex items-center justify-center transition-colors ${
-                        isSelected ? 'bg-[#1C1C1E] text-white' : 'bg-zinc-900 text-zinc-400'
+                        isSelected ? 'bg-surface-container-high text-white' : 'bg-zinc-900 text-zinc-400'
                       }`}
                     >
                       <span className="material-symbols-outlined text-[18px]">{symptom.icon}</span>
@@ -162,7 +162,7 @@ export default function HighHeartRateAlert() {
           </div>
 
           {/* Clinical Advisory Card */}
-          <div className="w-full rounded-xl bg-[#1C1C1E] border border-white/5 p-4 flex items-start gap-3.5 mb-4">
+          <div className="w-full rounded-xl bg-surface-container-high border border-white/5 p-4 flex items-start gap-3.5 mb-4">
             <div className="w-8 h-8 rounded-full bg-[#EF4444]/10 border border-[#EF4444]/20 flex items-center justify-center text-[#EF4444] shrink-0 mt-0.5">
               <span className="material-symbols-outlined text-[18px]">medical_services</span>
             </div>
@@ -175,7 +175,7 @@ export default function HighHeartRateAlert() {
           </div>
 
           {/* Continuous Sensor Sync Card */}
-          <div className="w-full rounded-xl bg-[#1C1C1E] border border-white/5 p-4 flex items-center justify-between mb-6">
+          <div className="w-full rounded-xl bg-surface-container-high border border-white/5 p-4 flex items-center justify-between mb-6">
             <div className="flex items-center gap-3">
               <div className="w-9 h-9 rounded-full bg-zinc-900 border border-white/5 flex items-center justify-center text-[#22C55E]">
                 <span className="material-symbols-outlined text-[19px]">watch</span>

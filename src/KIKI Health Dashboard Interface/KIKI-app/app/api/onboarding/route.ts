@@ -5,14 +5,14 @@ import { revalidatePath } from 'next/cache';
 export async function POST(request: Request) {
   try {
     const data = await request.json();
-    const { name, gender, age, city, country, steps, calories } = data;
+    const { name, gender, age, weight, height, bloodGroup, city, country, steps, calories } = data;
 
     const [firstName, ...lastNameParts] = (name || 'User').trim().split(' ');
     const lastName = lastNameParts.join(' ');
 
     const stmt = db.prepare(`
-      INSERT INTO users (first_name, last_name, age, gender, location, daily_steps_goal, daily_calories_goal)
-      VALUES (?, ?, ?, ?, ?, ?, ?)
+      INSERT INTO users (first_name, last_name, age, gender, blood_group, height, weight, location, daily_steps_goal, daily_calories_goal)
+      VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
     `);
 
     const result = stmt.run(
@@ -20,6 +20,9 @@ export async function POST(request: Request) {
       lastName || '',
       parseInt(age) || 25,
       gender || 'Prefer not to say',
+      bloodGroup || 'O+',
+      parseFloat(height) || null,
+      parseFloat(weight) || null,
       `${city || 'San Francisco'}, ${country || 'US'}`,
       parseInt(steps) || 8000,
       parseInt(calories) || 500

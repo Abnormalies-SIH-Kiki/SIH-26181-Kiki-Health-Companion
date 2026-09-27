@@ -11,7 +11,7 @@ export default function Weatherindexpage() {
 
   return (
     <>
-      <header className="fixed top-0 left-0 right-0 z-40 w-full bg-[#0a0a0c]/90 backdrop-blur-md border-b border-white/[0.06] px-5 py-3.5 flex items-center justify-between transition-all duration-300">
+      <header className="fixed top-0 left-0 right-0 z-40 w-full bg-primary-container/90 backdrop-blur-md border-b border-white/[0.06] px-5 py-3.5 flex items-center justify-between transition-all duration-300">
         <div className="flex items-center gap-3">
           <div className="w-10 h-10 rounded-full border border-white/10 bg-primary flex items-center justify-center font-bold text-[18px] text-on-primary">
             {user.first_name[0]}{user.last_name ? user.last_name[0] : ''}
@@ -342,7 +342,7 @@ export default function Weatherindexpage() {
         </div>
       </main>
 
-      <nav className="fixed bottom-0 left-0 right-0 z-50 bg-[#0a0a0c]/95 backdrop-blur-xl border-t border-white/[0.08] px-6 py-2.5 pb-[max(0.75rem,env(safe-area-inset-bottom))] flex justify-around items-center">
+      <nav className="fixed bottom-0 left-0 right-0 z-50 bg-primary-container/95 backdrop-blur-xl border-t border-white/[0.08] px-6 py-2.5 pb-[max(0.75rem,env(safe-area-inset-bottom))] flex justify-around items-center">
         <Link href="/dashboard" className="text-neutral-400 hover:text-neutral-200 font-medium flex flex-col items-center gap-1 px-3 py-1 transition-colors duration-200">
           <span className="material-symbols-outlined text-[22px] leading-none" style={{fontVariationSettings: "'FILL' 0"}}>home</span>
           <span className="text-[11px] tracking-normal whitespace-nowrap">Home</span>

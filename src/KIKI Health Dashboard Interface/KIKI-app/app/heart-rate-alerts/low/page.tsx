@@ -46,10 +46,10 @@ export default function LowHeartRateAlert() {
   };
 
   return (
-    <div className="min-h-screen bg-[#070708] text-white flex justify-center selection:bg-zinc-800 pb-safe">
+    <div className="min-h-screen bg-primary-container text-white flex justify-center selection:bg-zinc-800 pb-safe">
       <div className="w-full max-w-md min-h-screen flex flex-col relative px-4 pb-12">
         {/* Top Header */}
-        <header className="sticky top-0 w-full z-50 pt-safe bg-[#070708]/90 backdrop-blur-xl border-b border-white/5 h-16 flex items-center justify-between">
+        <header className="sticky top-0 w-full z-50 pt-safe bg-primary-container/90 backdrop-blur-xl border-b border-white/5 h-16 flex items-center justify-between">
           <div className="flex items-center gap-3">
             <Link
               href="/heart-rate-alerts"
@@ -80,7 +80,7 @@ export default function LowHeartRateAlert() {
         {/* Main Content Area */}
         <main className="flex-1 w-full pt-4 flex flex-col space-y-4">
           {/* Biometric Reading Summary Banner */}
-          <section className="w-full bg-[#1C1C1E] rounded-2xl p-5 flex flex-col gap-4 shadow-md relative overflow-hidden border border-white/5">
+          <section className="w-full bg-surface-container-high rounded-2xl p-5 flex flex-col gap-4 shadow-md relative overflow-hidden border border-white/5">
             <div className="absolute -right-8 -top-8 w-36 h-36 bg-[#53e16f]/10 rounded-full blur-3xl pointer-events-none"></div>
             
             <div className="flex items-center justify-between relative z-10">
@@ -147,8 +147,8 @@ export default function LowHeartRateAlert() {
                     type="button"
                     className={`text-left p-4 rounded-xl border transition-all flex flex-col justify-between gap-3 min-h-[96px] group active:scale-[0.98] ${
                       isSelected
-                        ? 'bg-[#2a2a2a] border-[#53e16f]/40 shadow-md scale-[1.01]'
-                        : 'bg-[#1C1C1E] border-white/5 hover:bg-zinc-800'
+                        ? 'bg-surface-container border-[#53e16f]/40 shadow-md scale-[1.01]'
+                        : 'bg-surface-container-high border-white/5 hover:bg-zinc-800'
                     }`}
                   >
                     <div className="flex items-center justify-between w-full">
@@ -176,7 +176,7 @@ export default function LowHeartRateAlert() {
           </section>
 
           {/* Clinical Emergency Advisory */}
-          <section className="w-full bg-[#1C1C1E] rounded-xl p-4 flex gap-3.5 items-start border border-white/5">
+          <section className="w-full bg-surface-container-high rounded-xl p-4 flex gap-3.5 items-start border border-white/5">
             <div className="w-8 h-8 rounded-full bg-rose-950/40 border border-rose-500/20 flex items-center justify-center flex-shrink-0 text-rose-500 mt-0.5">
               <span className="material-symbols-outlined text-[18px]" style={{ fontVariationSettings: "'FILL' 1" }}>
                 warning
@@ -215,7 +215,7 @@ export default function LowHeartRateAlert() {
             </button>
             <button
               onClick={handleFeelFine}
-              className="w-full h-12 rounded-full bg-[#1C1C1E] text-zinc-300 font-semibold text-sm flex items-center justify-center gap-2 hover:bg-zinc-800 border border-white/5 transition-all active:scale-[0.98]"
+              className="w-full h-12 rounded-full bg-surface-container-high text-zinc-300 font-semibold text-sm flex items-center justify-center gap-2 hover:bg-zinc-800 border border-white/5 transition-all active:scale-[0.98]"
               type="button"
             >
               <span className="material-symbols-outlined text-[19px] text-[#53e16f]">sentiment_satisfied</span>

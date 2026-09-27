@@ -9,6 +9,9 @@ export default function EditProfile() {
   const [name, setName] = useState('');
   const [gender, setGender] = useState('Prefer not to say');
   const [age, setAge] = useState(28);
+  const [weight, setWeight] = useState('');
+  const [height, setHeight] = useState('');
+  const [bloodGroup, setBloodGroup] = useState('O+');
   const [loading, setLoading] = useState(true);
   const [isSaving, setIsSaving] = useState(false);
 
@@ -21,6 +24,9 @@ export default function EditProfile() {
           setName(`${u.first_name || ''} ${u.last_name || ''}`.trim());
           if (u.gender) setGender(u.gender);
           if (u.age) setAge(u.age);
+          if (u.weight) setWeight(u.weight.toString());
+          if (u.height) setHeight(u.height.toString());
+          if (u.blood_group) setBloodGroup(u.blood_group);
         }
         setLoading(false);
       })
@@ -41,6 +47,9 @@ export default function EditProfile() {
           name,
           gender,
           age,
+          weight,
+          height,
+          bloodGroup,
         }),
       });
 
@@ -163,33 +172,88 @@ export default function EditProfile() {
             {/* Age Selector */}
             <div className="flex flex-col gap-2">
               <div className="flex items-center justify-between">
-                <label className="text-[11px] text-[#a09aab] uppercase tracking-wider font-semibold">AGE</label>
-                <span className="text-[13px] text-cyan-300 font-medium">
-                  <span className="text-white font-bold text-[15px]">{age}</span> years old
+                <label className="text-[11px] text-on-surface-variant uppercase tracking-wider font-semibold">AGE</label>
+                <span className="text-[13px] text-cyan-500 font-medium">
+                  <span className="text-on-surface font-bold text-[15px]">{age}</span> years old
                 </span>
               </div>
               <div
-                className="relative flex items-center justify-center rounded-2xl p-4 border border-cyan-500/20 shadow-sm overflow-hidden bg-[#141417]"
+                className="relative flex items-center justify-center rounded-2xl p-4 border border-cyan-500/20 shadow-sm overflow-hidden bg-surface-container"
               >
                 <div className="flex items-center justify-between w-full max-w-[280px] z-10 select-none">
                   <button
                     type="button"
                     onClick={() => setAge(Math.max(14, age - 1))}
-                    className="w-10 h-10 rounded-full bg-surface-container flex items-center justify-center text-neutral-300 hover:text-white transition-colors active:scale-95"
+                    className="w-10 h-10 rounded-full bg-surface-container-high flex items-center justify-center text-on-surface-variant hover:text-on-surface transition-colors active:scale-95"
                   >
                     <span className="material-symbols-outlined text-[22px]">chevron_left</span>
                   </button>
                   <div className="flex items-center justify-center gap-4 flex-1">
-                    <span className="text-[26px] text-white font-bold px-3 py-0.5 rounded-lg">{age}</span>
+                    <span className="text-[26px] text-on-surface font-bold px-3 py-0.5 rounded-lg">{age}</span>
                   </div>
                   <button
                     type="button"
                     onClick={() => setAge(Math.min(100, age + 1))}
-                    className="w-10 h-10 rounded-full bg-surface-container flex items-center justify-center text-neutral-300 hover:text-white transition-colors active:scale-95"
+                    className="w-10 h-10 rounded-full bg-surface-container-high flex items-center justify-center text-on-surface-variant hover:text-on-surface transition-colors active:scale-95"
                   >
                     <span className="material-symbols-outlined text-[22px]">chevron_right</span>
                   </button>
                 </div>
+              </div>
+            </div>
+
+            {/* Weight & Height Row */}
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
+              <div className="flex flex-col gap-2">
+                <label className="font-label-caps text-[12px] font-bold text-on-surface-variant uppercase" htmlFor="weight-input">Weight (kg)</label>
+                <div className="relative flex items-center bg-surface-container rounded-xl px-4 py-3.5 shadow-sm border border-white/[0.05] focus-within:border-cyan-500/50 transition-colors h-[52px]">
+                  <span className="material-symbols-outlined text-cyan-400 text-[20px] mr-3">monitor_weight</span>
+                  <input 
+                    className="bg-transparent font-body-md text-[16px] text-on-surface w-full focus:outline-none placeholder-on-surface-variant/50" 
+                    id="weight-input" 
+                    placeholder="e.g. 70" 
+                    type="number"
+                    min="0"
+                    step="0.1"
+                    value={weight}
+                    onChange={(e) => setWeight(e.target.value)}
+                  />
+                </div>
+              </div>
+
+              <div className="flex flex-col gap-2">
+                <label className="font-label-caps text-[12px] font-bold text-on-surface-variant uppercase" htmlFor="height-input">Height (cm)</label>
+                <div className="relative flex items-center bg-surface-container rounded-xl px-4 py-3.5 shadow-sm border border-white/[0.05] focus-within:border-cyan-500/50 transition-colors h-[52px]">
+                  <span className="material-symbols-outlined text-cyan-400 text-[20px] mr-3">height</span>
+                  <input 
+                    className="bg-transparent font-body-md text-[16px] text-on-surface w-full focus:outline-none placeholder-on-surface-variant/50" 
+                    id="height-input" 
+                    placeholder="e.g. 175" 
+                    type="number"
+                    min="0"
+                    step="1"
+                    value={height}
+                    onChange={(e) => setHeight(e.target.value)}
+                  />
+                </div>
+              </div>
+            </div>
+
+            {/* Blood Group */}
+            <div className="flex flex-col gap-2">
+              <label className="font-label-caps text-[12px] font-bold text-on-surface-variant uppercase">Blood Group</label>
+              <div className="relative flex items-center bg-surface-container rounded-xl px-4 py-3 shadow-sm border border-white/[0.05] focus-within:border-cyan-500/50 transition-colors h-[52px]">
+                <span className="material-symbols-outlined text-cyan-400 text-[20px] mr-3">bloodtype</span>
+                <select 
+                  value={bloodGroup}
+                  onChange={(e) => setBloodGroup(e.target.value)}
+                  className="bg-transparent font-body-md text-[16px] text-on-surface w-full focus:outline-none appearance-none"
+                >
+                  {['A+', 'A-', 'B+', 'B-', 'AB+', 'AB-', 'O+', 'O-'].map(bg => (
+                    <option key={bg} value={bg} className="bg-surface-container text-on-surface">{bg}</option>
+                  ))}
+                </select>
+                <span className="material-symbols-outlined text-on-surface-variant text-[20px] pointer-events-none absolute right-4">expand_more</span>
               </div>
             </div>
 
@@ -216,7 +280,7 @@ export default function EditProfile() {
 
               <Link
                 href="/profile"
-                className="w-full py-3 px-6 rounded-xl bg-surface-container text-on-surface-variant font-medium text-sm flex items-center justify-center transition-colors hover:text-white text-center"
+                className="w-full py-3 px-6 rounded-xl bg-surface-container-high text-on-surface-variant font-medium text-sm flex items-center justify-center transition-colors hover:text-on-surface text-center"
               >
                 Cancel
               </Link>

@@ -2,6 +2,7 @@
 import { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import NamasteCalligraphy from '@/components/NamasteCalligraphy';
+import { ThemeToggle } from '@/components/ThemeToggle';
 
 export default function DailyGoals() {
   const router = useRouter();
@@ -49,6 +50,9 @@ export default function DailyGoals() {
     const name = localStorage.getItem('onboarding_name');
     const gender = localStorage.getItem('onboarding_gender');
     const age = localStorage.getItem('onboarding_age');
+    const weight = localStorage.getItem('onboarding_weight');
+    const height = localStorage.getItem('onboarding_height');
+    const bloodGroup = localStorage.getItem('onboarding_bloodGroup');
     const city = localStorage.getItem('onboarding_city');
     const country = localStorage.getItem('onboarding_country');
 
@@ -57,7 +61,7 @@ export default function DailyGoals() {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
-          name, gender, age, city, country, steps, calories
+          name, gender, age, weight, height, bloodGroup, city, country, steps, calories
         })
       });
 
@@ -67,6 +71,9 @@ export default function DailyGoals() {
         localStorage.removeItem('onboarding_name');
         localStorage.removeItem('onboarding_gender');
         localStorage.removeItem('onboarding_age');
+        localStorage.removeItem('onboarding_weight');
+        localStorage.removeItem('onboarding_height');
+        localStorage.removeItem('onboarding_bloodGroup');
         localStorage.removeItem('onboarding_city');
         localStorage.removeItem('onboarding_country');
 
@@ -93,7 +100,7 @@ export default function DailyGoals() {
     return (
       <div className="flex items-center justify-center min-h-screen bg-surface">
         <div className="flex flex-col items-center gap-3">
-          <div className="w-10 h-10 border-2 border-[#ff7034] border-t-transparent rounded-full animate-spin"></div>
+          <div className="w-10 h-10 border-2 border-primary border-t-transparent rounded-full animate-spin"></div>
           <p className="text-xs text-on-surface-variant font-medium">Checking session...</p>
         </div>
       </div>
@@ -109,9 +116,7 @@ export default function DailyGoals() {
               <span className="material-symbols-outlined text-[24px]">arrow_back</span>
             </button>
             <span className="font-headline-md text-[20px] font-semibold text-on-surface text-center">Health Goals</span>
-            <div className="w-8 h-8 rounded-full bg-primary flex items-center justify-center">
-              <span className="material-symbols-outlined text-on-primary text-[18px]">person</span>
-            </div>
+            <ThemeToggle />
           </div>
           <div className="w-full flex items-center gap-3 pt-2">
             <div className="flex-1 h-1 bg-surface-container-highest rounded-full overflow-hidden">

@@ -23,7 +23,7 @@ const alertTypes = [
 
 export default function HeartRateAlertsMenu() {
   return (
-    <div className="flex flex-col relative w-full pt-4 pb-28 bg-[#070708] min-h-screen px-4">
+    <div className="flex flex-col relative w-full pt-4 pb-28 bg-primary-container min-h-screen px-4">
       <header className="flex items-center justify-between py-3 mb-2 pt-10">
         <Link href="/profile" className="w-11 h-11 flex items-center justify-center -ml-2 rounded-full text-zinc-400 hover:text-white transition-colors" type="button">
           <span className="material-symbols-outlined text-[24px]">arrow_back</span>
@@ -37,7 +37,7 @@ export default function HeartRateAlertsMenu() {
           <Link 
             key={alert.id}
             href={`/heart-rate-alerts/${alert.id}`} 
-            className="flex items-center justify-between p-4 bg-[#141417] border border-zinc-800/80 rounded-2xl hover:bg-zinc-800/40 active:bg-zinc-800/70 transition-colors group"
+            className="flex items-center justify-between p-4 bg-surface-container border border-zinc-800/80 rounded-2xl hover:bg-zinc-800/40 active:bg-zinc-800/70 transition-colors group"
           >
             <div className="flex items-center gap-4">
               <div className={`w-12 h-12 rounded-xl ${alert.bg} border ${alert.border} flex items-center justify-center ${alert.color} group-hover:scale-105 transition-transform`}>

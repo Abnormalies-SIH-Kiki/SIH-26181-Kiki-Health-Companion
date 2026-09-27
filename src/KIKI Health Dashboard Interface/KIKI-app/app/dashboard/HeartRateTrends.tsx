@@ -39,17 +39,17 @@ export default function HeartRateTrends() {
   const logs = timeRange === 'TODAY' ? todayLogs : weekLogs;
 
   return (
-    <div className="bg-[#1C1C1E] metric-group-glow rounded-xl p-6 mb-4 border border-[rgba(255,255,255,0.05)] transition-all">
+    <div className="bg-surface-container-high metric-group-glow rounded-xl p-6 mb-4 border border-[rgba(255,255,255,0.05)] transition-all">
       {/* Header with Switcher and Filter Controls */}
       <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 mb-5">
         <div className="flex items-center justify-between w-full sm:w-auto gap-3">
           {/* Graph vs Summary Toggle */}
-          <div className="flex items-center gap-1 p-1 bg-[#121212] rounded-full border border-[rgba(255,255,255,0.05)]">
+          <div className="flex items-center gap-1 p-1 bg-surface-container-highest rounded-full border border-[rgba(255,255,255,0.05)]">
             <button
               onClick={() => setViewMode('graph')}
               className={`text-[12px] px-4 py-1.5 rounded-full transition-all duration-200 whitespace-nowrap ${
                 viewMode === 'graph'
-                  ? 'font-semibold bg-[#2A2A2A] text-white shadow-sm'
+                  ? 'font-semibold bg-surface-container text-white shadow-sm'
                   : 'font-medium text-neutral-400 hover:text-white'
               }`}
             >
@@ -59,7 +59,7 @@ export default function HeartRateTrends() {
               onClick={() => setViewMode('summary')}
               className={`text-[12px] px-4 py-1.5 rounded-full transition-all duration-200 whitespace-nowrap flex items-center gap-1.5 ${
                 viewMode === 'summary'
-                  ? 'font-semibold bg-[#2A2A2A] text-white shadow-sm'
+                  ? 'font-semibold bg-surface-container text-white shadow-sm'
                   : 'font-medium text-neutral-400 hover:text-white'
               }`}
             >
@@ -74,14 +74,14 @@ export default function HeartRateTrends() {
 
         {/* Time range pill buttons */}
         <div className="flex justify-end w-full sm:w-auto">
-          <div className="flex items-center gap-1.5 bg-[#121212] p-1 rounded-full border border-[rgba(255,255,255,0.05)]">
+          <div className="flex items-center gap-1.5 bg-surface-container-highest p-1 rounded-full border border-[rgba(255,255,255,0.05)]">
             {(['TODAY', '7D', '14D', '30D'] as TimeRange[]).map((range) => (
               <button
                 key={range}
                 onClick={() => setTimeRange(range)}
                 className={`text-[11px] px-3 py-1 rounded-full transition-all whitespace-nowrap ${
                   timeRange === range
-                    ? 'font-bold bg-[#2A2A2A] text-white shadow-sm'
+                    ? 'font-bold bg-surface-container text-white shadow-sm'
                     : 'font-medium text-neutral-400 hover:text-white'
                 }`}
               >
@@ -139,7 +139,7 @@ export default function HeartRateTrends() {
           {logs.map((item, index) => (
             <div
               key={index}
-              className="bg-[#141416]/80 border border-white/[0.06] hover:border-white/[0.14] rounded-xl p-2.5 px-3 flex items-center justify-between transition-all duration-200 group"
+              className="bg-surface-container/80 border border-white/[0.06] hover:border-white/[0.14] rounded-xl p-2.5 px-3 flex items-center justify-between transition-all duration-200 group"
             >
               {/* Left Side: Icon & Timing Details */}
               <div className="flex items-center gap-3">

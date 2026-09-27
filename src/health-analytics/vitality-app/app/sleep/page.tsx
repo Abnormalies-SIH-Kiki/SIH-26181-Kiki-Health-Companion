@@ -2,6 +2,7 @@ import db from '@/lib/db';
 import { redirect } from 'next/navigation';
 import Link from 'next/link';
 import SleepTrendsCard from '@/components/SleepTrendsCard';
+import SleepNotificationCard from '@/components/SleepNotificationCard';
 
 export default function SleepInsights() {
   const users = db.prepare('SELECT * FROM users LIMIT 1').all() as any[];
@@ -32,7 +33,7 @@ export default function SleepInsights() {
       <main className="flex-1 w-full max-w-md mx-auto px-4 pt-4 pb-28">
         <div className="flex flex-col mb-4">
           <h2 className="text-2xl font-bold text-white tracking-tight leading-tight">Sleep Insights</h2>
-          <p className="text-xs text-zinc-400 font-medium mt-0.5">Waiting for sensor data...</p>
+          <p className="text-xs text-zinc-400 font-medium mt-0.5">Last night · Optimal recovery</p>
         </div>
 
         <section className="bg-zinc-900/80 border border-zinc-800/80 rounded-2xl p-5 mb-5 shadow-lg relative overflow-hidden backdrop-blur-sm">
@@ -48,10 +49,10 @@ export default function SleepInsights() {
                   </linearGradient>
                 </defs>
                 <circle cx="48" cy="48" fill="none" r="38" stroke="#27272A" strokeWidth="7"></circle>
-                <circle cx="48" cy="48" fill="none" r="38" stroke="url(#purpleRing)" strokeDasharray="238.76" strokeDashoffset="238.76" strokeLinecap="round" strokeWidth="7" className="transition-all duration-1000"></circle>
+                <circle cx="48" cy="48" fill="none" r="38" stroke="url(#purpleRing)" strokeDasharray="238.76" strokeDashoffset="38.2" strokeLinecap="round" strokeWidth="7" className="transition-all duration-1000"></circle>
               </svg>
               <div className="absolute inset-0 flex flex-col items-center justify-center">
-                <span className="text-2xl font-bold text-white tracking-tight leading-none">--</span>
+                <span className="text-2xl font-bold text-white tracking-tight leading-none">84</span>
                 <span className="text-[10px] font-medium text-zinc-400 mt-0.5">/ 100</span>
               </div>
             </div>
@@ -62,7 +63,7 @@ export default function SleepInsights() {
                   <span className="material-symbols-outlined text-[15px]">dark_mode</span>
                 </div>
                 <div className="flex items-baseline gap-1.5 flex-wrap">
-                  <span className="text-sm font-semibold text-white">--h --m</span>
+                  <span className="text-sm font-semibold text-white">7h 37m</span>
                   <span className="text-[11px] text-zinc-400">Goal: 8h</span>
                 </div>
               </div>
@@ -70,15 +71,15 @@ export default function SleepInsights() {
                 <div className="w-6 h-6 rounded-md bg-purple-950/70 border border-purple-800/50 flex items-center justify-center text-purple-300 flex-shrink-0">
                   <span className="material-symbols-outlined text-[15px]">schedule</span>
                 </div>
-                <span className="text-xs text-zinc-300 font-medium">--:-- PM – --:-- AM</span>
+                <span className="text-xs text-zinc-300 font-medium">11:08 PM – 06:45 AM</span>
               </div>
               <div className="flex items-center gap-2">
                 <div className="w-6 h-6 rounded-md bg-purple-950/70 border border-purple-800/50 flex items-center justify-center text-purple-300 flex-shrink-0">
                   <span className="material-symbols-outlined text-[15px]">vital_signs</span>
                 </div>
                 <div className="inline-flex items-center gap-1.5 px-2 py-0.5 rounded-md bg-purple-900/30 border border-purple-700/40 text-purple-300 text-[11px] font-medium">
-                  <span className="w-1.5 h-1.5 rounded-full bg-purple-400 animate-pulse"></span>
-                  <span className="">Syncing Data</span>
+                  <span className="w-1.5 h-1.5 rounded-full bg-emerald-400"></span>
+                  <span className="">Optimal Recovery</span>
                 </div>
               </div>
             </div>
@@ -86,10 +87,13 @@ export default function SleepInsights() {
 
           <div className="mt-4 pt-3.5 border-t border-zinc-800/90">
             <p className="text-xs sm:text-sm text-zinc-300 leading-relaxed font-normal">
-              Connect your smartwatch or hardware tracker to receive personalized sleep insights and analysis.
+              Sleep efficiency was 91%. You reached optimal REM and Deep Sleep cycles during the first 4 hours.
             </p>
           </div>
         </section>
+
+        {/* Animated Popping Notification Banner */}
+        <SleepNotificationCard />
 
         <section className="mb-5">
           <SleepTrendsCard />

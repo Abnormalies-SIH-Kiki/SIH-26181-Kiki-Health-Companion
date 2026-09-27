@@ -2,6 +2,7 @@ import db from '@/lib/db';
 import { redirect } from 'next/navigation';
 import Link from 'next/link';
 import SleepTrendsCard from '@/components/SleepTrendsCard';
+import SleepNotificationCard from '@/components/SleepNotificationCard';
 
 export default function SleepInsights() {
   const users = db.prepare('SELECT * FROM users LIMIT 1').all() as any[];
@@ -12,7 +13,7 @@ export default function SleepInsights() {
 
   return (
     <>
-      <header className="sticky top-0 z-40 w-full bg-[#0a0a0c]/90 backdrop-blur-md border-b border-white/[0.06] px-5 py-3.5 flex items-center justify-between">
+      <header className="sticky top-0 z-40 w-full bg-primary-container/90 backdrop-blur-md border-b border-white/[0.06] px-5 py-3.5 flex items-center justify-between">
         <div className="flex items-center gap-3.5">
           <div className="w-10 h-10 rounded-full border border-white/10 bg-primary flex items-center justify-center font-bold text-[18px] text-on-primary">
             {user.first_name[0]}{user.last_name ? user.last_name[0] : ''}
@@ -62,7 +63,7 @@ export default function SleepInsights() {
                   <span className="material-symbols-outlined text-[15px]">dark_mode</span>
                 </div>
                 <div className="flex items-baseline gap-1.5 flex-wrap">
-                  <span className="text-sm font-semibold text-white">7h 42m</span>
+                  <span className="text-sm font-semibold text-white">7h 37m</span>
                   <span className="text-[11px] text-zinc-400">Goal: 8h</span>
                 </div>
               </div>
@@ -70,7 +71,7 @@ export default function SleepInsights() {
                 <div className="w-6 h-6 rounded-md bg-purple-950/70 border border-purple-800/50 flex items-center justify-center text-purple-300 flex-shrink-0">
                   <span className="material-symbols-outlined text-[15px]">schedule</span>
                 </div>
-                <span className="text-xs text-zinc-300 font-medium">11:15 PM – 06:57 AM</span>
+                <span className="text-xs text-zinc-300 font-medium">11:08 PM – 06:45 AM</span>
               </div>
               <div className="flex items-center gap-2">
                 <div className="w-6 h-6 rounded-md bg-purple-950/70 border border-purple-800/50 flex items-center justify-center text-purple-300 flex-shrink-0">
@@ -90,6 +91,9 @@ export default function SleepInsights() {
             </p>
           </div>
         </section>
+
+        {/* Animated Popping Notification Banner */}
+        <SleepNotificationCard />
 
         <section className="mb-5">
           <SleepTrendsCard />
@@ -182,7 +186,7 @@ export default function SleepInsights() {
 
       </main>
 
-      <nav className="fixed bottom-0 left-0 right-0 z-50 bg-[#0a0a0c]/95 backdrop-blur-xl border-t border-white/[0.08] px-6 py-2.5 pb-[max(0.75rem,env(safe-area-inset-bottom))] flex justify-around items-center">
+      <nav className="fixed bottom-0 left-0 right-0 z-50 bg-primary-container/95 backdrop-blur-xl border-t border-white/[0.08] px-6 py-2.5 pb-[max(0.75rem,env(safe-area-inset-bottom))] flex justify-around items-center">
         <Link href="/dashboard" className="text-neutral-400 hover:text-neutral-200 font-medium flex flex-col items-center gap-1 px-3 py-1 transition-colors duration-200">
           <span className="material-symbols-outlined text-[22px] leading-none" style={{fontVariationSettings: "'FILL' 0"}}>home</span>
           <span className="text-[11px] tracking-normal whitespace-nowrap">Home</span>

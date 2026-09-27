@@ -11,14 +11,14 @@ export default function FallDetectionAlerts() {
   ];
 
   return (
-    <div className="min-h-screen bg-[#070708] text-white flex justify-center selection:bg-[#4A1985] selection:text-white pb-28">
+    <div className="min-h-screen bg-primary-container text-white flex justify-center selection:bg-[#4A1985] selection:text-white pb-28">
       <div className="w-full max-w-md min-h-screen flex flex-col relative px-4 pt-4">
         {/* Top Header */}
-        <header className="sticky top-0 z-30 bg-[#070708]/90 backdrop-blur-md pt-10 pb-4 border-b border-white/[0.06] flex items-center gap-3.5">
+        <header className="sticky top-0 z-30 bg-primary-container/90 backdrop-blur-md pt-10 pb-4 border-b border-white/[0.06] flex items-center gap-3.5">
           <Link
             href="/profile"
             aria-label="Go back"
-            className="w-10 h-10 -ml-1 flex items-center justify-center rounded-xl bg-[#161618] border border-white/5 text-neutral-300 hover:text-white active:scale-95 transition-all"
+            className="w-10 h-10 -ml-1 flex items-center justify-center rounded-xl bg-surface-container border border-white/5 text-neutral-300 hover:text-white active:scale-95 transition-all"
           >
             <span className="material-symbols-outlined text-[22px]">arrow_back</span>
           </Link>
@@ -38,7 +38,7 @@ export default function FallDetectionAlerts() {
             {alerts.map((alert) => (
               <div
                 key={alert.id}
-                className="group flex items-center justify-between p-4 rounded-2xl bg-[#161618] border border-white/5 hover:border-white/10 active:scale-[0.99] transition-all cursor-pointer shadow-sm"
+                className="group flex items-center justify-between p-4 rounded-2xl bg-surface-container border border-white/5 hover:border-white/10 active:scale-[0.99] transition-all cursor-pointer shadow-sm"
               >
                 <div className="flex items-center gap-3.5">
                   <div className="w-11 h-11 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center text-neutral-300 group-hover:scale-105 transition-transform">
@@ -75,7 +75,7 @@ export default function FallDetectionAlerts() {
       </div>
 
       {/* Persistent Bottom Navigation */}
-      <nav className="fixed bottom-0 left-0 right-0 z-50 bg-[#0a0a0c]/95 backdrop-blur-xl border-t border-white/[0.08] px-6 py-2.5 pb-[max(0.75rem,env(safe-area-inset-bottom))] flex justify-around items-center">
+      <nav className="fixed bottom-0 left-0 right-0 z-50 bg-primary-container/95 backdrop-blur-xl border-t border-white/[0.08] px-6 py-2.5 pb-[max(0.75rem,env(safe-area-inset-bottom))] flex justify-around items-center">
         <Link href="/dashboard" className="text-neutral-400 hover:text-neutral-200 font-medium flex flex-col items-center gap-1 px-3 py-1 transition-colors duration-200">
           <span className="material-symbols-outlined text-[22px] leading-none" style={{ fontVariationSettings: "'FILL' 0" }}>home</span>
           <span className="text-[11px] tracking-normal whitespace-nowrap">Home</span>

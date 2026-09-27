@@ -32,12 +32,15 @@ export async function PUT(request: Request) {
       const lastName = parts.slice(1).join(' ') || '';
       const gender = body.gender !== undefined ? body.gender : users[0].gender;
       const age = body.age !== undefined ? parseInt(body.age) : users[0].age;
+      const weight = body.weight !== undefined && body.weight !== '' ? parseFloat(body.weight) : (body.weight === '' ? null : users[0].weight);
+      const height = body.height !== undefined && body.height !== '' ? parseFloat(body.height) : (body.height === '' ? null : users[0].height);
+      const bloodGroup = body.bloodGroup !== undefined ? body.bloodGroup : users[0].blood_group;
 
       db.prepare(`
         UPDATE users 
-        SET first_name = ?, last_name = ?, gender = ?, age = ?
+        SET first_name = ?, last_name = ?, gender = ?, age = ?, weight = ?, height = ?, blood_group = ?
         WHERE id = ?
-      `).run(firstName, lastName, gender, age, userId);
+      `).run(firstName, lastName, gender, age, weight, height, bloodGroup, userId);
     }
 
     // Check if updating daily goals

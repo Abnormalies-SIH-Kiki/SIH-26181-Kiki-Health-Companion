@@ -57,7 +57,7 @@ export default function DeleteAccountButton() {
       {/* Confirmation Modal */}
       {isOpen && (
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm animate-in fade-in duration-200">
-          <div className="bg-[#141417] border border-red-500/30 rounded-2xl p-6 max-w-sm w-full shadow-2xl shadow-red-950/50 space-y-4">
+          <div className="bg-surface-container border border-red-500/30 rounded-2xl p-6 max-w-sm w-full shadow-2xl shadow-red-950/50 space-y-4">
             <div className="w-12 h-12 rounded-full bg-red-500/15 border border-red-500/30 flex items-center justify-center text-red-400 mx-auto">
               <span className="material-symbols-outlined text-[28px]">warning</span>
             </div>
