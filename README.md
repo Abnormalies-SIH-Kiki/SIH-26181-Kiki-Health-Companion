@@ -101,7 +101,9 @@ Every row below is implemented and running, not planned:
 | Wellness dashboard | Web dashboard + mobile app UI |
 | Voice-first accessibility | English and Hindi voice interface, no screen literacy needed |
 | Offline capability | Firmware fall detection works without internet |
-
+<img width="650" height="1350" alt="Real prototype - wearable" src="assets/CAD_model/renders/exploded.png" />
+<img width="2400" height="2100" alt="design_sheet" src="https://github.com/user-attachments/assets/5a16905e-0e2e-4ee5-9ff5-64aac6568fb0" />
+[assets/CAD_model/](assets/CAD_model/)
 <table>
   <tr>
     <td width="50%">
